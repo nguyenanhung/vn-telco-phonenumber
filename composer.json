@@ -16,5 +16,10 @@
   "require": {
     "php": ">=5.3.0",
     "giggsey/libphonenumber-for-php": "^8.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "nguyenanhung\\VnTelcoPhoneNumber\\": "src/"
+    }
   }
 }
