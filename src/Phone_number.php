@@ -1,6 +1,5 @@
 <?php
 namespace nguyenanhung\VnTelcoPhoneNumber;
-require_once 'vendor/autoload.php';
 require_once 'Phone_telco.php';
 /**
  * Created by PhpStorm.
