@@ -1,0 +1,20 @@
+{
+  "name": "nguyenanhung/vn-telco-phonenumber",
+  "type": "library",
+  "description": "PhoneNumber VN Telco",
+  "keywords": ["telco","vas"],
+  "homepage": "https://github.com/nguyenanhung/vn-telco-phonenumber",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nguyen An Hung",
+      "email": "dev@nguyenanhung.com",
+      "homepage": "http://www.nguyenanhung.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0",
+    "giggsey/libphonenumber-for-php": "^8.9"
+  }
+}
