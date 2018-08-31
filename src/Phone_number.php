@@ -11,7 +11,7 @@ use \libphonenumber\PhoneNumberUtil;
 use \libphonenumber\PhoneNumberToCarrierMapper;
 class Phone_number
 {
-    const VERSION = '1.0.0';
+    const VERSION = '1.0.3';
     const DEFAULT_COUNTRY = 'VN';
     const DEFAULT_LANGUAGE = 'vi';
     const DEFAULT_REGION = 'VN';
