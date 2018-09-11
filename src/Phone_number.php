@@ -13,7 +13,7 @@ use \libphonenumber\PhoneNumberToCarrierMapper;
 use nguyenanhung\VnTelcoPhoneNumber\Repository;
 class Phone_number
 {
-    const VERSION = '1.0.4';
+    const VERSION = '1.0.5';
     const DEFAULT_COUNTRY = 'VN';
     const DEFAULT_LANGUAGE = 'vi';
     const DEFAULT_REGION = 'VN';
@@ -144,7 +144,7 @@ class Phone_number
                         $convert_prefix       = null;
                     }
                     if (($phone_number_content !== null && $phone_number_prefix !== null && $convert_prefix !== null) && preg_match('/^(' . $phone_number_prefix . ')[0-9]{' . $phone_number_content . '}$/', $phone_number)) {
-                        // Cắt lấy các số cuối tính từ vị trí đầu tiên trong dãy $number rồi nối đầu số cũ $v_old
+                        // Cắt lấy các số cuối tính từ vị trí đầu tiên trong dãy $phone_number rồi nối đầu số $convert_prefix
                         $phone_number = $convert_prefix . substr($phone_number, strlen($phone_number_prefix), $phone_number_content);
                         $phone_number = $this->format($phone_number, $phone_format);
                         return $phone_number;
