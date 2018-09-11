@@ -13,7 +13,7 @@ use \libphonenumber\PhoneNumberToCarrierMapper;
 use nguyenanhung\VnTelcoPhoneNumber\Repository;
 class Phone_number
 {
-    const VERSION = '1.0.4';
+    const VERSION = '1.0.5';
     const DEFAULT_COUNTRY = 'VN';
     const DEFAULT_LANGUAGE = 'vi';
     const DEFAULT_REGION = 'VN';
