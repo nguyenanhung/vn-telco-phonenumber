@@ -13,8 +13,8 @@ Step 1: Save library to your project
 
 ```shell
 cd /your/to/path
-wget https://github.com/nguyenanhung/vn-telco-phonenumber/archive/v1.0.0.zip
-unzip v1.0.0.zip
+wget https://github.com/nguyenanhung/vn-telco-phonenumber/archive/v1.0.4.zip
+unzip v1.0.4.zip
 ```
 
 Step 2: Init to Project
@@ -78,7 +78,23 @@ echo $phone->detect_carrier($my_number, 'name'); // Print: Viettel
 echo $phone->detect_carrier($my_number, 'short_name'); // Print: viettel
 ```
 
+**Conver Old Number to New Number (or New Number to Old Number)**
 
+```php
+<?php
+require '/your/to/path/vendor/autoload.php';
+use \nguyenanhung\VnTelcoPhoneNumber\Phone_number;
+$phone = new Phone_number();
+
+$my_number = '0163 295 3760';
+
+echo $phone->vn_convert_phone_number($my_number, 'old'); // Print: 841632953760
+echo $phone->vn_convert_phone_number($my_number, 'new'); // Print: 84332953760
+
+echo $phone->vn_convert_phone_number($my_number, 'old', 'vn'); // Print: 01632953760
+echo $phone->vn_convert_phone_number($my_number, 'new', 'vn'); // Print: 0332953760
+
+```
 
 ### Contact
 
@@ -87,7 +103,5 @@ If any quetion & request, please contact following infomation
 | Name        | Email                | Skype            | Facebook      |
 | ----------- | -------------------- | ---------------- | ------------- |
 | Hung Nguyen | dev@nguyenanhung.com | nguyenanhung5891 | @nguyenanhung |
-
-
 
 From Hanoi with Love <3
