@@ -13,7 +13,7 @@ use \libphonenumber\PhoneNumberToCarrierMapper;
 use nguyenanhung\VnTelcoPhoneNumber\Repository;
 class Phone_number
 {
-    const VERSION = '1.0.6';
+    const VERSION = '1.0.7';
     const DEFAULT_COUNTRY = 'VN';
     const DEFAULT_LANGUAGE = 'vi';
     const DEFAULT_REGION = 'VN';
@@ -66,6 +66,9 @@ class Phone_number
      */
     public function format($phone_number = '', $format = '')
     {
+        if (empty($phone_number)) {
+            return null;
+        }
         $phone_number      = trim($phone_number);
         $phoneNumberUtil   = PhoneNumberUtil::getInstance();
         $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), self::DEFAULT_REGION);
@@ -86,6 +89,9 @@ class Phone_number
      */
     public function detect_carrier($phone_number = '', $get_field_data = null)
     {
+        if (empty($phone_number)) {
+            return null;
+        }
         $carrierMapper     = PhoneNumberToCarrierMapper::getInstance();
         $phoneNumberObject = PhoneNumberUtil::getInstance()->parse(trim($phone_number), self::DEFAULT_REGION);
         $carrier           = $carrierMapper->getNameForNumber($phoneNumberObject, self::DEFAULT_LANGUAGE);
@@ -116,9 +122,12 @@ class Phone_number
      */
     public function vn_convert_phone_number($phone_number = '', $phone_mode = '', $phone_format = null)
     {
+        if (empty($phone_number)) {
+            return null;
+        }
         $mode                     = strtolower($phone_mode); // old || new
         // Convert Phone Number to CountryCode + NationalNumber
-        $phone_number             = $this->format($phone_number);
+        $phone_number             = $this->format(trim($phone_number));
         // Data Convert Phone Number
         $dataVnConvertPhoneNumber = Repository\DataRepository::getData('vn_convert_phone_number');
         if (is_array($dataVnConvertPhoneNumber) && count($dataVnConvertPhoneNumber) > 0) {
@@ -131,7 +140,7 @@ class Phone_number
             }
             if ($preg_match_number !== null) {
                 if (!preg_match($preg_match_number, $phone_number)) {
-                    return false;
+                    return $this->format($phone_number, $phone_format);
                 }
                 foreach ($dataVnConvertPhoneNumber as $old_number_prefix => $new_number_prefix) {
                     if ($mode == self::CONVERT_NEW_TO_OLD) {
