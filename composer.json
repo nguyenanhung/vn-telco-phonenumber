@@ -2,14 +2,14 @@
   "name": "nguyenanhung/vn-telco-phonenumber",
   "type": "library",
   "description": "PhoneNumber VN Telco",
-  "keywords": ["telco","vas"],
+  "keywords": ["telco","vas","vinaphone","viettel","mobifone","vietnamobile"],
   "homepage": "https://github.com/nguyenanhung/vn-telco-phonenumber",
   "license": "MIT",
   "authors": [
     {
       "name": "Nguyen An Hung",
       "email": "dev@nguyenanhung.com",
-      "homepage": "http://www.nguyenanhung.com",
+      "homepage": "https://nguyenanhung.com",
       "role": "Developer"
     }
   ],
