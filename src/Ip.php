@@ -8,17 +8,9 @@ namespace nguyenanhung\VnTelcoPhoneNumber;
  */
 class Ip
 {
-    const IP_KEY = array(
-        'HTTP_X_FORWARDED_FOR',
-        'HTTP_X_FORWARDED',
-        'HTTP_X_IPADDRESS',
-        'HTTP_X_CLUSTER_CLIENT_IP',
-        'HTTP_FORWARDED_FOR',
-        'HTTP_FORWARDED',
-        'HTTP_CLIENT_IP',
-        'HTTP_IP',
-        'REMOTE_ADDR'
-    );
+    const IP_KEY = array('HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_IPADDRESS', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'HTTP_CLIENT_IP', 'HTTP_IP', 'REMOTE_ADDR');
+
+    protected $haProxyStatus = false;
 
     /**
      * Ip constructor.
@@ -28,10 +20,37 @@ class Ip
     }
 
     /**
-     * Get IP by HA Proxy
-     * @return bool|string
+     * Get IP Address
+     * @param bool $convertToInteger
+     * @return bool|int|string
      */
-    public function getIpByHaProxy()
+    public function getIpAddress($convertToInteger = false)
+    {
+        if ($this->haProxyStatus === true) {
+            return $this->getIpByHaProxy($convertToInteger);
+        }
+        return $this->getRawIpAddress($convertToInteger);
+    }
+
+    /**
+     * Set Server use HA Proxy
+     *
+     * @param bool $haProxyStatus
+     * @return $this
+     */
+    public function setHaProxy($haProxyStatus = false)
+    {
+        $this->haProxyStatus = $haProxyStatus;
+        return $this;
+    }
+
+    /**
+     * Get IP by HA Proxy
+     *
+     * @param bool $convertToInteger
+     * @return bool|int|string
+     */
+    public function getIpByHaProxy($convertToInteger = false)
     {
         $ip_keys = array(
             'HTTP_X_FORWARDED_FOR'
@@ -40,7 +59,10 @@ class Ip
             if (array_key_exists($key, $_SERVER) === true) {
                 foreach (explode(',', $_SERVER[$key]) as $ip) {
                     $ip = trim($ip);
-                    if ($this->validate_ip($ip)) {
+                    if ($this->ipValidate($ip)) {
+                        if ($convertToInteger === true) {
+                            return ip2long($ip);
+                        }
                         return $ip;
                     }
                 }
@@ -50,11 +72,11 @@ class Ip
     }
 
     /**
-     * Get IP Address
+     * Get Raw IP Address
      * @param bool $convertToInteger
      * @return bool|int|string
      */
-    public function getIpAddress($convertToInteger = false)
+    public function getRawIpAddress($convertToInteger = false)
     {
         foreach (self::IP_KEY as $key) {
             if (array_key_exists($key, $_SERVER) === true) {
