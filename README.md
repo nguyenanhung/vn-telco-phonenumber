@@ -59,6 +59,8 @@ $my_number = '0163 295 3760';
 
 echo $phone->format($my_number); // Print: 841632953760
 echo $phone->format($my_number, 'vn'); // Print: 01632953760
+echo $phone->format($my_number, 'hidden'); // Print: 0163 *** 3760
+echo $phone->format($my_number, 'vn_human'); // Print: 0163 295 3760
 
 ```
 

@@ -19,6 +19,7 @@ class Phone_number
     const DEFAULT_REGION = 'VN';
     const HIDDEN_REGION = 'HIDDEN';
     const HIDDEN_STRING = '*';
+    const FORMAT_FOR_HUMAN_VIETNAM = 'VN_HUMAN';
     const CONVERT_NEW_TO_OLD = 'old';
     const CONVERT_OLD_TO_NEW = 'new';
     const MATCH_NUMBER_OLD = '/^(841[2689])[0-9]{8}$/';
@@ -118,6 +119,8 @@ class Phone_number
             return (string) '0' . $phoneNumberObject->getNationalNumber();
         } elseif (strtoupper(trim($format)) == self::HIDDEN_REGION) {
             return (string) $this->format_hidden($phone_number);
+        } elseif (strtoupper(trim($format)) == self::FORMAT_FOR_HUMAN_VIETNAM) {
+            return (string) $phoneNumberUtil->formatOutOfCountryCallingNumber($phoneNumberObject, self::DEFAULT_COUNTRY);
         } else {
             return (string) $phoneNumberObject->getCountryCode() . $phoneNumberObject->getNationalNumber();
         }
