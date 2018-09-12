@@ -59,6 +59,46 @@ class Phone_number
     }
 
     /**
+     * is Valid Number
+     *
+     * @param string $phone_number
+     * @param null $region
+     * @return bool|null
+     * @throws \libphonenumber\NumberParseException
+     */
+    public function is_valid($phone_number = '', $region = null)
+    {
+        if (empty($phone_number)) {
+            return null;
+        }
+        $phone_number      = trim($phone_number);
+        $phoneNumberUtil   = PhoneNumberUtil::getInstance();
+        $use_region        = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
+        $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), $use_region);
+        return $phoneNumberUtil->isValidNumber($phoneNumberObject, $use_region);
+    }
+
+    /**
+     * is Possible Number
+     *
+     * @param string $phone_number
+     * @param null $region
+     * @return bool|null
+     * @throws \libphonenumber\NumberParseException
+     */
+    public function is_possible_number($phone_number = '', $region = null)
+    {
+        if (empty($phone_number)) {
+            return null;
+        }
+        $phone_number      = trim($phone_number);
+        $phoneNumberUtil   = PhoneNumberUtil::getInstance();
+        $use_region        = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
+        $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), $use_region);
+        return $phoneNumberUtil->isPossibleNumber($phoneNumberObject);
+    }
+
+    /**
      * Format Phone Number
      *
      * @param string $phone_number
