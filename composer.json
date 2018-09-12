@@ -15,7 +15,8 @@
   ],
   "require": {
     "php": ">=5.3.0",
-    "giggsey/libphonenumber-for-php": "^8.9"
+    "giggsey/libphonenumber-for-php": "^8.9",
+    "curl/curl": "^1.9"
   },
   "autoload": {
     "psr-4": {
