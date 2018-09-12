@@ -35,6 +35,16 @@ class Phone_number
     }
 
     /**
+     * Get Version
+     *
+     * @return string
+     */
+    public function getVersion()
+    {
+        return self::VERSION;
+    }
+
+    /**
      * Set normal Name
      *
      * Viettel no Viettel Mobile :))
@@ -46,16 +56,6 @@ class Phone_number
     {
         $this->normal_name = $value;
         return $this->normal_name;
-    }
-
-    /**
-     * Get Version
-     *
-     * @return string
-     */
-    public function getVersion()
-    {
-        return self::VERSION;
     }
 
     /**
