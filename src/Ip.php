@@ -118,7 +118,7 @@ class Ip
         if (empty($ip)) {
             $ip = $this->getIpAddress();
         }
-        $curl = new Curl\Curl();
+        $curl = new \Curl\Curl();
         $curl->get('http://ip-api.com/json/' . $ip);
         $response = $curl->error ? "cURL Error: " . $curl->error_message : $curl->response;
         return $response;
