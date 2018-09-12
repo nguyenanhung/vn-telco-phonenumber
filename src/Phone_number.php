@@ -13,10 +13,13 @@ use \libphonenumber\PhoneNumberToCarrierMapper;
 use nguyenanhung\VnTelcoPhoneNumber\Repository;
 class Phone_number
 {
-    const VERSION = '1.0.7';
+    const VERSION = '1.0.8';
     const DEFAULT_COUNTRY = 'VN';
     const DEFAULT_LANGUAGE = 'vi';
     const DEFAULT_REGION = 'VN';
+    const HIDDEN_REGION = 'HIDDEN';
+    const HIDDEN_STRING = '*';
+    const FORMAT_FOR_HUMAN_VIETNAM = 'VN_HUMAN';
     const CONVERT_NEW_TO_OLD = 'old';
     const CONVERT_OLD_TO_NEW = 'new';
     const MATCH_NUMBER_OLD = '/^(841[2689])[0-9]{8}$/';
@@ -30,6 +33,16 @@ class Phone_number
      */
     public function __construct()
     {
+    }
+
+    /**
+     * Get Version
+     *
+     * @return string
+     */
+    public function getVersion()
+    {
+        return self::VERSION;
     }
 
     /**
@@ -47,13 +60,43 @@ class Phone_number
     }
 
     /**
-     * Get Version
+     * is Valid Number
      *
-     * @return string
+     * @param string $phone_number
+     * @param null $region
+     * @return bool|null
+     * @throws \libphonenumber\NumberParseException
      */
-    public function getVersion()
+    public function is_valid($phone_number = '', $region = null)
     {
-        return self::VERSION;
+        if (empty($phone_number)) {
+            return null;
+        }
+        $phone_number      = trim($phone_number);
+        $phoneNumberUtil   = PhoneNumberUtil::getInstance();
+        $use_region        = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
+        $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), $use_region);
+        return $phoneNumberUtil->isValidNumber($phoneNumberObject, $use_region);
+    }
+
+    /**
+     * is Possible Number
+     *
+     * @param string $phone_number
+     * @param null $region
+     * @return bool|null
+     * @throws \libphonenumber\NumberParseException
+     */
+    public function is_possible_number($phone_number = '', $region = null)
+    {
+        if (empty($phone_number)) {
+            return null;
+        }
+        $phone_number      = trim($phone_number);
+        $phoneNumberUtil   = PhoneNumberUtil::getInstance();
+        $use_region        = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
+        $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), $use_region);
+        return $phoneNumberUtil->isPossibleNumber($phoneNumberObject);
     }
 
     /**
@@ -74,9 +117,34 @@ class Phone_number
         $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), self::DEFAULT_REGION);
         if (strtoupper(trim($format)) == self::DEFAULT_REGION) {
             return (string) '0' . $phoneNumberObject->getNationalNumber();
+        } elseif (strtoupper(trim($format)) == self::HIDDEN_REGION) {
+            return (string) $this->format_hidden($phone_number);
+        } elseif (strtoupper(trim($format)) == self::FORMAT_FOR_HUMAN_VIETNAM) {
+            return (string) $phoneNumberUtil->formatOutOfCountryCallingNumber($phoneNumberObject, self::DEFAULT_COUNTRY);
         } else {
             return (string) $phoneNumberObject->getCountryCode() . $phoneNumberObject->getNationalNumber();
         }
+    }
+
+    /**
+     * Hidden 3 number in Phone number
+     *
+     * @param string $phone_number
+     * @return null|string
+     * @throws \libphonenumber\NumberParseException
+     */
+    public function format_hidden($phone_number = '')
+    {
+        if (empty($phone_number)) {
+            return null;
+        }
+        $phone_number        = trim($phone_number);
+        $phoneNumberUtil     = PhoneNumberUtil::getInstance();
+        $phoneNumberObject   = $phoneNumberUtil->parse(trim($phone_number), self::DEFAULT_REGION);
+        $phoneNumberVnFormat = $phoneNumberUtil->formatOutOfCountryCallingNumber($phoneNumberObject, "VN");
+        $exPhone             = explode(' ', $phoneNumberVnFormat);
+        $result              = count($exPhone) > 1 ? trim($exPhone[0]) . trim(str_repeat(self::HIDDEN_STRING, strlen($exPhone[1]))) . trim($exPhone[2]) : $phoneNumberVnFormat;
+        return $result;
     }
 
     /**
