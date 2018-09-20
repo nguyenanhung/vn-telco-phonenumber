@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "cc127aed021d758e255a53bbfd0e793e",
+    "content-hash": "d2c3cab894246429b4e51b26a2389599",
     "packages": [
         {
             "name": "curl/curl",
@@ -63,16 +63,16 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php",
-            "version": "8.9.13",
+            "version": "8.9.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-                "reference": "cb4e0cf25f742a838b9d53ed6a7088c4f24086f3"
+                "reference": "338f988183bee1e85ec7b4ef425a3e64a7604473"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/cb4e0cf25f742a838b9d53ed6a7088c4f24086f3",
-                "reference": "cb4e0cf25f742a838b9d53ed6a7088c4f24086f3",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/338f988183bee1e85ec7b4ef425a3e64a7604473",
+                "reference": "338f988183bee1e85ec7b4ef425a3e64a7604473",
                 "shasum": ""
             },
             "require": {
@@ -86,7 +86,7 @@
                 "pear/versioncontrol_git": "^0.5",
                 "phing/phing": "^2.7",
                 "php-coveralls/php-coveralls": "^1.0|^2.0",
-                "phpunit/phpunit": "^4.8|^5.0",
+                "phpunit/phpunit": "^4.8.36|^5.0",
                 "symfony/console": "^2.8|^3.0"
             },
             "type": "library",
@@ -127,7 +127,7 @@
                 "phonenumber",
                 "validation"
             ],
-            "time": "2018-09-10T15:26:43+00:00"
+            "time": "2018-09-19T15:54:29+00:00"
         },
         {
             "name": "giggsey/locale",
@@ -186,7 +186,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.3.0"
+        "php": ">=5.5"
     },
     "platform-dev": []
 }
