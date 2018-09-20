@@ -1,22 +1,16 @@
 <?php
-require 'vendor/autoload.php'; // Current Package test, remove if init other package
+require_once __DIR__ . '/vendor/autoload.php'; // Current Package test, remove if init other package
+require_once __DIR__ . '/classmap.php'; // Current Package test, remove if init other package
+require_once __DIR__ . '/functions.php';
 /**
  * Created by PhpStorm.
  * User: 713uk13m
  * Date: 5/17/18
  * Time: 14:28
  */
-function dump($str = '')
-{
-    echo "<pre>";
-    var_dump($str);
-    echo "</pre>";
-}
-
-require 'src/Phone_number.php';
 
 $phone_number = new \nguyenanhung\VnTelcoPhoneNumber\Phone_number();
-$phone        = '0862953761';
+$phone        = '01632953760';
 dump("Phone number: " . $phone);
 
 // Format Number
