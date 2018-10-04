@@ -13,16 +13,6 @@ namespace nguyenanhung\VnTelcoPhoneNumber\Interfaces;
 interface PhoneNumberInterfaces
 {
     /**
-     * Function getVersion
-     *
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 9/21/18 01:28
-     *
-     * @return string
-     */
-    public function getVersion();
-
-    /**
      * Function setNormalName
      *
      * @author: 713uk13m <dev@nguyenanhung.com>
