@@ -2,6 +2,7 @@
 
 namespace nguyenanhung\VnTelcoPhoneNumber;
 
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'ProjectInterfaces.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'PhoneNumberInterfaces.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'Repository' . DIRECTORY_SEPARATOR . 'DataRepository.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'Phone_telco.php';
@@ -18,11 +19,11 @@ use \libphonenumber\PhoneNumberToCarrierMapper;
 use \libphonenumber\PhoneNumberToTimeZonesMapper;
 use \libphonenumber\geocoding\PhoneNumberOfflineGeocoder;
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneNumberInterfaces;
+use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterfaces;
 use nguyenanhung\VnTelcoPhoneNumber\Repository;
 
-class Phone_number implements PhoneNumberInterfaces
+class Phone_number implements ProjectInterfaces, PhoneNumberInterfaces
 {
-    const VERSION                  = '1.1.0';
     const DEFAULT_COUNTRY          = 'VN';
     const DEFAULT_LANGUAGE         = 'vi';
     const DEFAULT_REGION           = 'VN';
@@ -97,7 +98,7 @@ class Phone_number implements PhoneNumberInterfaces
             $use_region        = NULL !== $region ? strtoupper($region) : self::DEFAULT_REGION;
             $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), $use_region);
 
-            return $phoneNumberUtil->isValidNumber($phoneNumberObject, $use_region);
+            return $phoneNumberUtil->isValidNumber($phoneNumberObject);
         }
         catch (\Exception $e) {
             return NULL;
@@ -483,13 +484,13 @@ class Phone_number implements PhoneNumberInterfaces
             $phoneNumberObject = PhoneNumberUtil::getInstance()->parse(trim($phone_number), self::DEFAULT_REGION);
             $carrier           = $carrierMapper->getNameForNumber($phoneNumberObject, self::DEFAULT_LANGUAGE);
             if ($get_field_data !== NULL) {
-                $phone_telco = new \nguyenanhung\VnTelcoPhoneNumber\Phone_telco();
+                $phone_telco = new Phone_telco();
                 $id          = $phone_telco->carrier_data($carrier, $get_field_data);
 
                 return $id;
             }
             if ($this->normal_name === TRUE) {
-                $phone_telco = new \nguyenanhung\VnTelcoPhoneNumber\Phone_telco();
+                $phone_telco = new Phone_telco();
                 $name        = $phone_telco->carrier_data($carrier, 'name');
                 if ($name !== NULL) {
                     return $name;
@@ -589,10 +590,10 @@ class Phone_number implements PhoneNumberInterfaces
             $old_number = $this->vn_convert_phone_number(trim($phone_number), 'old', $phone_format);
             $new_number = $this->vn_convert_phone_number(trim($phone_number), 'new', $phone_format);
             if (!empty($old_number) && !empty($new_number)) {
-                return (array) array(
+                return (array) [
                     $old_number,
                     $new_number
-                );
+                ];
             }
         }
         catch (\Exception $e) {

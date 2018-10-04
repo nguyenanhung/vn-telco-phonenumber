@@ -3,25 +3,24 @@
  * Project vn-telco-phonenumber.
  * Created by PhpStorm.
  * User: 713uk13m <dev@nguyenanhung.com>
- * Date: 9/21/18
- * Time: 01:36
+ * Date: 10/4/18
+ * Time: 14:22
  */
 
 namespace nguyenanhung\VnTelcoPhoneNumber\Interfaces;
 
 
-interface PhoneTelcoInterfaces
+interface ProjectInterfaces
 {
+    const VERSION = '1.1.1';
+
     /**
-     * Function carrier_data
+     * Function getVersion
      *
      * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 9/21/18 01:36
-     *
-     * @param string $carrier
-     * @param string $field_output
+     * @time  : 10/4/18 14:22
      *
      * @return mixed
      */
-    public function carrier_data($carrier = '', $field_output = '');
+    public function getVersion();
 }

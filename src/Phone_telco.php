@@ -2,6 +2,7 @@
 
 namespace nguyenanhung\VnTelcoPhoneNumber;
 
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'ProjectInterfaces.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'PhoneTelcoInterfaces.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'Repository' . DIRECTORY_SEPARATOR . 'DataRepository.php';
 
@@ -13,12 +14,11 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . 'Repository' . DIRECTORY_SEPARATOR 
  */
 
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneTelcoInterfaces;
+use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterfaces;
 use nguyenanhung\VnTelcoPhoneNumber\Repository;
 
-class Phone_telco implements PhoneTelcoInterfaces
+class Phone_telco implements ProjectInterfaces, PhoneTelcoInterfaces
 {
-    const VERSION = '1.1.0';
-
     /**
      * Phone_telco constructor.
      */
