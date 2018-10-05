@@ -8,8 +8,12 @@
  */
 
 namespace nguyenanhung\VnTelcoPhoneNumber;
-require_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'ProjectInterfaces.php';
-require_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'SmsLinkInterfaces.php';
+if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterfaces')) {
+    include __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'ProjectInterfaces.php';
+}
+if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\SmsLinkInterfaces')) {
+    include __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'SmsLinkInterfaces.php';
+}
 
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterfaces;
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\SmsLinkInterfaces;
