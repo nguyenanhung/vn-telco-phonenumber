@@ -11,8 +11,9 @@ if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneNumberInt
 if (!class_exists('Phone_telco')) {
     include __DIR__ . DIRECTORY_SEPARATOR . 'Phone_telco.php';
 }
-include __DIR__ . DIRECTORY_SEPARATOR . 'Repository' . DIRECTORY_SEPARATOR . 'DataRepository.php';
-
+if (!class_exists('nguyenanhung\VnTelcoPhoneNumber\Repository\DataRepository')) {
+    include __DIR__ . DIRECTORY_SEPARATOR . 'Repository' . DIRECTORY_SEPARATOR . 'DataRepository.php';
+}
 
 /**
  * Created by PhpStorm.

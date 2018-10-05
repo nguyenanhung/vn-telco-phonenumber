@@ -8,9 +8,14 @@
 
 namespace nguyenanhung\VnTelcoPhoneNumber\Repository;
 
-class DataRepository
+use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterfaces;
+
+if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterfaces')) {
+    include __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'ProjectInterfaces.php';
+}
+
+class DataRepository implements ProjectInterfaces
 {
-    const VERSION     = '1.0.0';
     const CONFIG_PATH = 'config';
     const CONFIG_EXT  = '.php';
 
