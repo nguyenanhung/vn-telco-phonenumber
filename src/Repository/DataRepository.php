@@ -11,7 +11,7 @@ namespace nguyenanhung\VnTelcoPhoneNumber\Repository;
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterfaces;
 
 if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterfaces')) {
-    include __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'ProjectInterfaces.php';
+    include_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'ProjectInterfaces.php';
 }
 
 class DataRepository implements ProjectInterfaces

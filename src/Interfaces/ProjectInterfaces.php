@@ -12,7 +12,7 @@ namespace nguyenanhung\VnTelcoPhoneNumber\Interfaces;
 
 interface ProjectInterfaces
 {
-    const VERSION = '1.1.2';
+    const VERSION = '1.1.3';
 
     /**
      * Function getVersion
