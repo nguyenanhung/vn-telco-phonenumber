@@ -3,16 +3,16 @@
 namespace nguyenanhung\VnTelcoPhoneNumber;
 
 if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterfaces')) {
-    include __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'ProjectInterfaces.php';
+    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'ProjectInterfaces.php';
 }
 if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneNumberInterfaces')) {
-    include __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'PhoneNumberInterfaces.php';
+    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'PhoneNumberInterfaces.php';
 }
 if (!class_exists('Phone_telco')) {
-    include __DIR__ . DIRECTORY_SEPARATOR . 'Phone_telco.php';
+    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Phone_telco.php';
 }
 if (!class_exists('nguyenanhung\VnTelcoPhoneNumber\Repository\DataRepository')) {
-    include __DIR__ . DIRECTORY_SEPARATOR . 'Repository' . DIRECTORY_SEPARATOR . 'DataRepository.php';
+    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Repository' . DIRECTORY_SEPARATOR . 'DataRepository.php';
 }
 
 /**

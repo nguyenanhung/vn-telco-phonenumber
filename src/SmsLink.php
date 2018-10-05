@@ -9,10 +9,10 @@
 
 namespace nguyenanhung\VnTelcoPhoneNumber;
 if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterfaces')) {
-    include __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'ProjectInterfaces.php';
+    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'ProjectInterfaces.php';
 }
 if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\SmsLinkInterfaces')) {
-    include __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'SmsLinkInterfaces.php';
+    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'SmsLinkInterfaces.php';
 }
 
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterfaces;
