@@ -783,14 +783,20 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             $this->debug->debug(__FUNCTION__, 'Carrier Detect from ' . $phone_number . ' is ', $carrier);
             if ($get_field_data !== NULL) {
                 $phone_telco = new Phone_telco();
-                $result      = $phone_telco->carrier_data($carrier, $get_field_data);
+                $phone_telco->setDebugStatus($this->debugStatus);
+                $phone_telco->setLoggerPath($this->loggerPath);
+                $phone_telco->__construct();
+                $result = $phone_telco->carrier_data($carrier, $get_field_data);
                 $this->debug->info(__FUNCTION__, 'Final Result: ', $result);
 
                 return $result;
             }
             if ($this->normal_name === TRUE) {
                 $phone_telco = new Phone_telco();
-                $result      = $phone_telco->carrier_data($carrier, 'name');
+                $phone_telco->setDebugStatus($this->debugStatus);
+                $phone_telco->setLoggerPath($this->loggerPath);
+                $phone_telco->__construct();
+                $result = $phone_telco->carrier_data($carrier, 'name');
                 if ($result !== NULL) {
                     return $result;
                 }

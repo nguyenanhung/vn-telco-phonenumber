@@ -13,6 +13,54 @@ namespace nguyenanhung\VnTelcoPhoneNumber\Interfaces;
 interface PhoneTelcoInterface
 {
     /**
+     * Function setDebugStatus
+     *
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 10/8/18 14:38
+     *
+     * @param bool $debugStatus
+     *
+     * @return mixed
+     */
+    public function setDebugStatus($debugStatus = FALSE);
+
+    /**
+     * Function setLoggerPath
+     *
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 10/8/18 14:38
+     *
+     * @param bool $loggerPath
+     *
+     * @return mixed
+     */
+    public function setLoggerPath($loggerPath = FALSE);
+
+    /**
+     * Function setLoggerSubPath
+     *
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 10/8/18 14:38
+     *
+     * @param bool $loggerSubPath
+     *
+     * @return mixed
+     */
+    public function setLoggerSubPath($loggerSubPath = FALSE);
+
+    /**
+     * Function setLoggerFilename
+     *
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 10/8/18 14:38
+     *
+     * @param bool $loggerFilename
+     *
+     * @return mixed
+     */
+    public function setLoggerFilename($loggerFilename = FALSE);
+
+    /**
      * Function carrier_data
      *
      * @author: 713uk13m <dev@nguyenanhung.com>
