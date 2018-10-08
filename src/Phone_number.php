@@ -3,7 +3,7 @@
 namespace nguyenanhung\VnTelcoPhoneNumber;
 
 if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface')) {
-    include_once __DIR__ . DIRECTORY_SEPARATOR;
+    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'ProjectInterface.php';
 }
 if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneNumberInterface')) {
     include_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'PhoneNumberInterface.php';
