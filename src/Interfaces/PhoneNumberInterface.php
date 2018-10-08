@@ -143,13 +143,14 @@ interface PhoneNumberInterface
      * Function get_region_code_for_number
      *
      * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 9/21/18 02:09
+     * @time  : 10/8/18 16:11
      *
      * @param string $phone_number
+     * @param string $region
      *
      * @return mixed
      */
-    public function get_region_code_for_number($phone_number = '');
+    public function get_region_code_for_number($phone_number = '', $region = '');
 
     /**
      * Function get_country_code_for_region

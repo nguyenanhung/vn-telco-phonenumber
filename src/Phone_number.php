@@ -50,13 +50,13 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             $this->debug->setDebugStatus($this->debugStatus);
             $this->debug->setLoggerPath($this->loggerPath);
             $this->debug->setLoggerSubPath(__CLASS__);
-            if (!empty($this->loggerFilename)) {
+            if (empty($this->loggerFilename)) {
                 $this->debug->setLoggerFilename($this->loggerFilename);
             } else {
                 $this->debug->setLoggerFilename('Log-' . date('Y-m-d') . '.log');
             }
         }
-        $this->debug->debug(__FUNCTION__, '/------------------------------------> Class Phone Number <------------------------------------\\');
+        $this->debug->debug(__FUNCTION__, '/---------------------------> Class Phone Number <---------------------------\\');
     }
 
     /**
@@ -380,16 +380,18 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      * Function get_region_code_for_number
      *
      * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 9/21/18 02:09
+     * @time  : 10/8/18 16:11
      *
      * @param string $phone_number
+     * @param string $region
      *
      * @return mixed|null|string
      */
-    public function get_region_code_for_number($phone_number = '')
+    public function get_region_code_for_number($phone_number = '', $region = '')
     {
         $inputParams = [
-            'phone_number' => $phone_number
+            'phone_number' => $phone_number,
+            'region'       => $region,
         ];
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
@@ -399,9 +401,11 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
         }
         $phone_number = trim($phone_number);
         try {
+            $use_region        = NULL !== $region ? strtoupper($region) : self::DEFAULT_REGION;
             $phoneNumberUtil   = PhoneNumberUtil::getInstance();
-            $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number));
+            $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), $use_region);
             $result            = $phoneNumberUtil->getRegionCodeForNumber($phoneNumberObject);
+            $this->debug->debug(__FUNCTION__, 'Use REGION: ' . $use_region);
             $this->debug->info(__FUNCTION__, 'Final Result: ' . $result);
 
             return $result;
