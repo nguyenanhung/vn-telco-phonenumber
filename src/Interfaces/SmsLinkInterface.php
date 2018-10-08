@@ -10,7 +10,7 @@
 namespace nguyenanhung\VnTelcoPhoneNumber\Interfaces;
 
 
-interface SmsLinkInterfaces
+interface SmsLinkInterface
 {
     /**
      * Function addScript

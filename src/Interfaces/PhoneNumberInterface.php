@@ -10,7 +10,7 @@
 namespace nguyenanhung\VnTelcoPhoneNumber\Interfaces;
 
 
-interface PhoneNumberInterfaces
+interface PhoneNumberInterface
 {
     /**
      * Function setNormalName

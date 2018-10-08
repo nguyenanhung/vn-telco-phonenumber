@@ -2,11 +2,11 @@
 
 namespace nguyenanhung\VnTelcoPhoneNumber;
 
-if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterfaces')) {
-    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'ProjectInterfaces.php';
+if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface')) {
+    include_once __DIR__ . DIRECTORY_SEPARATOR;
 }
-if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneNumberInterfaces')) {
-    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'PhoneNumberInterfaces.php';
+if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneNumberInterface')) {
+    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'PhoneNumberInterface.php';
 }
 if (!class_exists('Phone_telco')) {
     include_once __DIR__ . DIRECTORY_SEPARATOR . 'Phone_telco.php';
@@ -26,11 +26,11 @@ use \libphonenumber\PhoneNumberUtil;
 use \libphonenumber\PhoneNumberToCarrierMapper;
 use \libphonenumber\PhoneNumberToTimeZonesMapper;
 use \libphonenumber\geocoding\PhoneNumberOfflineGeocoder;
-use nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneNumberInterfaces;
-use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterfaces;
+use nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneNumberInterface;
+use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface;
 use nguyenanhung\VnTelcoPhoneNumber\Repository;
 
-class Phone_number implements ProjectInterfaces, PhoneNumberInterfaces
+class Phone_number implements ProjectInterface, PhoneNumberInterface
 {
     const DEFAULT_COUNTRY          = 'VN';
     const DEFAULT_LANGUAGE         = 'vi';

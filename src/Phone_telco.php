@@ -1,11 +1,11 @@
 <?php
 
 namespace nguyenanhung\VnTelcoPhoneNumber;
-if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterfaces')) {
-    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'ProjectInterfaces.php';
+if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface')) {
+    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'ProjectInterface.php';
 }
-if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneTelcoInterfaces')) {
-    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'PhoneTelcoInterfaces.php';
+if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneTelcoInterface')) {
+    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'PhoneTelcoInterface.php';
 }
 if (!class_exists('nguyenanhung\VnTelcoPhoneNumber\Repository\DataRepository')) {
     include_once __DIR__ . DIRECTORY_SEPARATOR . 'Repository' . DIRECTORY_SEPARATOR . 'DataRepository.php';
@@ -18,11 +18,11 @@ if (!class_exists('nguyenanhung\VnTelcoPhoneNumber\Repository\DataRepository')) 
  * Time: 15:09
  */
 
-use nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneTelcoInterfaces;
-use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterfaces;
+use nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneTelcoInterface;
+use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface;
 use nguyenanhung\VnTelcoPhoneNumber\Repository;
 
-class Phone_telco implements ProjectInterfaces, PhoneTelcoInterfaces
+class Phone_telco implements ProjectInterface, PhoneTelcoInterface
 {
     /**
      * Phone_telco constructor.
