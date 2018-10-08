@@ -4,10 +4,11 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . 'classmap.php'; // Current Package 
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'functions.php';
 
 /**
+ * Project vn-telco-phonenumber.
  * Created by PhpStorm.
- * User: 713uk13m
- * Date: 5/17/18
- * Time: 14:28
+ * User: 713uk13m <dev@nguyenanhung.com>
+ * Date: 10/8/18
+ * Time: 16:29
  */
 
 use nguyenanhung\VnTelcoPhoneNumber\Phone_number;
@@ -23,9 +24,9 @@ $phone->setDebugStatus(TRUE);
 $phone->setLoggerPath(testLogPath());
 $phone->__construct();
 d($phone->getVersion());
-d(testLogPath());
 
-// Format Number
+// Let's Go Test
+
 d($phone->is_valid($my_number, $my_region));
 d($phone->is_possible_number($my_number, $my_region));
 d($phone->get_time_zones_for_number($my_number, $my_region));
