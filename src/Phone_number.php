@@ -96,6 +96,8 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             return $phoneNumberUtil->isValidNumber($phoneNumberObject);
         }
         catch (\Exception $e) {
+            $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
+
             return NULL;
         }
 
@@ -126,6 +128,8 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             return $phoneNumberUtil->isPossibleNumber($phoneNumberObject);
         }
         catch (\Exception $e) {
+            $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
+
             return NULL;
         }
     }
@@ -156,6 +160,8 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             return $timezoneMapper->getTimeZonesForNumber($phoneNumberObject);
         }
         catch (\Exception $e) {
+            $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
+
             return NULL;
         }
     }
@@ -192,6 +198,8 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             }
         }
         catch (\Exception $e) {
+            $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
+
             return NULL;
         }
     }
@@ -226,6 +234,8 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             }
         }
         catch (\Exception $e) {
+            $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
+
             return NULL;
         }
     }
@@ -253,6 +263,8 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             return $phoneNumberUtil->getRegionCodeForNumber($phoneNumberObject);
         }
         catch (\Exception $e) {
+            $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
+
             return NULL;
         }
     }
@@ -276,6 +288,8 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             return $phoneNumberUtil->getCountryCodeForRegion($use_region);
         }
         catch (\Exception $e) {
+            $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
+
             return NULL;
         }
     }
@@ -299,6 +313,8 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             return $phoneNumberUtil->getRegionCodesForCountryCode($use_region_code);
         }
         catch (\Exception $e) {
+            $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
+
             return NULL;
         }
     }
@@ -328,6 +344,8 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             return $phoneNumberUtil->getNumberType($phoneNumberObject);
         }
         catch (\Exception $e) {
+            $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
+
             return NULL;
         }
     }
@@ -357,6 +375,8 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             return $phoneNumberUtil->canBeInternationallyDialled($phoneNumberObject);
         }
         catch (\Exception $e) {
+            $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
+
             return NULL;
         }
     }
@@ -389,6 +409,8 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             return $result;
         }
         catch (\Exception $e) {
+            $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
+
             return NULL;
         }
     }
@@ -410,20 +432,29 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             return NULL;
         }
         $phone_number = trim($phone_number);
+        $format       = strtoupper(trim($format));
+        $hidden_list  = [
+            self::HIDDEN_REGION,
+            self::HIDDEN_REGION_HEAD,
+            self::HIDDEN_REGION_MIDDLE,
+            self::HIDDEN_REGION_END
+        ];
         try {
             $phoneNumberUtil   = PhoneNumberUtil::getInstance();
             $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), self::DEFAULT_REGION);
-            if (strtoupper(trim($format)) == self::DEFAULT_REGION) {
+            if ($format == self::DEFAULT_REGION) {
                 return (string) '0' . $phoneNumberObject->getNationalNumber();
-            } elseif (strtoupper(trim($format)) == self::HIDDEN_REGION) {
-                return (string) $this->format_hidden($phone_number);
-            } elseif (strtoupper(trim($format)) == self::FORMAT_FOR_HUMAN_VIETNAM) {
+            } elseif (in_array($format, $hidden_list)) {
+                return (string) $this->format_hidden($phone_number, $format);
+            } elseif ($format == self::FORMAT_FOR_HUMAN_VIETNAM) {
                 return (string) $phoneNumberUtil->formatOutOfCountryCallingNumber($phoneNumberObject, self::DEFAULT_COUNTRY);
             } else {
                 return (string) $phoneNumberObject->getCountryCode() . $phoneNumberObject->getNationalNumber();
             }
         }
         catch (\Exception $e) {
+            $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
+
             return $phone_number;
         }
     }
@@ -432,28 +463,53 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      * Function format_hidden
      *
      * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 9/21/18 01:30
+     * @time  : 10/8/18 13:54
      *
-     * @param string $phone_number
+     * @param string $phone_number Input Phone Number
+     * @param string $place_hidden Place Hidden: HEAD, MIDDLE or END
+     *                             $place_hidden = HEAD => **** 123 456
+     *                             $place_hidden = MIDDLE => 0163 *** 456
+     *                             $place_hidden = END => 0163 123 ***
      *
      * @return null|string
      */
-    public function format_hidden($phone_number = '')
+    public function format_hidden($phone_number = '', $place_hidden = '')
     {
         if (empty($phone_number)) {
             return NULL;
         }
         $phone_number = trim($phone_number);
+        $place_hidden = strtoupper($place_hidden);
         try {
             $phoneNumberUtil     = PhoneNumberUtil::getInstance();
             $phoneNumberObject   = $phoneNumberUtil->parse(trim($phone_number), self::DEFAULT_REGION);
             $phoneNumberVnFormat = $phoneNumberUtil->formatOutOfCountryCallingNumber($phoneNumberObject, "VN");
-            $exPhone             = explode(' ', $phoneNumberVnFormat);
-            $result              = count($exPhone) > 1 ? trim($exPhone[0]) . trim(str_repeat(self::HIDDEN_STRING, strlen($exPhone[1]))) . trim($exPhone[2]) : $phoneNumberVnFormat;
+            /**
+             * Phone Number: 0163 123 456
+             * $place_hidden = HEAD => **** 123 456
+             * $place_hidden = MIDDLE => 0163 *** 456
+             * $place_hidden = END => 0163 123 ***
+             */
+            $exPhone = explode(' ', $phoneNumberVnFormat);
+            if (count($exPhone) > 1) {
+                if ($place_hidden == self::HIDDEN_PLACE_HEAD) {
+                    $result = trim(str_repeat(self::HIDDEN_STRING, strlen($exPhone[0]))) . trim($exPhone[1]) . trim($exPhone[2]);
+                } elseif ($place_hidden == self::HIDDEN_PLACE_MIDDLE) {
+                    $result = trim($exPhone[0]) . trim(str_repeat(self::HIDDEN_STRING, strlen($exPhone[1]))) . trim($exPhone[2]);
+                } elseif ($place_hidden == self::HIDDEN_PLACE_END) {
+                    $result = trim($exPhone[0]) . trim($exPhone[4]) . trim(str_repeat(self::HIDDEN_STRING, strlen($exPhone[2])));
+                } else {
+                    $result = trim($exPhone[0]) . trim(str_repeat(self::HIDDEN_STRING, strlen($exPhone[1]))) . trim($exPhone[2]);
+                }
+            } else {
+                $result = $phoneNumberVnFormat;
+            }
 
             return $result;
         }
         catch (\Exception $e) {
+            $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
+
             return $phone_number;
         }
     }
@@ -495,6 +551,8 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             return (string) $carrier;
         }
         catch (\Exception $e) {
+            $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
+
             return NULL;
         }
     }
@@ -562,6 +620,8 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             }
         }
         catch (\Exception $e) {
+            $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
+
             return NULL;
         }
 
@@ -592,6 +652,8 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             }
         }
         catch (\Exception $e) {
+            $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
+
             return NULL;
         }
 

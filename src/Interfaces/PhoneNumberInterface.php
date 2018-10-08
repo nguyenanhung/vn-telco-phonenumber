@@ -183,13 +183,14 @@ interface PhoneNumberInterface
      * Function format_hidden
      *
      * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 9/21/18 01:30
+     * @time  : 10/8/18 14:12
      *
      * @param string $phone_number
+     * @param string $place_hidden
      *
-     * @return null|string
+     * @return mixed
      */
-    public function format_hidden($phone_number = '');
+    public function format_hidden($phone_number = '', $place_hidden = '');
 
     /**
      * Function detect_carrier

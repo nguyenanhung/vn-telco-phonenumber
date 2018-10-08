@@ -20,7 +20,7 @@ if (!class_exists('nguyenanhung\VnTelcoPhoneNumber\Repository\DataRepository')) 
 
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneTelcoInterface;
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface;
-use nguyenanhung\VnTelcoPhoneNumber\Repository;
+use nguyenanhung\VnTelcoPhoneNumber\Repository\DataRepository;
 
 class Phone_telco implements ProjectInterface, PhoneTelcoInterface
 {
@@ -58,7 +58,7 @@ class Phone_telco implements ProjectInterface, PhoneTelcoInterface
     public function carrier_data($carrier = '', $field_output = '')
     {
         try {
-            $vn_carrier_data = Repository\DataRepository::getData('vn_telco_carrier_data');
+            $vn_carrier_data = DataRepository::getData('vn_carrier_data');
             if (array_key_exists($carrier, $vn_carrier_data)) {
                 $is_carrier = $vn_carrier_data[$carrier];
                 if (array_key_exists($field_output, $is_carrier)) {

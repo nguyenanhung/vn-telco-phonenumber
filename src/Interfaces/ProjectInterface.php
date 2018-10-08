@@ -17,8 +17,14 @@ interface ProjectInterface
     const DEFAULT_LANGUAGE         = 'vi';
     const DEFAULT_REGION           = 'VN';
     const DEFAULT_REGION_CODE      = '84';
-    const HIDDEN_REGION            = 'HIDDEN';
     const HIDDEN_STRING            = '*';
+    const HIDDEN_REGION            = 'HIDDEN';
+    const HIDDEN_REGION_HEAD       = 'HIDDEN_HEAD';
+    const HIDDEN_REGION_MIDDLE     = 'HIDDEN_MIDDLE';
+    const HIDDEN_REGION_END        = 'HIDDEN_END';
+    const HIDDEN_PLACE_HEAD        = 'HIDDEN_HEAD'; // Ẩn số đầu
+    const HIDDEN_PLACE_MIDDLE      = 'HIDDEN_MIDDLE'; // Ẩn số giữa
+    const HIDDEN_PLACE_END         = 'HIDDEN_END'; // Ẩn số cuối
     const FORMAT_FOR_HUMAN_VIETNAM = 'VN_HUMAN';
     const CONVERT_NEW_TO_OLD       = 'old';
     const CONVERT_OLD_TO_NEW       = 'new';
