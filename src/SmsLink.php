@@ -8,18 +8,18 @@
  */
 
 namespace nguyenanhung\VnTelcoPhoneNumber;
-if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterfaces')) {
-    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'ProjectInterfaces.php';
+if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface')) {
+    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'ProjectInterface.php';
 }
-if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\SmsLinkInterfaces')) {
-    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'SmsLinkInterfaces.php';
+if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\SmsLinkInterface')) {
+    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'SmsLinkInterface.php';
 }
 
-use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterfaces;
-use nguyenanhung\VnTelcoPhoneNumber\Interfaces\SmsLinkInterfaces;
+use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface;
+use nguyenanhung\VnTelcoPhoneNumber\Interfaces\SmsLinkInterface;
 use nguyenanhung\VnTelcoPhoneNumber\Repository;
 
-class SmsLink implements ProjectInterfaces, SmsLinkInterfaces
+class SmsLink implements ProjectInterface, SmsLinkInterface
 {
     /**
      * SmsLink constructor.

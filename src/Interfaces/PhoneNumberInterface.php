@@ -10,8 +10,56 @@
 namespace nguyenanhung\VnTelcoPhoneNumber\Interfaces;
 
 
-interface PhoneNumberInterfaces
+interface PhoneNumberInterface
 {
+    /**
+     * Function setDebugStatus
+     *
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 10/8/18 14:38
+     *
+     * @param bool $debugStatus
+     *
+     * @return mixed
+     */
+    public function setDebugStatus($debugStatus = FALSE);
+
+    /**
+     * Function setLoggerPath
+     *
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 10/8/18 14:38
+     *
+     * @param bool $loggerPath
+     *
+     * @return mixed
+     */
+    public function setLoggerPath($loggerPath = FALSE);
+
+    /**
+     * Function setLoggerSubPath
+     *
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 10/8/18 14:38
+     *
+     * @param bool $loggerSubPath
+     *
+     * @return mixed
+     */
+    public function setLoggerSubPath($loggerSubPath = FALSE);
+
+    /**
+     * Function setLoggerFilename
+     *
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 10/8/18 14:38
+     *
+     * @param bool $loggerFilename
+     *
+     * @return mixed
+     */
+    public function setLoggerFilename($loggerFilename = FALSE);
+
     /**
      * Function setNormalName
      *
@@ -95,13 +143,14 @@ interface PhoneNumberInterfaces
      * Function get_region_code_for_number
      *
      * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 9/21/18 02:09
+     * @time  : 10/8/18 16:11
      *
      * @param string $phone_number
+     * @param string $region
      *
      * @return mixed
      */
-    public function get_region_code_for_number($phone_number = '');
+    public function get_region_code_for_number($phone_number = '', $region = '');
 
     /**
      * Function get_country_code_for_region
@@ -183,13 +232,14 @@ interface PhoneNumberInterfaces
      * Function format_hidden
      *
      * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 9/21/18 01:30
+     * @time  : 10/8/18 14:12
      *
      * @param string $phone_number
+     * @param string $place_hidden
      *
-     * @return null|string
+     * @return mixed
      */
-    public function format_hidden($phone_number = '');
+    public function format_hidden($phone_number = '', $place_hidden = '');
 
     /**
      * Function detect_carrier
