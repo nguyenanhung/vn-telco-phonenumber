@@ -149,7 +149,7 @@ echo $phone->vn_phone_number_old_and_new($my_number, 'vn'); // Print: ["01632953
 
 ...
 
-other format is the same $phone->format() method: vn, vn_human, hidden ...
+other format is the same $phone->format() method: VN, VN_HUMAN, E164, INTERNATIONAL, NATIONAL, RFC3966, HIDDEN, HIDDEN_HEAD, HIDDEN_MIDDLE, HIDDEN_END
 ```
 
 ### Contact
