@@ -56,6 +56,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
                 $this->debug->setLoggerFilename('Log-' . date('Y-m-d') . '.log');
             }
         }
+        $this->debug->debug(__FUNCTION__, '/------------------------------------> Class Phone Number <------------------------------------\\');
     }
 
     /**

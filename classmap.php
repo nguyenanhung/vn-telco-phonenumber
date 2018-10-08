@@ -18,6 +18,8 @@ spl_autoload_register(function ($className) {
     //
     if (strpos($fileName, 'nguyenanhung\VnTelcoPhoneNumber\Interfaces') !== FALSE) {
         $fileName = str_replace('nguyenanhung\VnTelcoPhoneNumber\Interfaces', 'src\Interfaces', $fileName);
+    } elseif (strpos($fileName, 'nguyenanhung\VnTelcoPhoneNumber\Repository') !== FALSE) {
+        $fileName = str_replace('nguyenanhung\VnTelcoPhoneNumber\Repository', 'src\Repository', $fileName);
     } else {
         $fileName = str_replace('nguyenanhung\VnTelcoPhoneNumber', 'src', $fileName);
     }

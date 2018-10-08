@@ -1,7 +1,8 @@
 <?php
-require_once __DIR__ . '/vendor/autoload.php'; // Current Package test, remove if init other package
-require_once __DIR__ . '/classmap.php'; // Current Package test, remove if init other package
-require_once __DIR__ . '/functions.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php'; // Current Package test, remove if init other package
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'classmap.php'; // Current Package test, remove if init other package
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'functions.php';
+
 /**
  * Created by PhpStorm.
  * User: 713uk13m
@@ -9,27 +10,18 @@ require_once __DIR__ . '/functions.php';
  * Time: 14:28
  */
 
-$phone_number = new \nguyenanhung\VnTelcoPhoneNumber\Phone_number();
-$phone        = '01632953760';
-dump("Phone number: " . $phone);
+use nguyenanhung\VnTelcoPhoneNumber\Phone_number;
+
+// Test Vars
+$my_number = '01632953760';
+d("Phone number: " . $my_number);
+// Create
+$phone = new Phone_number();
+$phone->setDebugStatus(true);
+$phone->setLoggerPath(testLogPath());
+d($phone->getVersion());
+d(testLogPath());
 
 // Format Number
-$format    = $phone_number->format($phone);
-$format_vn = $phone_number->format($phone, 'vn');
-dump("Format number: " . $format);
-dump("Format number VN: " . $format_vn);
+d($phone->is_valid($my_number));
 
-// Hidden Number
-$hidden_number = $phone_number->format_hidden($phone);
-dump("Format Hidden number: " . $hidden_number);
-
-// Detect Carrier
-$detect_carrier = $phone_number->detect_carrier($phone);
-dump("Detect Carrier: " . $detect_carrier);
-
-// Convert Fone
-$convert    = $phone_number->vn_convert_phone_number($phone, 'new');
-$convert_vn = $phone_number->vn_convert_phone_number($phone, 'new', 'vn');
-
-dump("Convert Phone: " . $convert);
-dump("Convert PhoneVN: " . $convert_vn);
