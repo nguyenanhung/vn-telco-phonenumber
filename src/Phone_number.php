@@ -32,19 +32,6 @@ use nguyenanhung\VnTelcoPhoneNumber\Repository;
 
 class Phone_number implements ProjectInterface, PhoneNumberInterface
 {
-    const DEFAULT_COUNTRY          = 'VN';
-    const DEFAULT_LANGUAGE         = 'vi';
-    const DEFAULT_REGION           = 'VN';
-    const DEFAULT_REGION_CODE      = '84';
-    const HIDDEN_REGION            = 'HIDDEN';
-    const HIDDEN_STRING            = '*';
-    const FORMAT_FOR_HUMAN_VIETNAM = 'VN_HUMAN';
-    const CONVERT_NEW_TO_OLD       = 'old';
-    const CONVERT_OLD_TO_NEW       = 'new';
-    const MATCH_NUMBER_OLD         = '/^(841[2689])[0-9]{8}$/';
-    const MATCH_NUMBER_NEW         = '/^(84[3785])[0-9]{8}$/';
-    const MAX_LENGTH_NUMBER_OLD    = 12;
-    const MAX_LENGTH_NUMBER_NEW    = 11;
     protected $normal_name = FALSE;
 
     /**

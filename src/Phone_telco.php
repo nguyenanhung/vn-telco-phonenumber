@@ -58,9 +58,9 @@ class Phone_telco implements ProjectInterface, PhoneTelcoInterface
     public function carrier_data($carrier = '', $field_output = '')
     {
         try {
-            $vn_telco_carrier_data = Repository\DataRepository::getData('vn_telco_carrier_data');
-            if (array_key_exists($carrier, $vn_telco_carrier_data)) {
-                $is_carrier = $vn_telco_carrier_data[$carrier];
+            $vn_carrier_data = Repository\DataRepository::getData('vn_telco_carrier_data');
+            if (array_key_exists($carrier, $vn_carrier_data)) {
+                $is_carrier = $vn_carrier_data[$carrier];
                 if (array_key_exists($field_output, $is_carrier)) {
                     return $is_carrier[$field_output];
                 }
