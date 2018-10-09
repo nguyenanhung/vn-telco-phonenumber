@@ -20,24 +20,27 @@ interface SmsLinkInterface
 {
     /**
      * Function addScript
+     * Call with add Content Js Sms
      *
      * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 10/4/18 14:45
+     * @time  : 10/9/18 13:39
      *
-     * @return mixed
+     * @return mixed|null Content Js Sms Link from file config sms_link
+     * @see   /Repository/config/sms_link.php
      */
     public function addScript();
 
     /**
      * Function getLink
+     * Get Link include Sms to Sending, use Content place href='''
      *
      * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 10/4/18 14:45
+     * @time  : 10/9/18 13:40
      *
-     * @param string $phone_number
-     * @param string $body
+     * @param string $phone_number Phone number to parse
+     * @param string $body         Body Sms to Sending
      *
-     * @return mixed
+     * @return mixed|string Content Send Sms
      */
     public function getLink($phone_number = '', $body = '');
 }

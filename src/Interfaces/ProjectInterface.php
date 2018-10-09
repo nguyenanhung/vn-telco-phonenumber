@@ -50,10 +50,11 @@ interface ProjectInterface
     /**
      * Function getVersion
      *
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 10/4/18 14:22
+     * @author  : 713uk13m <dev@nguyenanhung.com>
+     * @time    : 10/9/18 13:38
      *
-     * @return mixed Current Project Version
+     * @return mixed|string Current Project Version
+     * @example 1.0.0
      */
     public function getVersion();
 }
