@@ -41,6 +41,10 @@ class Phone_telco implements ProjectInterface, PhoneTelcoInterface
      */
     private $debugStatus = FALSE;
     /**
+     * @var null|string Set Debug Level: DEBUG, INFO, ERROR ... etc
+     */
+    private $debugLevel = NULL;
+    /**
      * @var string Logger Path
      */
     private $loggerPath = NULL;
@@ -61,6 +65,7 @@ class Phone_telco implements ProjectInterface, PhoneTelcoInterface
         $this->debug = new Debug();
         if ($this->debugStatus === TRUE) {
             $this->debug->setDebugStatus($this->debugStatus);
+            $this->debug->setGlobalLoggerLevel($this->debugLevel);
             $this->debug->setLoggerPath($this->loggerPath);
             $this->debug->setLoggerSubPath(__CLASS__);
             if (empty($this->loggerFilename)) {

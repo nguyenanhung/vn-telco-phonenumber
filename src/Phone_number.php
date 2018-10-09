@@ -49,6 +49,10 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      */
     private $debugStatus = FALSE;
     /**
+     * @var null|string Set Debug Level: DEBUG, INFO, ERROR ... etc
+     */
+    private $debugLevel = NULL;
+    /**
      * @var string Logger Path
      */
     private $loggerPath = NULL;
@@ -73,15 +77,23 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
         $this->debug = new Debug();
         if ($this->debugStatus === TRUE) {
             $this->debug->setDebugStatus($this->debugStatus);
+            $this->debug->setGlobalLoggerLevel($this->debugLevel);
             $this->debug->setLoggerPath($this->loggerPath);
             $this->debug->setLoggerSubPath(__CLASS__);
             if (empty($this->loggerFilename)) {
-                $this->debug->setLoggerFilename($this->loggerFilename);
-            } else {
-                $this->debug->setLoggerFilename('Log-' . date('Y-m-d') . '.log');
+                $this->loggerFilename = 'Log-' . date('Y-m-d') . '.log';
             }
+            $this->debug->setLoggerFilename($this->loggerFilename);
         }
-        $this->debug->debug(__FUNCTION__, '/---------------------------> Class Phone Number <---------------------------\\');
+        $this->debug->debug(__FUNCTION__, '/-------------------------> Begin Logger - Class Phone Number - Version: ' . self::VERSION . ' - Last Modified: ' . self::LAST_MODIFIED . ' <-------------------------\\');
+    }
+
+    /**
+     * Phone_number destructor.
+     */
+    public function __destruct()
+    {
+        $this->debug->debug(__FUNCTION__, '/-------------------------> End Logger - Class Phone Number - Version: ' . self::VERSION . ' - Last Modified: ' . self::LAST_MODIFIED . ' <-------------------------\\');
     }
 
     /**
@@ -112,6 +124,22 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
     public function setDebugStatus($debugStatus = FALSE)
     {
         $this->debugStatus = $debugStatus;
+    }
+
+    /**
+     * Function setDebugLevel
+     * Set String Debug Level
+     *
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 10/9/18 13:47
+     *
+     * @param bool|string $debugLevel Level to Set Debug: DEBUG, INFO, ERROR, etc...
+     *
+     * @return mixed|void
+     */
+    public function setDebugLevel($debugLevel = NULL)
+    {
+        $this->debugLevel = $debugLevel;
     }
 
     /**
