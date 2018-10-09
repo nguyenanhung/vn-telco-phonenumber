@@ -14,6 +14,13 @@ if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterfa
 
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface;
 
+/**
+ * Class DataRepository
+ *
+ * @package    nguyenanhung\VnTelcoPhoneNumber\Repository
+ * @author     713uk13m <dev@nguyenanhung.com>
+ * @copyright  713uk13m <dev@nguyenanhung.com>
+ */
 class DataRepository implements ProjectInterface
 {
     const CONFIG_PATH = 'config';
@@ -25,7 +32,7 @@ class DataRepository implements ProjectInterface
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 9/21/18 01:26
      *
-     * @return string
+     * @return string Current Project Version
      */
     public function getVersion()
     {
@@ -33,13 +40,17 @@ class DataRepository implements ProjectInterface
     }
 
     /**
-     * Get Data
+     * Function getData
+     * Get Data Content from Config file
      *
-     * @param $configName
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 10/9/18 13:34
      *
-     * @return array|mixed
+     * @param string $configName Config file name, example: vn_config
+     *
+     * @return array|mixed Content from file config
      */
-    public static function getData($configName)
+    public static function getData($configName = '')
     {
         $path = __DIR__ . DIRECTORY_SEPARATOR . self::CONFIG_PATH . DIRECTORY_SEPARATOR . $configName . self::CONFIG_EXT;
         if (is_file($path) && file_exists($path)) {
