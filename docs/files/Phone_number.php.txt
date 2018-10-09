@@ -51,7 +51,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
     /**
      * @var string Logger Path
      */
-    private $loggerPath = 'logs/';
+    private $loggerPath = NULL;
     /**
      * @var null Logger Sub Path
      */
@@ -59,7 +59,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
     /**
      * @var string Filename to write Log
      */
-    private $loggerFilename = 'app.log';
+    private $loggerFilename = NULL;
     /**
      * @var bool Set if Call Name Carrier Mixed
      */
@@ -129,7 +129,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      */
     public function setLoggerPath($loggerPath = FALSE)
     {
-        $this->loggerFilename = $loggerPath;
+        $this->loggerPath = $loggerPath;
     }
 
     /**

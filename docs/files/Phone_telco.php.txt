@@ -43,7 +43,7 @@ class Phone_telco implements ProjectInterface, PhoneTelcoInterface
     /**
      * @var string Logger Path
      */
-    private $loggerPath = 'logs/';
+    private $loggerPath = NULL;
     /**
      * @var null Logger Sub Path
      */
@@ -51,7 +51,7 @@ class Phone_telco implements ProjectInterface, PhoneTelcoInterface
     /**
      * @var string Filename to write Log
      */
-    private $loggerFilename = 'app.log';
+    private $loggerFilename = NULL;
 
     /**
      * Phone_telco constructor.
@@ -103,7 +103,7 @@ class Phone_telco implements ProjectInterface, PhoneTelcoInterface
      */
     public function setLoggerPath($loggerPath = FALSE)
     {
-        $this->loggerFilename = $loggerPath;
+        $this->loggerPath = $loggerPath;
     }
 
     /**
