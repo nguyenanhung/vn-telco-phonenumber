@@ -394,3 +394,4 @@ interface PhoneNumberInterface
      */
     public function vn_phone_number_old_and_new($phone_number = '', $phone_format = NULL);
 }
+
