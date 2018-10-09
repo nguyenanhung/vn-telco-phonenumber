@@ -47,7 +47,7 @@ interface ProjectInterface
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 10/4/18 14:22
      *
-     * @return mixed
+     * @return mixed Current Project Version
      */
     public function getVersion();
 }
