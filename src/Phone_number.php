@@ -40,11 +40,29 @@ use nguyenanhung\VnTelcoPhoneNumber\Repository;
  */
 class Phone_number implements ProjectInterface, PhoneNumberInterface
 {
-    private   $debug;
-    private   $debugStatus    = FALSE;
-    private   $loggerPath     = 'logs';
-    private   $loggerSubPath  = NULL;
-    private   $loggerFilename = 'app.log';
+    /**
+     * @var object \nguyenanhung\MyDebug\Debug Class Debug Object
+     */
+    private $debug;
+    /**
+     * @var bool DEBUG Status
+     */
+    private $debugStatus    = FALSE;
+    /**
+     * @var string Logger Path
+     */
+    private $loggerPath     = 'logs/';
+    /**
+     * @var null Logger Sub Path
+     */
+    private $loggerSubPath  = NULL;
+    /**
+     * @var string Filename to write Log
+     */
+    private $loggerFilename = 'app.log';
+    /**
+     * @var bool Set if Call Name Carrier Mixed
+     */
     protected $normal_name    = FALSE;
 
     /**
