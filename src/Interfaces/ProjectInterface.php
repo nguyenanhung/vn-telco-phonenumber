@@ -18,7 +18,7 @@ namespace nguyenanhung\VnTelcoPhoneNumber\Interfaces;
  */
 interface ProjectInterface
 {
-    const VERSION                  = '1.1.5.1';
+    const VERSION                  = '1.1.5.2';
     const DEFAULT_COUNTRY          = 'VN';
     const DEFAULT_LANGUAGE         = 'vi';
     const DEFAULT_REGION           = 'VN';
