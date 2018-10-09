@@ -36,6 +36,10 @@ interface ProjectInterface
     const MATCH_NUMBER_NEW         = '/^(84[3785])[0-9]{8}$/';
     const MAX_LENGTH_NUMBER_OLD    = 12;
     const MAX_LENGTH_NUMBER_NEW    = 11;
+    const VINAPHONE                = 'Vinaphone'; // ID nhà mạng Vinaphone
+    const VIETTEL                  = 'Viettel Mobile'; // ID nhà mạng Viettel
+    const MOBIFONE                 = 'MobiFone'; // ID nhà mạng MobiFone
+    const VIETNAMOBILE             = 'Vietnamobile'; // ID nhà mạng Vietnamobile
 
     /**
      * Function getVersion
