@@ -9,7 +9,13 @@
 
 namespace nguyenanhung\VnTelcoPhoneNumber\Interfaces;
 
-
+/**
+ * Interface ProjectInterface
+ *
+ * @package    nguyenanhung\VnTelcoPhoneNumber\Interfaces
+ * @author     713uk13m <dev@nguyenanhung.com>
+ * @copyright  713uk13m <dev@nguyenanhung.com>
+ */
 interface ProjectInterface
 {
     const VERSION                  = '1.1.5';

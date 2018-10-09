@@ -19,6 +19,13 @@ use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface;
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\SmsLinkInterface;
 use nguyenanhung\VnTelcoPhoneNumber\Repository;
 
+/**
+ * Class SmsLink
+ *
+ * @package    nguyenanhung\VnTelcoPhoneNumber
+ * @author     713uk13m <dev@nguyenanhung.com>
+ * @copyright  713uk13m <dev@nguyenanhung.com>
+ */
 class SmsLink implements ProjectInterface, SmsLinkInterface
 {
     /**

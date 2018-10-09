@@ -14,6 +14,13 @@ if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterfa
 
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface;
 
+/**
+ * Class DataRepository
+ *
+ * @package    nguyenanhung\VnTelcoPhoneNumber\Repository
+ * @author     713uk13m <dev@nguyenanhung.com>
+ * @copyright  713uk13m <dev@nguyenanhung.com>
+ */
 class DataRepository implements ProjectInterface
 {
     const CONFIG_PATH = 'config';

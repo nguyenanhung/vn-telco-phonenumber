@@ -31,6 +31,13 @@ use nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneNumberInterface;
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface;
 use nguyenanhung\VnTelcoPhoneNumber\Repository;
 
+/**
+ * Class Phone_number
+ *
+ * @package    nguyenanhung\VnTelcoPhoneNumber
+ * @author     713uk13m <dev@nguyenanhung.com>
+ * @copyright  713uk13m <dev@nguyenanhung.com>
+ */
 class Phone_number implements ProjectInterface, PhoneNumberInterface
 {
     private   $debug;

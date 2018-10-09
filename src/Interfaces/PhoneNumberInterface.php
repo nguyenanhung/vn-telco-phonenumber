@@ -9,7 +9,13 @@
 
 namespace nguyenanhung\VnTelcoPhoneNumber\Interfaces;
 
-
+/**
+ * Interface PhoneNumberInterface
+ *
+ * @package    nguyenanhung\VnTelcoPhoneNumber\Interfaces
+ * @author     713uk13m <dev@nguyenanhung.com>
+ * @copyright  713uk13m <dev@nguyenanhung.com>
+ */
 interface PhoneNumberInterface
 {
     /**
