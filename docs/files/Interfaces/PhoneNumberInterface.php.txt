@@ -32,6 +32,19 @@ interface PhoneNumberInterface
     public function setDebugStatus($debugStatus = FALSE);
 
     /**
+     * Function setDebugLevel
+     * Set String Debug Level
+     *
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 10/9/18 13:47
+     *
+     * @param bool|string $debugLevel Level to Set Debug: DEBUG, INFO, ERROR, etc...
+     *
+     * @return mixed|void
+     */
+    public function setDebugLevel($debugLevel = NULL);
+
+    /**
      * Function setLoggerPath
      * Main Logger Path to Save Log if DEBUG is Enable
      *
