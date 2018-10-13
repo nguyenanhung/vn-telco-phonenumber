@@ -8,6 +8,7 @@
  */
 
 namespace nguyenanhung\VnTelcoPhoneNumber;
+
 if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface')) {
     include_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'ProjectInterface.php';
 }
@@ -19,6 +20,7 @@ if (!class_exists('nguyenanhung\VnTelcoPhoneNumber\Repository\DataRepository')) 
 }
 
 use nguyenanhung\MyDebug\Debug;
+use nguyenanhung\MyDebug\Benchmark;
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneTelcoInterface;
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface;
 use nguyenanhung\VnTelcoPhoneNumber\Repository\DataRepository;
@@ -32,6 +34,10 @@ use nguyenanhung\VnTelcoPhoneNumber\Repository\DataRepository;
  */
 class Phone_telco implements ProjectInterface, PhoneTelcoInterface
 {
+    /**
+     * @var object \nguyenanhung\MyDebug\Benchmark
+     */
+    private $benchmark;
     /**
      * @var object \nguyenanhung\MyDebug\Debug Class Debug Object
      */
@@ -62,6 +68,10 @@ class Phone_telco implements ProjectInterface, PhoneTelcoInterface
      */
     public function __construct()
     {
+        if (self::USE_BENCHMARK === TRUE) {
+            $this->benchmark = new Benchmark();
+            $this->benchmark->mark('code_start');
+        }
         $this->debug = new Debug();
         if ($this->debugStatus === TRUE) {
             $this->debug->setDebugStatus($this->debugStatus);
@@ -81,6 +91,11 @@ class Phone_telco implements ProjectInterface, PhoneTelcoInterface
      */
     public function __destruct()
     {
+        if (self::USE_BENCHMARK === TRUE) {
+            $this->benchmark->mark('code_end');
+            $this->debug->debug(__FUNCTION__, 'Elapsed Time: ===> ' . $this->benchmark->elapsed_time('code_start', 'code_end'));
+            $this->debug->debug(__FUNCTION__, 'Memory Usage: ===> ' . $this->benchmark->memory_usage());
+        }
         $this->debug->debug(__FUNCTION__, '/-------------------------> End Logger - Class Phone Telco - Version: ' . self::VERSION . ' - Last Modified: ' . self::LAST_MODIFIED . ' <-------------------------\\');
     }
 

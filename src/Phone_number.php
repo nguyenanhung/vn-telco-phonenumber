@@ -27,6 +27,7 @@ use \libphonenumber\PhoneNumberToCarrierMapper;
 use \libphonenumber\PhoneNumberToTimeZonesMapper;
 use \libphonenumber\geocoding\PhoneNumberOfflineGeocoder;
 use nguyenanhung\MyDebug\Debug;
+use nguyenanhung\MyDebug\Benchmark;
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneNumberInterface;
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface;
 use nguyenanhung\VnTelcoPhoneNumber\Repository;
@@ -40,6 +41,10 @@ use nguyenanhung\VnTelcoPhoneNumber\Repository;
  */
 class Phone_number implements ProjectInterface, PhoneNumberInterface
 {
+    /**
+     * @var object \nguyenanhung\MyDebug\Benchmark
+     */
+    private $benchmark;
     /**
      * @var object \nguyenanhung\MyDebug\Debug Class Debug Object
      */
@@ -74,6 +79,10 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      */
     public function __construct()
     {
+        if (self::USE_BENCHMARK === TRUE) {
+            $this->benchmark = new Benchmark();
+            $this->benchmark->mark('code_start');
+        }
         $this->debug = new Debug();
         if ($this->debugStatus === TRUE) {
             $this->debug->setDebugStatus($this->debugStatus);
@@ -93,6 +102,11 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      */
     public function __destruct()
     {
+        if (self::USE_BENCHMARK === TRUE) {
+            $this->benchmark->mark('code_end');
+            $this->debug->debug(__FUNCTION__, 'Elapsed Time: ===> ' . $this->benchmark->elapsed_time('code_start', 'code_end'));
+            $this->debug->debug(__FUNCTION__, 'Memory Usage: ===> ' . $this->benchmark->memory_usage());
+        }
         $this->debug->debug(__FUNCTION__, '/-------------------------> End Logger - Class Phone Number - Version: ' . self::VERSION . ' - Last Modified: ' . self::LAST_MODIFIED . ' <-------------------------\\');
     }
 
@@ -432,9 +446,9 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      * Function get_geocode_description_for_number
      *
      * Returns a text description for the supplied PhoneNumber object, in the $locale language supplied.
-     * The description returned might consist of the name of the country, or the name of the geographical area the phone number is from.
-     * If $userRegion is supplied, it will also be taken into consideration.
-     * If the phone number is from the same region, only a lower-level description will be returned.
+     * The description returned might consist of the name of the country, or the name of the geographical area the
+     * phone number is from. If $userRegion is supplied, it will also be taken into consideration. If the phone number
+     * is from the same region, only a lower-level description will be returned.
      *
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 10/8/18 16:11
@@ -442,7 +456,8 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      * @param string $phone_number Phone Number to get Geo Code Description
      * @param string $region       Region, example VN
      * @param string $mode         Valid String (if $mode=valid -> Returns the same as getDescriptionForNumber(),
-     *                             but assumes that you have already checked whether the number is suitable for geo location.)
+     *                             but assumes that you have already checked whether the number is suitable for geo
+     *                             location.)
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see   https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
@@ -987,8 +1002,8 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      *
      * @param string $phone_number This is Phone number
      * @param string $phone_mode   This mode as old or new
-     * @param null   $phone_format This format vn or other, list keyword: VN, VN_HUMAN, E164, INTERNATIONAL, NATIONAL, RFC3966,
-     *                             HIDDEN, HIDDEN_HEAD, HIDDEN_MIDDLE, HIDDEN_END
+     * @param null   $phone_format This format vn or other, list keyword: VN, VN_HUMAN, E164, INTERNATIONAL, NATIONAL,
+     *                             RFC3966, HIDDEN, HIDDEN_HEAD, HIDDEN_MIDDLE, HIDDEN_END
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      *
@@ -1100,8 +1115,8 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      * @time  : 9/21/18 01:33
      *
      * @param string $phone_number Phone Number Input
-     * @param null   $phone_format Method to Format VN, VN_HUMAN, E164, INTERNATIONAL, NATIONAL, RFC3966, HIDDEN, HIDDEN_HEAD,
-     *                             HIDDEN_MIDDLE, HIDDEN_END
+     * @param null   $phone_format Method to Format VN, VN_HUMAN, E164, INTERNATIONAL, NATIONAL, RFC3966, HIDDEN,
+     *                             HIDDEN_HEAD, HIDDEN_MIDDLE, HIDDEN_END
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      *
