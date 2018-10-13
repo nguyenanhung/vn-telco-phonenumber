@@ -47,7 +47,7 @@ interface ProjectInterface
     const VIETTEL                  = 'Viettel Mobile'; // ID nhà mạng Viettel
     const MOBIFONE                 = 'MobiFone'; // ID nhà mạng MobiFone
     const VIETNAMOBILE             = 'Vietnamobile'; // ID nhà mạng Vietnamobile
-    const USE_BENCHMARK            = FALSE;
+    const USE_BENCHMARK            = TRUE;
 
     /**
      * Function getVersion
