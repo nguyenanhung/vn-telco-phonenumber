@@ -60,3 +60,4 @@ interface ProjectInterface
      */
     public function getVersion();
 }
+
