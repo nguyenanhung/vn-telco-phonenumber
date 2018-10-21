@@ -13,5 +13,7 @@ return [
     '001' => 'MobiFone',
     '002' => 'Vinaphone',
     '004' => 'Viettel Mobile',
-    '005' => 'Vietnamobile'
+    '005' => 'Vietnamobile',
+    '007' => 'G-Mobile',
+    '008' => 'Indochina Telecom'
 ];
