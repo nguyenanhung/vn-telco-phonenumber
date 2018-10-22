@@ -55,7 +55,7 @@ interface ProjectInterface
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 10/22/18 08:42
      *
-     * @return mixed|string Current version of Package
+     * @return mixed|string Current version of Package, example 1.0.0
      */
     public function getVersion();
 }
