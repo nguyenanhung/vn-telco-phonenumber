@@ -114,4 +114,30 @@ interface PhoneRoutingInterface
      * @return bool|null TRUE nếu thuộc MNP, FALSE nếu không thuộc MNP, NULL nếu called là rỗng
      */
     public function isMnp($called = '');
+
+    /**
+     * Hàm lấy Routing Number từ số điện thoại Input vào
+     *
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 10/22/18 20:20
+     *
+     * @param string $called Số điện thoại cần kiểm tra
+     *
+     * @return bool|null|string Routing Number trả về nếu hợp lệ, FALSE nếu không hợp lệ, Null nếu không thuộc dải MNP
+     */
+    public function getRoutingNumberFromCalled($called = '');
+
+    /**
+     * Hàm lấy thông tin nhà mạng từ Routing Number
+     *
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 10/22/18 20:33
+     *
+     * @param string      $number Số cần check: 0084 + RN + MSISDN
+     * @param null|string $field  Tham số telco cần check
+     *
+     * @return array|mixed|null|string Thông tin nhà mạng trong trường hợp thành công
+     *                                 Null nếu Routing number không hợp lệ
+     */
+    public function detectCarrierFromRoutingNumber($number = '', $field = NULL);
 }

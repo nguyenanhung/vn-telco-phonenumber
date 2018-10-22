@@ -27,6 +27,10 @@ use nguyenanhung\VnTelcoPhoneNumber\Repository\DataRepository;
 class PhoneRouting implements ProjectInterface, PhoneRoutingInterface
 {
     const IS_MNP_LENGTH = 16;
+    /** @var object \nguyenanhung\VnTelcoPhoneNumber\Phone_number */
+    private $phoneNumber;
+    /** @var object \nguyenanhung\VnTelcoPhoneNumber\Phone_telco */
+    private $phoneTelco;
     /** @var object \nguyenanhung\MyDebug\Benchmark */
     private $benchmark;
     /** @var object \nguyenanhung\MyDebug\Debug Class Debug Object */
@@ -62,6 +66,8 @@ class PhoneRouting implements ProjectInterface, PhoneRoutingInterface
             }
             $this->debug->setLoggerFilename($this->loggerFilename);
         }
+        $this->phoneNumber = new Phone_number();
+        $this->phoneTelco  = new Phone_telco();
         $this->debug->debug(__FUNCTION__, '/-------------------------> Begin Logger - Class Phone Number - Version: ' . self::VERSION . ' - Last Modified: ' . self::LAST_MODIFIED . ' <-------------------------\\');
     }
 
@@ -214,7 +220,7 @@ class PhoneRouting implements ProjectInterface, PhoneRoutingInterface
         if (empty($called)) {
             return NULL;
         }
-        // Format new: 0084 + RN + MSISND -> 0084002914692692 -> str_len = 16
+        // Format new: 0084 + RN + MSISDN -> 0084002914692692 -> str_len = 16
         // Format old: 0084 + MSISDN -> 0084914692692 -> str_len = 13
         $length = mb_strlen($called);
         if ($length == self::IS_MNP_LENGTH) {
@@ -224,5 +230,71 @@ class PhoneRouting implements ProjectInterface, PhoneRoutingInterface
         }
 
         return $isMnp;
+    }
+
+    /**
+     * Hàm lấy Routing Number từ số điện thoại Input vào
+     *
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 10/22/18 20:20
+     *
+     * @param string $called Số điện thoại cần kiểm tra
+     *
+     * @return bool|null|string Routing Number trả về nếu hợp lệ, FALSE nếu không hợp lệ, Null nếu không thuộc dải MNP
+     */
+    public function getRoutingNumberFromCalled($called = '')
+    {
+        if ($this->isMnp($called) === TRUE) {
+            // Số nằm trong dải chuyển
+            $format = $this->phoneNumber->format($called, self::FORMAT_NATIONAL);
+            // Đặt trong trường hợp tất cả số điện thoại đã chuyển sang dạng 10 số
+            $routingNumber = mb_substr($format, 0, -9);
+            if ($this->checkRoutingNumber($routingNumber) !== NULL) {
+                return $routingNumber;
+            } else {
+                return FALSE;
+            }
+        } else {
+            return NULL;
+        }
+    }
+
+    /**
+     * Hàm lấy thông tin nhà mạng từ Routing Number
+     *
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 10/22/18 20:33
+     *
+     * @param string      $number Số cần check: 0084 + RN + MSISDN
+     * @param null|string $field  Tham số telco cần check
+     *
+     * @return array|mixed|null|string Thông tin nhà mạng trong trường hợp thành công
+     *                                 Null nếu Routing number không hợp lệ
+     */
+    public function detectCarrierFromRoutingNumber($number = '', $field = NULL)
+    {
+        $checkNumberIsMnp = $this->isMnp($number);
+        if ($checkNumberIsMnp === TRUE) {
+            // Số thuộc dải MNP
+            $routingNumber = $this->getRoutingNumberFromCalled($number);
+            if (!empty($routingNumber)) {
+                // Routing number hợp lệ
+                $routingName = $this->checkRoutingNumber($routingNumber);
+                if (empty($field)) {
+                    $result = $routingName;
+                } else {
+                    $result = $this->phoneTelco->carrier_data($routingName, $field);
+                }
+            } else {
+                // Routing number không hợp lệ
+                $result = NULL;
+            }
+        } else {
+            // Số không thuộc dải MNP
+            $number = $this->phoneNumber->format($number);
+            $result = $this->phoneNumber->detect_carrier($number, $field);
+        }
+
+        return $result;
     }
 }
