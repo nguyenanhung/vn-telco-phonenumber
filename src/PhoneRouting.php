@@ -13,9 +13,12 @@ use nguyenanhung\MyDebug\Debug;
 use nguyenanhung\MyDebug\Benchmark;
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface;
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneRoutingInterface;
+use nguyenanhung\VnTelcoPhoneNumber\Repository\DataRepository;
 
 /**
  * Class PhoneRouting
+ *
+ * Thiết kế theo chuẩn tài liệu - MNP - Help Documentation
  *
  * @package    nguyenanhung\VnTelcoPhoneNumber
  * @author     713uk13m <dev@nguyenanhung.com>
@@ -23,33 +26,20 @@ use nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneRoutingInterface;
  */
 class PhoneRouting implements ProjectInterface, PhoneRoutingInterface
 {
-    /**
-     * @var object \nguyenanhung\MyDebug\Benchmark
-     */
+    const IS_MNP_LENGTH = 16;
+    /** @var object \nguyenanhung\MyDebug\Benchmark */
     private $benchmark;
-    /**
-     * @var object \nguyenanhung\MyDebug\Debug Class Debug Object
-     */
+    /** @var object \nguyenanhung\MyDebug\Debug Class Debug Object */
     private $debug;
-    /**
-     * @var bool DEBUG Status
-     */
+    /** @var bool DEBUG Status */
     private $debugStatus = FALSE;
-    /**
-     * @var null|string Set Debug Level: DEBUG, INFO, ERROR ... etc
-     */
+    /** @var null|string Set Debug Level: DEBUG, INFO, ERROR ... etc */
     private $debugLevel = NULL;
-    /**
-     * @var string Logger Path
-     */
+    /** @var string Logger Path */
     private $loggerPath = NULL;
-    /**
-     * @var null Logger Sub Path
-     */
+    /** @var null Logger Sub Path */
     private $loggerSubPath = NULL;
-    /**
-     * @var string Filename to write Log
-     */
+    /** @var string Filename to write Log */
     private $loggerFilename = NULL;
 
     /**
@@ -185,5 +175,54 @@ class PhoneRouting implements ProjectInterface, PhoneRoutingInterface
     public function setLoggerFilename($loggerFilename = FALSE)
     {
         $this->loggerFilename = $loggerFilename;
+    }
+
+    /**
+     * Hàm kiểm tra tính hợp lệ của Routing number
+     *
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 10/22/18 10:28
+     *
+     * @param string $routingNumber Routing Number của nhà mạng
+     *
+     * @return null|array Mảng dữ liệu của nhà mạng nếu tồn tại, null nếu không tồn tại
+     */
+    public function checkRoutingNumber($routingNumber = '')
+    {
+        $routing = (string) strval($routingNumber);
+        $routing = self::NUMBER_PREFIX . $routing;
+        $data    = DataRepository::getData('vn_routing_number');
+        if (isset($data[$routing])) {
+            return $data[$routing];
+        } else {
+            return NULL;
+        }
+    }
+
+    /**
+     * Hàm kiểm tra số thuê bao có thuộc tập MNP hay không
+     *
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 10/22/18 12:02
+     *
+     * @param string $called số thuê bao đầu vào
+     *
+     * @return bool|null TRUE nếu thuộc MNP, FALSE nếu không thuộc MNP, NULL nếu called là rỗng
+     */
+    public function isMnp($called = '')
+    {
+        if (empty($called)) {
+            return NULL;
+        }
+        // Format new: 0084 + RN + MSISND -> 0084002914692692 -> str_len = 16
+        // Format old: 0084 + MSISDN -> 0084914692692 -> str_len = 13
+        $length = mb_strlen($called);
+        if ($length == self::IS_MNP_LENGTH) {
+            $isMnp = TRUE;
+        } else {
+            $isMnp = FALSE;
+        }
+
+        return $isMnp;
     }
 }

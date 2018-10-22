@@ -18,6 +18,8 @@ namespace nguyenanhung\VnTelcoPhoneNumber\Interfaces;
  */
 interface PhoneRoutingInterface
 {
+    const NUMBER_PREFIX = '00';
+
     /**
      * Function setDebugStatus
      * Set Var to DEBUG and save Log
@@ -88,4 +90,28 @@ interface PhoneRoutingInterface
      * @return mixed|void
      */
     public function setLoggerFilename($loggerFilename = FALSE);
+
+    /**
+     * Hàm kiểm tra tính hợp lệ của Routing number
+     *
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 10/22/18 10:28
+     *
+     * @param string $routingNumber Routing Number của nhà mạng
+     *
+     * @return null|array Mảng dữ liệu của nhà mạng nếu tồn tại, null nếu không tồn tại
+     */
+    public function checkRoutingNumber($routingNumber = '');
+
+    /**
+     * Hàm kiểm tra số thuê bao có thuộc tập MNP hay không
+     *
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 10/22/18 12:02
+     *
+     * @param string $called số thuê bao đầu vào
+     *
+     * @return bool|null TRUE nếu thuộc MNP, FALSE nếu không thuộc MNP, NULL nếu called là rỗng
+     */
+    public function isMnp($called = '');
 }
