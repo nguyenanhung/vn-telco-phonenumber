@@ -12,6 +12,7 @@ namespace nguyenanhung\VnTelcoPhoneNumber;
 use nguyenanhung\MyDebug\Debug;
 use nguyenanhung\MyDebug\Benchmark;
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface;
+use nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneRoutingInterface;
 
 /**
  * Class PhoneRouting
@@ -20,7 +21,7 @@ use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface;
  * @author     713uk13m <dev@nguyenanhung.com>
  * @copyright  713uk13m <dev@nguyenanhung.com>
  */
-class PhoneRouting implements ProjectInterface
+class PhoneRouting implements ProjectInterface, PhoneRoutingInterface
 {
     /**
      * @var object \nguyenanhung\MyDebug\Benchmark
