@@ -9,16 +9,6 @@
 
 namespace nguyenanhung\VnTelcoPhoneNumber;
 
-if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface')) {
-    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'ProjectInterface.php';
-}
-if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneTelcoInterface')) {
-    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'PhoneTelcoInterface.php';
-}
-if (!class_exists('nguyenanhung\VnTelcoPhoneNumber\Repository\DataRepository')) {
-    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Repository' . DIRECTORY_SEPARATOR . 'DataRepository.php';
-}
-
 use nguyenanhung\MyDebug\Debug;
 use nguyenanhung\MyDebug\Benchmark;
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneTelcoInterface;
@@ -186,13 +176,12 @@ class Phone_telco implements ProjectInterface, PhoneTelcoInterface
     }
 
     /**
-     * Function getVersion
+     * Get current version of Package
      *
-     * @author  : 713uk13m <dev@nguyenanhung.com>
-     * @time    : 10/9/18 13:38
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 10/22/18 08:42
      *
-     * @return mixed|string Current Project Version
-     * @example 1.0.0
+     * @return mixed|string Current version of Package
      */
     public function getVersion()
     {
@@ -208,14 +197,15 @@ class Phone_telco implements ProjectInterface, PhoneTelcoInterface
      * @param string $carrier      Full Name of Carrier: Viettel, Vinaphone, MobiFone, Vietnamobile
      * @param string $field_output Field Output: name, id, short_name
      *
-     * @return mixed|null Field if exists, null if not or error
+     * @return mixed|null Field if exists, full data if field_output = full,  null if not or error
      */
     public function carrier_data($carrier = '', $field_output = '')
     {
-        $inputParams = [
+        $inputParams  = [
             'carrier'      => $carrier,
             'field_output' => $field_output
         ];
+        $field_output = strtolower($field_output);
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         try {
             $vnCarrierData = DataRepository::getData('vn_carrier_data');
@@ -225,9 +215,14 @@ class Phone_telco implements ProjectInterface, PhoneTelcoInterface
                 $this->debug->debug(__FUNCTION__, 'Is Carrier Data: ', $isCarrier);
                 if (array_key_exists($field_output, $isCarrier)) {
                     $result = $isCarrier[$field_output];
-                    $this->debug->info(__FUNCTION__, 'Final Result: ', $result);
+                    $this->debug->info(__FUNCTION__, 'Final Result get Field : ' . $field_output, $result);
 
                     return $result;
+                }
+                if ($field_output = 'full') {
+                    $this->debug->info(__FUNCTION__, 'Final Result get Field : ' . $field_output, $isCarrier);
+
+                    return $isCarrier;
                 }
             }
         }

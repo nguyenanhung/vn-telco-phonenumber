@@ -8,10 +8,6 @@
 
 namespace nguyenanhung\VnTelcoPhoneNumber\Repository;
 
-if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface')) {
-    include_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'ProjectInterface.php';
-}
-
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface;
 
 /**

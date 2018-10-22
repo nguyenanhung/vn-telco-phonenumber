@@ -18,8 +18,8 @@ namespace nguyenanhung\VnTelcoPhoneNumber\Interfaces;
  */
 interface ProjectInterface
 {
-    const VERSION                  = '1.1.5.5';
-    const LAST_MODIFIED            = '2018-10-13';
+    const VERSION                  = '1.1.5.6';
+    const LAST_MODIFIED            = '2018-10-22';
     const DEFAULT_COUNTRY          = 'VN';
     const DEFAULT_LANGUAGE         = 'vi';
     const DEFAULT_REGION           = 'VN';
@@ -50,13 +50,12 @@ interface ProjectInterface
     const USE_BENCHMARK            = TRUE;
 
     /**
-     * Function getVersion
+     * Get current version of Package
      *
-     * @author  : 713uk13m <dev@nguyenanhung.com>
-     * @time    : 10/9/18 13:38
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 10/22/18 08:42
      *
-     * @return mixed|string Current Project Version
-     * @example 1.0.0
+     * @return mixed|string Current version of Package, example 1.0.0
      */
     public function getVersion();
 }

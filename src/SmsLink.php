@@ -8,12 +8,6 @@
  */
 
 namespace nguyenanhung\VnTelcoPhoneNumber;
-if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface')) {
-    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'ProjectInterface.php';
-}
-if (!interface_exists('nguyenanhung\VnTelcoPhoneNumber\Interfaces\SmsLinkInterface')) {
-    include_once __DIR__ . DIRECTORY_SEPARATOR . 'Interfaces' . DIRECTORY_SEPARATOR . 'SmsLinkInterface.php';
-}
 
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface;
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\SmsLinkInterface;
@@ -36,13 +30,12 @@ class SmsLink implements ProjectInterface, SmsLinkInterface
     }
 
     /**
-     * Function getVersion
+     * Get current version of Package
      *
-     * @author  : 713uk13m <dev@nguyenanhung.com>
-     * @time    : 10/9/18 13:38
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 10/22/18 08:42
      *
-     * @return mixed|string Current Project Version
-     * @example 1.0.0
+     * @return mixed|string Current version of Package
      */
     public function getVersion()
     {
