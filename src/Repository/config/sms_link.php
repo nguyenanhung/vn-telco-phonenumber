@@ -6,7 +6,7 @@
  * Date: 10/4/18
  * Time: 14:32
  */
-return [
+return array(
     'script' => '<script>
 var SMSLink = SMSLink || {};
 SMSLink.detector = SMSLink.detector || function() {
@@ -51,4 +51,4 @@ document.addEventListener(\'DOMContentLoaded\', (function() {
     link = new SMSLink.link();
     link.replaceAll();
 }), false);</script>'
-];
+);

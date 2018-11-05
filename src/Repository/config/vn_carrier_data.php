@@ -5,50 +5,50 @@
  * Date: 9/11/18
  * Time: 13:54
  */
-return [
-    'Vinaphone'         => [
+return array(
+    'Vinaphone'         => array(
         'id'         => 1,
         'name'       => 'Vinaphone',
         'short_name' => 'vina'
-    ],
-    'Viettel Mobile'    => [
+    ),
+    'Viettel Mobile'    => array(
         'id'         => 2,
         'name'       => 'Viettel',
         'short_name' => 'viettel'
-    ],
+    ),
     'Viettel'           => [
         'id'         => 2,
         'name'       => 'Viettel',
         'short_name' => 'viettel'
     ],
-    'MobiFone'          => [
+    'MobiFone'          => array(
         'id'         => 3,
         'name'       => 'Mobifone',
         'short_name' => 'mobi'
-    ],
-    'Mobifone'          => [
+    ),
+    'Mobifone'          => array(
         'id'         => 3,
         'name'       => 'Mobifone',
         'short_name' => 'mobi'
-    ],
-    'Vietnamobile'      => [
+    ),
+    'Vietnamobile'      => array(
         'id'         => 4,
         'name'       => 'Vietnamobile',
         'short_name' => 'vnm'
-    ],
-    'G-Mobile'          => [
+    ),
+    'G-Mobile'          => array(
         'id'         => 5,
         'name'       => 'G-Mobile',
         'short_name' => 'gmobile'
-    ],
-    'Indochina Telecom' => [
+    ),
+    'Indochina Telecom' => array(
         'id'         => 6,
         'name'       => 'Indochina Telecom',
         'short_name' => 'indochina'
-    ],
-    'VSAT'              => [
+    ),
+    'VSAT'              => array(
         'id'         => 7,
         'name'       => 'VSAT',
         'short_name' => 'vsat'
-    ]
-];
+    )
+);

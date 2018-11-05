@@ -238,10 +238,10 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      */
     public function is_valid($phone_number = '', $region = NULL)
     {
-        $inputParams = [
+        $inputParams = array(
             'phone_number' => $phone_number,
             'region'       => $region
-        ];
+        );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
             $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
@@ -289,10 +289,10 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      */
     public function is_possible_number($phone_number = '', $region = NULL)
     {
-        $inputParams = [
+        $inputParams = array(
             'phone_number' => $phone_number,
             'region'       => $region
-        ];
+        );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
             $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
@@ -336,10 +336,10 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      */
     public function get_time_zones_for_number($phone_number = '', $region = NULL)
     {
-        $inputParams = [
+        $inputParams = array(
             'phone_number' => $phone_number,
             'region'       => $region
-        ];
+        );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
             $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
@@ -391,11 +391,11 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      */
     public function get_carrier_name_for_number($phone_number = '', $region = NULL, $mode = NULL)
     {
-        $inputParams = [
+        $inputParams = array(
             'phone_number' => $phone_number,
             'region'       => $region,
             'mode'         => $mode
-        ];
+        );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
             $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
@@ -452,11 +452,11 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      */
     public function get_geocode_description_for_number($phone_number = '', $region = NULL, $mode = '')
     {
-        $inputParams = [
+        $inputParams = array(
             'phone_number' => $phone_number,
             'region'       => $region,
             'mode'         => $mode
-        ];
+        );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
             $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
@@ -504,10 +504,10 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      */
     public function get_region_code_for_number($phone_number = '', $region = '')
     {
-        $inputParams = [
+        $inputParams = array(
             'phone_number' => $phone_number,
-            'region'       => $region,
-        ];
+            'region'       => $region
+        );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
             $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
@@ -549,9 +549,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      */
     public function get_country_code_for_region($region = NULL)
     {
-        $inputParams = [
-            'region' => $region
-        ];
+        $inputParams = array('region' => $region);
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         try {
             $phoneNumberUtil = PhoneNumberUtil::getInstance();
@@ -587,9 +585,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      */
     public function get_region_codes_for_country_code($region_codes = NULL)
     {
-        $inputParams = [
-            'region_codes' => $region_codes
-        ];
+        $inputParams = array('region_codes' => $region_codes);
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         try {
             $phoneNumberUtil = PhoneNumberUtil::getInstance();
@@ -625,10 +621,10 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      */
     public function get_number_type($phone_number = '', $region = NULL)
     {
-        $inputParams = [
+        $inputParams = array(
             'phone_number' => $phone_number,
             'region'       => $region
-        ];
+        );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
             $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
@@ -671,10 +667,10 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      */
     public function check_phone_number_can_be_internationally_dialled($phone_number = '', $region = NULL)
     {
-        $inputParams = [
+        $inputParams = array(
             'phone_number' => $phone_number,
             'region'       => $region
-        ];
+        );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
             $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
@@ -720,10 +716,10 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      */
     public function find_phone_number_in_string($text = '', $region = NULL)
     {
-        $inputParams = [
+        $inputParams = array(
             'text'   => $text,
             'region' => $region
-        ];
+        );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($text)) {
             $this->debug->warning(__FUNCTION__, 'Text input is Empty!');
@@ -734,7 +730,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             $phoneNumberUtil    = PhoneNumberUtil::getInstance();
             $use_region         = NULL !== $region ? strtoupper($region) : self::DEFAULT_REGION;
             $phoneNumberMatcher = $phoneNumberUtil->findNumbers($text, $use_region);
-            $result             = [];
+            $result             = array();
             foreach ($phoneNumberMatcher as $phoneNumberMatch) {
                 $result['number'][] = $phoneNumberMatch->number();
             }
@@ -783,10 +779,10 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      */
     public function format($phone_number = '', $format = '')
     {
-        $inputParams = [
+        $inputParams = array(
             'phone_number' => $phone_number,
             'format'       => $format
-        ];
+        );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
             $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
@@ -795,12 +791,12 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
         }
         $phone_number = trim($phone_number);
         $format       = strtoupper(trim($format));
-        $hidden_list  = [
+        $hidden_list  = array(
             self::HIDDEN_REGION,
             self::HIDDEN_REGION_HEAD,
             self::HIDDEN_REGION_MIDDLE,
             self::HIDDEN_REGION_END
-        ];
+        );
         $this->debug->warning(__FUNCTION__, 'Hidden List Allowed: ', $hidden_list);
         try {
             $phoneNumberUtil   = PhoneNumberUtil::getInstance();
@@ -857,10 +853,10 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      */
     public function format_hidden($phone_number = '', $place_hidden = '')
     {
-        $inputParams = [
+        $inputParams = array(
             'phone_number' => $phone_number,
             'place_hidden' => $place_hidden
-        ];
+        );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
             $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
@@ -930,10 +926,10 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      */
     public function detect_carrier($phone_number = '', $get_field_data = NULL)
     {
-        $inputParams = [
+        $inputParams = array(
             'phone_number'   => $phone_number,
             'get_field_data' => $get_field_data
-        ];
+        );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
             $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
@@ -997,11 +993,11 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      */
     public function vn_convert_phone_number($phone_number = '', $phone_mode = '', $phone_format = NULL)
     {
-        $inputParams = [
+        $inputParams = array(
             'phone_number' => $phone_number,
             'phone_mode'   => $phone_mode,
-            'phone_format' => $phone_format,
-        ];
+            'phone_format' => $phone_format
+        );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
             $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
@@ -1037,29 +1033,29 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
                             $phone_number_content = self::MAX_LENGTH_NUMBER_NEW - strlen($new_number_prefix); // 84 + number content
                             $phone_number_prefix  = $new_number_prefix;
                             $convert_prefix       = $old_number_prefix;
-                            $this->debug->debug(__FUNCTION__, 'Data Convert New to Old: ', [
+                            $this->debug->debug(__FUNCTION__, 'Data Convert New to Old: ', array(
                                 'phone_number_content' => $phone_number_content,
                                 'phone_number_prefix'  => $phone_number_prefix,
                                 'convert_prefix'       => $convert_prefix
-                            ]);
+                            ));
                         } elseif ($mode == self::CONVERT_OLD_TO_NEW) {
                             $phone_number_content = self::MAX_LENGTH_NUMBER_OLD - strlen($old_number_prefix); // 84 + number content
                             $phone_number_prefix  = $old_number_prefix;
                             $convert_prefix       = $new_number_prefix;
-                            $this->debug->debug(__FUNCTION__, 'Data Convert Old to New: ', [
+                            $this->debug->debug(__FUNCTION__, 'Data Convert Old to New: ', array(
                                 'phone_number_content' => $phone_number_content,
                                 'phone_number_prefix'  => $phone_number_prefix,
                                 'convert_prefix'       => $convert_prefix
-                            ]);
+                            ));
                         } else {
                             $phone_number_content = NULL;
                             $phone_number_prefix  = NULL;
                             $convert_prefix       = NULL;
-                            $this->debug->debug(__FUNCTION__, 'Phone Number Invalid Rule Convert: ', [
+                            $this->debug->debug(__FUNCTION__, 'Phone Number Invalid Rule Convert: ', array(
                                 'phone_number_content' => $phone_number_content,
                                 'phone_number_prefix'  => $phone_number_prefix,
                                 'convert_prefix'       => $convert_prefix
-                            ]);
+                            ));
                         }
                         // Rule to check
                         $ruleCheckConvert = '/^(' . $phone_number_prefix . ')[0-9]{' . $phone_number_content . '}$/';
@@ -1110,10 +1106,10 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      */
     public function vn_phone_number_old_and_new($phone_number = '', $phone_format = NULL)
     {
-        $inputParams = [
+        $inputParams = array(
             'phone_number' => $phone_number,
             'phone_format' => $phone_format
-        ];
+        );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         try {
             $old_number = $this->vn_convert_phone_number(trim($phone_number), 'old', $phone_format);
@@ -1121,10 +1117,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             $this->debug->debug(__FUNCTION__, 'Old Number: ', $old_number);
             $this->debug->debug(__FUNCTION__, 'New Number: ', $new_number);
             if (!empty($old_number) && !empty($new_number)) {
-                $result = [
-                    $old_number,
-                    $new_number
-                ];
+                $result = array($old_number, $new_number);
                 $this->debug->info(__FUNCTION__, 'Final Result: ', $result);
 
                 return (array) $result;
