@@ -53,6 +53,6 @@ class DataRepository implements ProjectInterface
             return require($path);
         }
 
-        return [];
+        return array();
     }
 }

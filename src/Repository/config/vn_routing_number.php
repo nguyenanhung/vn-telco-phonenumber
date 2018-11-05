@@ -9,7 +9,7 @@
 /**
  * List Routing Number
  */
-return [
+return array(
     '001' => 'MobiFone',
     '002' => 'Vinaphone',
     '004' => 'Viettel Mobile',
@@ -22,4 +22,4 @@ return [
     '05'  => 'Vietnamobile',
     '07'  => 'G-Mobile',
     '08'  => 'Indochina Telecom'
-];
+);

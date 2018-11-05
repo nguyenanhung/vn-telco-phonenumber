@@ -201,10 +201,10 @@ class Phone_telco implements ProjectInterface, PhoneTelcoInterface
      */
     public function carrier_data($carrier = '', $field_output = '')
     {
-        $inputParams  = [
+        $inputParams  = array(
             'carrier'      => $carrier,
             'field_output' => $field_output
-        ];
+        );
         $field_output = strtolower($field_output);
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         try {
