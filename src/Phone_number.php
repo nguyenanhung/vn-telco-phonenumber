@@ -1075,7 +1075,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
                 $message = 'Invalid or Unavailable Data Convert - Data: ';
                 $this->debug->error(__FUNCTION__, $message, $dataVnConvertPhoneNumber);
 
-                return NULL;
+                return $phone_number;
             }
         }
         catch (\Exception $e) {
@@ -1102,7 +1102,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      *
-     * @return array|null Array if Success, Null if Error
+     * @return array|null|string Array if Success, Null if Error
      */
     public function vn_phone_number_old_and_new($phone_number = '', $phone_format = NULL)
     {
@@ -1122,14 +1122,20 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
 
                 return (array) $result;
             }
+            if (!empty($old_number) && empty($new_number)) {
+                return array($old_number);
+            }
+            if (!empty($new_number) && empty($old_number)) {
+                return array($new_number);
+            }
         }
         catch (\Exception $e) {
             $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
             $this->debug->error(__FUNCTION__, $message);
 
-            return NULL;
+            return array($phone_number);
         }
 
-        return NULL;
+        return $phone_number;
     }
 }
