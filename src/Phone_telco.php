@@ -24,33 +24,19 @@ use nguyenanhung\VnTelcoPhoneNumber\Repository\DataRepository;
  */
 class Phone_telco implements ProjectInterface, PhoneTelcoInterface
 {
-    /**
-     * @var object \nguyenanhung\MyDebug\Benchmark
-     */
+    /** @var object \nguyenanhung\MyDebug\Benchmark */
     private $benchmark;
-    /**
-     * @var object \nguyenanhung\MyDebug\Debug Class Debug Object
-     */
+    /** @var object \nguyenanhung\MyDebug\Debug Class Debug Object */
     private $debug;
-    /**
-     * @var bool DEBUG Status
-     */
+    /** @var bool DEBUG Status */
     private $debugStatus = FALSE;
-    /**
-     * @var null|string Set Debug Level: DEBUG, INFO, ERROR ... etc
-     */
+    /** @var null|string Set Debug Level: DEBUG, INFO, ERROR ... etc */
     private $debugLevel = NULL;
-    /**
-     * @var string Logger Path
-     */
+    /** @var string Logger Path */
     private $loggerPath = NULL;
-    /**
-     * @var null Logger Sub Path
-     */
+    /** @var null Logger Sub Path */
     private $loggerSubPath = NULL;
-    /**
-     * @var string Filename to write Log
-     */
+    /** @var string Filename to write Log */
     private $loggerFilename = NULL;
 
     /**
@@ -73,7 +59,6 @@ class Phone_telco implements ProjectInterface, PhoneTelcoInterface
             }
             $this->debug->setLoggerFilename($this->loggerFilename);
         }
-        $this->debug->debug(__FUNCTION__, '/-------------------------> Begin Logger - Class Phone Telco - Version: ' . self::VERSION . ' - Last Modified: ' . self::LAST_MODIFIED . ' <-------------------------\\');
     }
 
     /**
@@ -86,7 +71,6 @@ class Phone_telco implements ProjectInterface, PhoneTelcoInterface
             $this->debug->debug(__FUNCTION__, 'Elapsed Time: ===> ' . $this->benchmark->elapsed_time('code_start', 'code_end'));
             $this->debug->debug(__FUNCTION__, 'Memory Usage: ===> ' . $this->benchmark->memory_usage());
         }
-        $this->debug->debug(__FUNCTION__, '/-------------------------> End Logger - Class Phone Telco - Version: ' . self::VERSION . ' - Last Modified: ' . self::LAST_MODIFIED . ' <-------------------------\\');
     }
 
     /**
