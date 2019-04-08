@@ -22,7 +22,7 @@
     ],
     "require": {
         "giggsey/libphonenumber-for-php": "^8.9",
-        "nguyenanhung/my-debug": "^0.1.0"
+        "nguyenanhung/my-debug": "^1.0"
     },
     "require-dev": {
         "kint-php/kint": "^3.0"
