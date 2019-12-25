@@ -9,6 +9,7 @@
 
 namespace nguyenanhung\VnTelcoPhoneNumber;
 
+use Exception;
 use nguyenanhung\MyDebug\Debug;
 use nguyenanhung\MyDebug\Benchmark;
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneTelcoInterface;
@@ -210,7 +211,7 @@ class Phone_telco implements ProjectInterface, PhoneTelcoInterface
                 }
             }
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
             $this->debug->error(__FUNCTION__, $message);
 
