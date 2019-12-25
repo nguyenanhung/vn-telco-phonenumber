@@ -68,6 +68,17 @@ $my_number_2 = '0163 295 376';
 echo $phone->is_valid($my_number, 'VN'); // Print: true
 echo $phone->is_valid($my_number_2, 'VN'); // Print: false
 ```
+**Get National Number**
+```php
+<?php
+require '/your/to/path/vendor/autoload.php';
+use \nguyenanhung\VnTelcoPhoneNumber\Phone_number;
+$phone = new Phone_number();
+
+$my_number = '0163 295 3760';
+
+echo $phone->get_national_number($my_number); // Print: 1632953760
+```
 
 **Check is Possible Number**
 ```php
