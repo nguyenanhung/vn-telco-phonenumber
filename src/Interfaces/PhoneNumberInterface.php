@@ -22,12 +22,15 @@ interface PhoneNumberInterface
      * Function setDebugStatus
      * Set Var to DEBUG and save Log
      *
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 10/9/18 13:47
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @time     : 10/9/18 13:47
      *
      * @param bool $debugStatus TRUE if Enable Debug, other if Not
      *
-     * @return mixed|void
+     * @return mixed
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 12/25/19 57:51
      */
     public function setDebugStatus($debugStatus = FALSE);
 
@@ -299,6 +302,20 @@ interface PhoneNumberInterface
      * @return array|mixed|null Array if Success, Null if not or Error (Set DEBUG to Details)
      */
     public function find_phone_number_in_string($text = '', $region = NULL);
+
+    /**
+     * Function get_national_number
+     *
+     * Returns the national number of this phone number.
+     *
+     * @param string $phone_number
+     *
+     * @return string|null  The national number, or null if not set.
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 12/25/19 00:52
+     */
+    public function get_national_number($phone_number = '');
 
     /**
      * Function Format

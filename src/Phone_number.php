@@ -9,10 +9,12 @@
 
 namespace nguyenanhung\VnTelcoPhoneNumber;
 
-use \libphonenumber\PhoneNumberUtil;
-use \libphonenumber\PhoneNumberToCarrierMapper;
-use \libphonenumber\PhoneNumberToTimeZonesMapper;
-use \libphonenumber\geocoding\PhoneNumberOfflineGeocoder;
+use Exception;
+use libphonenumber\PhoneNumberUtil;
+use libphonenumber\PhoneNumberToCarrierMapper;
+use libphonenumber\PhoneNumberToTimeZonesMapper;
+use libphonenumber\geocoding\PhoneNumberOfflineGeocoder;
+use libphonenumber\PhoneNumberFormat;
 use nguyenanhung\MyDebug\Debug;
 use nguyenanhung\MyDebug\Benchmark;
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneNumberInterface;
@@ -47,6 +49,9 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
 
     /**
      * Phone_number constructor.
+     *
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
      */
     public function __construct()
     {
@@ -101,11 +106,13 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      *
      * @param bool $debugStatus TRUE if Enable Debug, other if Not
      *
-     * @return mixed|void
+     * @return mixed|void|$this
      */
     public function setDebugStatus($debugStatus = FALSE)
     {
         $this->debugStatus = $debugStatus;
+
+        return $this;
     }
 
     /**
@@ -117,11 +124,13 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      *
      * @param bool|string $debugLevel Level to Set Debug: DEBUG, INFO, ERROR, etc...
      *
-     * @return mixed|void
+     * @return mixed|void|$this
      */
     public function setDebugLevel($debugLevel = NULL)
     {
         $this->debugLevel = $debugLevel;
+
+        return $this;
     }
 
     /**
@@ -135,11 +144,13 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      *
      * @example /your/to/path
      *
-     * @return mixed|void
+     * @return mixed|void|$this
      */
     public function setLoggerPath($loggerPath = FALSE)
     {
         $this->loggerPath = $loggerPath;
+
+        return $this;
     }
 
     /**
@@ -153,11 +164,13 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      *
      * @example /your/to/path
      *
-     * @return mixed|void
+     * @return mixed|void|$this
      */
     public function setLoggerSubPath($loggerSubPath = FALSE)
     {
         $this->loggerSubPath = $loggerSubPath;
+
+        return $this;
     }
 
     /**
@@ -171,11 +184,13 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      *
      * @example Log-2018-10-09.log
      *
-     * @return mixed|void
+     * @return mixed|void|$this
      */
     public function setLoggerFilename($loggerFilename = FALSE)
     {
         $this->loggerFilename = $loggerFilename;
+
+        return $this;
     }
 
     /**
@@ -241,7 +256,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
 
             return $result;
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
             $this->debug->error(__FUNCTION__, $message);
 
@@ -292,7 +307,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
 
             return $result;
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
             $this->debug->error(__FUNCTION__, $message);
 
@@ -340,7 +355,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
 
             return $result;
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
             $this->debug->error(__FUNCTION__, $message);
 
@@ -402,7 +417,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
 
             return $result;
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
             $this->debug->error(__FUNCTION__, $message);
 
@@ -461,7 +476,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
 
             return $result;
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
             $this->debug->error(__FUNCTION__, $message);
 
@@ -507,7 +522,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
 
             return $result;
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
             $this->debug->error(__FUNCTION__, $message);
 
@@ -542,7 +557,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
 
             return $result;
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
             $this->debug->error(__FUNCTION__, $message);
 
@@ -578,7 +593,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
 
             return $result;
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
             $this->debug->error(__FUNCTION__, $message);
 
@@ -624,7 +639,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
 
             return $result;
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
             $this->debug->error(__FUNCTION__, $message);
 
@@ -670,7 +685,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
 
             return $result;
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
             $this->debug->error(__FUNCTION__, $message);
 
@@ -720,11 +735,40 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
 
             return $result;
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
             $this->debug->error(__FUNCTION__, $message);
 
             return NULL;
+        }
+    }
+
+    /**
+     * Function get_national_number
+     *
+     * Returns the national number of this phone number.
+     *
+     * @param string $phone_number
+     *
+     * @return string|null  The national number, or null if not set.
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 12/25/19 00:52
+     */
+    public function get_national_number($phone_number = '')
+    {
+        try {
+            $phoneNumberUtil   = PhoneNumberUtil::getInstance();
+            $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), self::DEFAULT_REGION);
+            $result            = (string) $phoneNumberObject->getNationalNumber();
+
+            return $result;
+        }
+        catch (Exception $e) {
+            $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
+            $this->debug->error(__FUNCTION__, $message);
+
+            return $phone_number;
         }
     }
 
@@ -790,13 +834,13 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             } elseif ($format == self::FORMAT_FOR_HUMAN_VIETNAM) {
                 $result = (string) $phoneNumberUtil->formatOutOfCountryCallingNumber($phoneNumberObject, self::DEFAULT_COUNTRY);
             } elseif ($format == self::FORMAT_E164) {
-                $result = (string) $phoneNumberUtil->format($phoneNumberObject, \libphonenumber\PhoneNumberFormat::E164);
+                $result = (string) $phoneNumberUtil->format($phoneNumberObject, PhoneNumberFormat::E164);
             } elseif ($format == self::FORMAT_INTERNATIONAL) {
-                $result = (string) $phoneNumberUtil->format($phoneNumberObject, \libphonenumber\PhoneNumberFormat::INTERNATIONAL);
+                $result = (string) $phoneNumberUtil->format($phoneNumberObject, PhoneNumberFormat::INTERNATIONAL);
             } elseif ($format == self::FORMAT_NATIONAL) {
-                $result = (string) $phoneNumberUtil->format($phoneNumberObject, \libphonenumber\PhoneNumberFormat::NATIONAL);
+                $result = (string) $phoneNumberUtil->format($phoneNumberObject, PhoneNumberFormat::NATIONAL);
             } elseif ($format == self::FORMAT_RFC3966) {
-                $result = (string) $phoneNumberUtil->format($phoneNumberObject, \libphonenumber\PhoneNumberFormat::RFC3966);
+                $result = (string) $phoneNumberUtil->format($phoneNumberObject, PhoneNumberFormat::RFC3966);
             } else {
                 $result = (string) $phoneNumberObject->getCountryCode() . $phoneNumberObject->getNationalNumber();
             }
@@ -805,7 +849,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
 
             return $result;
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
             $this->debug->error(__FUNCTION__, $message);
 
@@ -885,7 +929,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
 
             return $result;
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
             $this->debug->error(__FUNCTION__, $message);
 
@@ -948,7 +992,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
 
             return (string) $carrier;
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
             $this->debug->error(__FUNCTION__, $message);
 
@@ -1060,7 +1104,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
                 return $phone_number;
             }
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
             $this->debug->error(__FUNCTION__, $message);
 
@@ -1111,7 +1155,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
                 return array($new_number);
             }
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
             $this->debug->error(__FUNCTION__, $message);
 
