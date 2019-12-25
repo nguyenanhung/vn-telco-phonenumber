@@ -49,6 +49,8 @@ d($phone->get_number_type($my_number, $my_region));
 d($phone->check_phone_number_can_be_internationally_dialled($my_number, $my_region));
 d($phone->find_phone_number_in_string($my_text, $my_region));
 
+d($phone->get_national_number($my_number));
+
 d($phone->format($my_number));
 d($phone->format($my_number, 'VN'));
 d($phone->format($my_number, 'VN_HUMAN'));

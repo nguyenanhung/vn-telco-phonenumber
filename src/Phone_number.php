@@ -49,6 +49,9 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
 
     /**
      * Phone_number constructor.
+     *
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
      */
     public function __construct()
     {
@@ -103,11 +106,13 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      *
      * @param bool $debugStatus TRUE if Enable Debug, other if Not
      *
-     * @return mixed|void
+     * @return mixed|void|$this
      */
     public function setDebugStatus($debugStatus = FALSE)
     {
         $this->debugStatus = $debugStatus;
+
+        return $this;
     }
 
     /**
@@ -119,11 +124,13 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      *
      * @param bool|string $debugLevel Level to Set Debug: DEBUG, INFO, ERROR, etc...
      *
-     * @return mixed|void
+     * @return mixed|void|$this
      */
     public function setDebugLevel($debugLevel = NULL)
     {
         $this->debugLevel = $debugLevel;
+
+        return $this;
     }
 
     /**
@@ -137,11 +144,13 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      *
      * @example /your/to/path
      *
-     * @return mixed|void
+     * @return mixed|void|$this
      */
     public function setLoggerPath($loggerPath = FALSE)
     {
         $this->loggerPath = $loggerPath;
+
+        return $this;
     }
 
     /**
@@ -155,11 +164,13 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      *
      * @example /your/to/path
      *
-     * @return mixed|void
+     * @return mixed|void|$this
      */
     public function setLoggerSubPath($loggerSubPath = FALSE)
     {
         $this->loggerSubPath = $loggerSubPath;
+
+        return $this;
     }
 
     /**
@@ -173,11 +184,13 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
      *
      * @example Log-2018-10-09.log
      *
-     * @return mixed|void
+     * @return mixed|void|$this
      */
     public function setLoggerFilename($loggerFilename = FALSE)
     {
         $this->loggerFilename = $loggerFilename;
+
+        return $this;
     }
 
     /**
@@ -727,6 +740,35 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             $this->debug->error(__FUNCTION__, $message);
 
             return NULL;
+        }
+    }
+
+    /**
+     * Function get_national_number
+     *
+     * Returns the national number of this phone number.
+     *
+     * @param string $phone_number
+     *
+     * @return string|null  The national number, or null if not set.
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 12/25/19 00:52
+     */
+    public function get_national_number($phone_number = '')
+    {
+        try {
+            $phoneNumberUtil   = PhoneNumberUtil::getInstance();
+            $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), self::DEFAULT_REGION);
+            $result            = (string) $phoneNumberObject->getNationalNumber();
+
+            return $result;
+        }
+        catch (Exception $e) {
+            $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
+            $this->debug->error(__FUNCTION__, $message);
+
+            return $phone_number;
         }
     }
 
