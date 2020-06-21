@@ -98,8 +98,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
     }
 
     /**
-     * Function setDebugStatus
-     * Set Var to DEBUG and save Log
+     * Function setDebugStatus - Set Var to DEBUG and save Log
      *
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 10/9/18 13:47
@@ -116,8 +115,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
     }
 
     /**
-     * Function setDebugLevel
-     * Set String Debug Level
+     * Function setDebugLevel - Set String Debug Level
      *
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 10/9/18 13:47
@@ -134,8 +132,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
     }
 
     /**
-     * Function setLoggerPath
-     * Main Logger Path to Save Log if DEBUG is Enable
+     * Function setLoggerPath - Main Logger Path to Save Log if DEBUG is Enable
      *
      * @author  : 713uk13m <dev@nguyenanhung.com>
      * @time    : 10/9/18 13:51
@@ -154,8 +151,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
     }
 
     /**
-     * Function setLoggerSubPath
-     * Sub Logger Path to Save Log if DEBUG is Enable
+     * Function setLoggerSubPath - Sub Logger Path to Save Log if DEBUG is Enable
      *
      * @author  : 713uk13m <dev@nguyenanhung.com>
      * @time    : 10/8/18 14:38
@@ -174,8 +170,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
     }
 
     /**
-     * Function setLoggerFilename
-     * Logger filename to Save Log if DEBUG is Enable
+     * Function setLoggerFilename - Logger filename to Save Log if DEBUG is Enable
      *
      * @author  : 713uk13m <dev@nguyenanhung.com>
      * @time    : 10/8/18 14:38
@@ -194,8 +189,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
     }
 
     /**
-     * Function setNormalName
-     * Hàm gọi tới để lấy tên thường của nhà mạng Viêt (Viettel thay cho Viettl Mobile)
+     * Function setNormalName - Hàm gọi tới để lấy tên thường của nhà mạng Viêt (Viettel thay cho Viettl Mobile)
      *
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 9/21/18 01:28
@@ -207,15 +201,13 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
     public function setNormalName($value = FALSE)
     {
         $this->normal_name = $value;
-        $this->debug->info(__FUNCTION__, 'setNormalName: ', $this->normal_name);
+        $this->debug->debug(__FUNCTION__, 'setNormalName: ', $this->normal_name);
 
         return $this->normal_name;
     }
 
     /**
-     * Function Check Phone Number Is Valid?
-     *
-     * Check số điện thoại nhập vào có phải 1 số điện thoại đúng hay không
+     * Function Check Phone Number Is Valid? - Check số điện thoại nhập vào có phải 1 số điện thoại đúng hay không
      *
      * Returns a boolean whether the supplied PhoneNumber object is valid or not.
      *
@@ -239,9 +231,9 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             'phone_number' => $phone_number,
             'region'       => $region
         );
-        $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
+        $this->debug->debug(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
-            $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
+            $this->debug->debug(__FUNCTION__, 'Phone Number input is Empty!');
 
             return NULL;
         }
@@ -266,12 +258,10 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
     }
 
     /**
-     * Function Check Phone Number Is Possible?
+     * Function Check Phone Number Is Possible? - Hàm check số chuỗi nhập vào có phải 1 số điện thoại hay không
      *
      * Returns a boolean whether the supplied phone number is possible or not.
      * This function accepts either a PhoneNumber object, or a phone number string and a region code (as with parse()).
-     *
-     * Hàm check số chuỗi nhập vào có phải 1 số điện thoại hay không
      *
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 9/21/18 01:29
@@ -292,7 +282,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
         );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
-            $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
+            $this->debug->debug(__FUNCTION__, 'Phone Number input is Empty!');
 
             return NULL;
         }
@@ -316,9 +306,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
     }
 
     /**
-     * Function get_time_zones_for_number
-     *
-     * Returns an array of timezones for which the PhoneNumber object supplied belongs in.
+     * Function get_time_zones_for_number - Returns an array of timezones for which the PhoneNumber object supplied belongs in.
      *
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 9/21/18 01:50
@@ -339,7 +327,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
         );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
-            $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
+            $this->debug->debug(__FUNCTION__, 'Phone Number input is Empty!');
 
             return NULL;
         }
@@ -395,7 +383,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
         );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
-            $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
+            $this->debug->debug(__FUNCTION__, 'Phone Number input is Empty!');
 
             return NULL;
         }
@@ -456,7 +444,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
         );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
-            $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
+            $this->debug->debug(__FUNCTION__, 'Phone Number input is Empty!');
 
             return NULL;
         }
@@ -507,7 +495,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
         );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
-            $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
+            $this->debug->debug(__FUNCTION__, 'Phone Number input is Empty!');
 
             return NULL;
         }
@@ -624,7 +612,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
         );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
-            $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
+            $this->debug->debug(__FUNCTION__, 'Phone Number input is Empty!');
 
             return NULL;
         }
@@ -670,7 +658,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
         );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
-            $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
+            $this->debug->debug(__FUNCTION__, 'Phone Number input is Empty!');
 
             return NULL;
         }
@@ -719,7 +707,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
         );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($text)) {
-            $this->debug->warning(__FUNCTION__, 'Text input is Empty!');
+            $this->debug->debug(__FUNCTION__, 'Text input is Empty!');
 
             return NULL;
         }
@@ -811,7 +799,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
         );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
-            $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
+            $this->debug->debug(__FUNCTION__, 'Phone Number input is Empty!');
 
             return NULL;
         }
@@ -823,7 +811,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             self::HIDDEN_REGION_MIDDLE,
             self::HIDDEN_REGION_END
         );
-        $this->debug->warning(__FUNCTION__, 'Hidden List Allowed: ', $hidden_list);
+        $this->debug->debug(__FUNCTION__, 'Hidden List Allowed: ', $hidden_list);
         try {
             $phoneNumberUtil   = PhoneNumberUtil::getInstance();
             $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), self::DEFAULT_REGION);
@@ -885,7 +873,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
         );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
-            $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
+            $this->debug->debug(__FUNCTION__, 'Phone Number input is Empty!');
 
             return NULL;
         }
@@ -958,7 +946,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
         );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
-            $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
+            $this->debug->debug(__FUNCTION__, 'Phone Number input is Empty!');
 
             return NULL;
         }
@@ -1026,7 +1014,7 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
         );
         $this->debug->info(__FUNCTION__, 'Input Params: ', $inputParams);
         if (empty($phone_number)) {
-            $this->debug->warning(__FUNCTION__, 'Phone Number input is Empty!');
+            $this->debug->debug(__FUNCTION__, 'Phone Number input is Empty!');
 
             return NULL;
         }
