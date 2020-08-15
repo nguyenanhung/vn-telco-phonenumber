@@ -17,9 +17,6 @@ use libphonenumber\geocoding\PhoneNumberOfflineGeocoder;
 use libphonenumber\PhoneNumberFormat;
 use nguyenanhung\MyDebug\Debug;
 use nguyenanhung\MyDebug\Benchmark;
-use nguyenanhung\VnTelcoPhoneNumber\Interfaces\LoggerInterface;
-use nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneNumberInterface;
-use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface;
 use nguyenanhung\VnTelcoPhoneNumber\Repository;
 
 /**

@@ -9,8 +9,6 @@
 
 namespace nguyenanhung\VnTelcoPhoneNumber;
 
-use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface;
-use nguyenanhung\VnTelcoPhoneNumber\Interfaces\SmsLinkInterface;
 use nguyenanhung\VnTelcoPhoneNumber\Repository;
 
 /**
