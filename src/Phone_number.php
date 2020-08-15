@@ -17,6 +17,7 @@ use libphonenumber\geocoding\PhoneNumberOfflineGeocoder;
 use libphonenumber\PhoneNumberFormat;
 use nguyenanhung\MyDebug\Debug;
 use nguyenanhung\MyDebug\Benchmark;
+use nguyenanhung\VnTelcoPhoneNumber\Interfaces\LoggerInterface;
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\PhoneNumberInterface;
 use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface;
 use nguyenanhung\VnTelcoPhoneNumber\Repository;
@@ -28,22 +29,24 @@ use nguyenanhung\VnTelcoPhoneNumber\Repository;
  * @author     713uk13m <dev@nguyenanhung.com>
  * @copyright  713uk13m <dev@nguyenanhung.com>
  */
-class Phone_number implements ProjectInterface, PhoneNumberInterface
+class Phone_number implements ProjectInterface, LoggerInterface, PhoneNumberInterface
 {
+    use VersionTrait, LoggerTrait;
+
     /** @var object \nguyenanhung\MyDebug\Benchmark */
-    private $benchmark;
+    protected $benchmark;
     /** @var object \nguyenanhung\MyDebug\Debug Class Debug Object */
-    private $debug;
+    protected $debug;
     /** @var bool DEBUG Status */
-    private $debugStatus = FALSE;
+    protected $debugStatus = FALSE;
     /** @var null|string Set Debug Level: DEBUG, INFO, ERROR ... etc */
-    private $debugLevel = NULL;
+    protected $debugLevel = NULL;
     /** @var string Logger Path */
-    private $loggerPath = NULL;
+    protected $loggerPath = NULL;
     /** @var null Logger Sub Path */
-    private $loggerSubPath = NULL;
+    protected $loggerSubPath = NULL;
     /** @var string Filename to write Log */
-    private $loggerFilename = NULL;
+    protected $loggerFilename = NULL;
     /** @var bool Set if Call Name Carrier Mixed */
     protected $normal_name = FALSE;
 
@@ -82,110 +85,6 @@ class Phone_number implements ProjectInterface, PhoneNumberInterface
             $this->debug->debug(__FUNCTION__, 'Elapsed Time: ===> ' . $this->benchmark->elapsed_time('code_start', 'code_end'));
             $this->debug->debug(__FUNCTION__, 'Memory Usage: ===> ' . $this->benchmark->memory_usage());
         }
-    }
-
-    /**
-     * Get current version of Package
-     *
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 10/22/18 08:42
-     *
-     * @return mixed|string Current version of Package
-     */
-    public function getVersion()
-    {
-        return self::VERSION;
-    }
-
-    /**
-     * Function setDebugStatus - Set Var to DEBUG and save Log
-     *
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 10/9/18 13:47
-     *
-     * @param bool $debugStatus TRUE if Enable Debug, other if Not
-     *
-     * @return mixed|void|$this
-     */
-    public function setDebugStatus($debugStatus = FALSE)
-    {
-        $this->debugStatus = $debugStatus;
-
-        return $this;
-    }
-
-    /**
-     * Function setDebugLevel - Set String Debug Level
-     *
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 10/9/18 13:47
-     *
-     * @param bool|string $debugLevel Level to Set Debug: DEBUG, INFO, ERROR, etc...
-     *
-     * @return mixed|void|$this
-     */
-    public function setDebugLevel($debugLevel = NULL)
-    {
-        $this->debugLevel = $debugLevel;
-
-        return $this;
-    }
-
-    /**
-     * Function setLoggerPath - Main Logger Path to Save Log if DEBUG is Enable
-     *
-     * @author  : 713uk13m <dev@nguyenanhung.com>
-     * @time    : 10/9/18 13:51
-     *
-     * @param bool $loggerPath Set Logger Path to Save
-     *
-     * @example /your/to/path
-     *
-     * @return mixed|void|$this
-     */
-    public function setLoggerPath($loggerPath = FALSE)
-    {
-        $this->loggerPath = $loggerPath;
-
-        return $this;
-    }
-
-    /**
-     * Function setLoggerSubPath - Sub Logger Path to Save Log if DEBUG is Enable
-     *
-     * @author  : 713uk13m <dev@nguyenanhung.com>
-     * @time    : 10/8/18 14:38
-     *
-     * @param bool $loggerSubPath Set Logger Sub Path to Save
-     *
-     * @example /your/to/path
-     *
-     * @return mixed|void|$this
-     */
-    public function setLoggerSubPath($loggerSubPath = FALSE)
-    {
-        $this->loggerSubPath = $loggerSubPath;
-
-        return $this;
-    }
-
-    /**
-     * Function setLoggerFilename - Logger filename to Save Log if DEBUG is Enable
-     *
-     * @author  : 713uk13m <dev@nguyenanhung.com>
-     * @time    : 10/8/18 14:38
-     *
-     * @param bool $loggerFilename Set Logger Filename to Save
-     *
-     * @example Log-2018-10-09.log
-     *
-     * @return mixed|void|$this
-     */
-    public function setLoggerFilename($loggerFilename = FALSE)
-    {
-        $this->loggerFilename = $loggerFilename;
-
-        return $this;
     }
 
     /**

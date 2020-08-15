@@ -7,14 +7,14 @@
  * Time: 14:22
  */
 
-namespace nguyenanhung\VnTelcoPhoneNumber\Interfaces;
+namespace nguyenanhung\VnTelcoPhoneNumber;
 
 /**
  * Interface ProjectInterface
  *
- * @package    nguyenanhung\VnTelcoPhoneNumber\Interfaces
- * @author     713uk13m <dev@nguyenanhung.com>
- * @copyright  713uk13m <dev@nguyenanhung.com>
+ * @package   nguyenanhung\VnTelcoPhoneNumber
+ * @author    713uk13m <dev@nguyenanhung.com>
+ * @copyright 713uk13m <dev@nguyenanhung.com>
  */
 interface ProjectInterface
 {
