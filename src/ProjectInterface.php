@@ -7,19 +7,19 @@
  * Time: 14:22
  */
 
-namespace nguyenanhung\VnTelcoPhoneNumber\Interfaces;
+namespace nguyenanhung\VnTelcoPhoneNumber;
 
 /**
  * Interface ProjectInterface
  *
- * @package    nguyenanhung\VnTelcoPhoneNumber\Interfaces
- * @author     713uk13m <dev@nguyenanhung.com>
- * @copyright  713uk13m <dev@nguyenanhung.com>
+ * @package   nguyenanhung\VnTelcoPhoneNumber
+ * @author    713uk13m <dev@nguyenanhung.com>
+ * @copyright 713uk13m <dev@nguyenanhung.com>
  */
 interface ProjectInterface
 {
-    const VERSION                  = '1.1.9';
-    const LAST_MODIFIED            = '2020-06-21';
+    const VERSION                  = '1.1.10';
+    const LAST_MODIFIED            = '2020-08-15';
     const DEFAULT_COUNTRY          = 'VN';
     const DEFAULT_LANGUAGE         = 'vi';
     const DEFAULT_REGION           = 'VN';

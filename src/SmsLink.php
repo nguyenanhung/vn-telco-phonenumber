@@ -9,8 +9,6 @@
 
 namespace nguyenanhung\VnTelcoPhoneNumber;
 
-use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface;
-use nguyenanhung\VnTelcoPhoneNumber\Interfaces\SmsLinkInterface;
 use nguyenanhung\VnTelcoPhoneNumber\Repository;
 
 /**
@@ -22,24 +20,16 @@ use nguyenanhung\VnTelcoPhoneNumber\Repository;
  */
 class SmsLink implements ProjectInterface, SmsLinkInterface
 {
+    use VersionTrait;
+
     /**
      * SmsLink constructor.
+     *
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
      */
     public function __construct()
     {
-    }
-
-    /**
-     * Get current version of Package
-     *
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 10/22/18 08:42
-     *
-     * @return mixed|string Current version of Package
-     */
-    public function getVersion()
-    {
-        return self::VERSION;
     }
 
     /**

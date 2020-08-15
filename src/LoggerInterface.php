@@ -1,52 +1,50 @@
 <?php
 /**
- * Project vn-telco-phonenumber.
- * Created by PhpStorm.
+ * Project vn-telco-phonenumber
+ * Created by PhpStorm
  * User: 713uk13m <dev@nguyenanhung.com>
- * Date: 9/21/18
- * Time: 01:36
+ * Copyright: 713uk13m <dev@nguyenanhung.com>
+ * Date: 08/15/2020
+ * Time: 17:25
  */
 
-namespace nguyenanhung\VnTelcoPhoneNumber\Interfaces;
+namespace nguyenanhung\VnTelcoPhoneNumber;
 
 /**
- * Interface PhoneTelcoInterface
+ * Interface LoggerInterface
  *
- * @package    nguyenanhung\VnTelcoPhoneNumber\Interfaces
- * @author     713uk13m <dev@nguyenanhung.com>
- * @copyright  713uk13m <dev@nguyenanhung.com>
+ * @package   nguyenanhung\VnTelcoPhoneNumber
+ * @author    713uk13m <dev@nguyenanhung.com>
+ * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-interface PhoneTelcoInterface
+interface LoggerInterface
 {
     /**
-     * Function setDebugStatus
-     * Set Var to DEBUG and save Log
+     * Function setDebugStatus - Set Var to DEBUG and save Log
      *
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 10/9/18 13:47
      *
      * @param bool $debugStatus TRUE if Enable Debug, other if Not
      *
-     * @return mixed|void
+     * @return mixed|void|$this
      */
     public function setDebugStatus($debugStatus = FALSE);
 
     /**
-     * Function setDebugLevel
-     * Set String Debug Level
+     * Function setDebugLevel - Set String Debug Level
      *
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 10/9/18 13:47
      *
      * @param bool|string $debugLevel Level to Set Debug: DEBUG, INFO, ERROR, etc...
      *
-     * @return mixed|void
+     * @return mixed|void|$this
      */
     public function setDebugLevel($debugLevel = NULL);
 
     /**
-     * Function setLoggerPath
-     * Main Logger Path to Save Log if DEBUG is Enable
+     * Function setLoggerPath - Main Logger Path to Save Log if DEBUG is Enable
      *
      * @author  : 713uk13m <dev@nguyenanhung.com>
      * @time    : 10/9/18 13:51
@@ -55,13 +53,12 @@ interface PhoneTelcoInterface
      *
      * @example /your/to/path
      *
-     * @return mixed|void
+     * @return mixed|void|$this
      */
     public function setLoggerPath($loggerPath = FALSE);
 
     /**
-     * Function setLoggerSubPath
-     * Sub Logger Path to Save Log if DEBUG is Enable
+     * Function setLoggerSubPath - Sub Logger Path to Save Log if DEBUG is Enable
      *
      * @author  : 713uk13m <dev@nguyenanhung.com>
      * @time    : 10/8/18 14:38
@@ -70,13 +67,12 @@ interface PhoneTelcoInterface
      *
      * @example /your/to/path
      *
-     * @return mixed|void
+     * @return mixed|void|$this
      */
     public function setLoggerSubPath($loggerSubPath = FALSE);
 
     /**
-     * Function setLoggerFilename
-     * Logger filename to Save Log if DEBUG is Enable
+     * Function setLoggerFilename - Logger filename to Save Log if DEBUG is Enable
      *
      * @author  : 713uk13m <dev@nguyenanhung.com>
      * @time    : 10/8/18 14:38
@@ -85,20 +81,7 @@ interface PhoneTelcoInterface
      *
      * @example Log-2018-10-09.log
      *
-     * @return mixed|void
+     * @return mixed|void|$this
      */
     public function setLoggerFilename($loggerFilename = FALSE);
-
-    /**
-     * Function Get Data VN Carrier
-     *
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 10/9/18 14:18
-     *
-     * @param string $carrier      Full Name of Carrier: Viettel, Vinaphone, MobiFone, Vietnamobile
-     * @param string $field_output Field Output: name, id, short_name
-     *
-     * @return mixed|null Field if exists, null if not or error
-     */
-    public function carrier_data($carrier = '', $field_output = '');
 }

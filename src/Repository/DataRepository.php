@@ -8,32 +8,22 @@
 
 namespace nguyenanhung\VnTelcoPhoneNumber\Repository;
 
-use nguyenanhung\VnTelcoPhoneNumber\Interfaces\ProjectInterface;
+use nguyenanhung\VnTelcoPhoneNumber\ProjectInterface;
+use nguyenanhung\VnTelcoPhoneNumber\VersionTrait;
 
 /**
  * Class DataRepository
  *
- * @package    nguyenanhung\VnTelcoPhoneNumber\Repository
- * @author     713uk13m <dev@nguyenanhung.com>
- * @copyright  713uk13m <dev@nguyenanhung.com>
+ * @package   nguyenanhung\VnTelcoPhoneNumber\Repository
+ * @author    713uk13m <dev@nguyenanhung.com>
+ * @copyright 713uk13m <dev@nguyenanhung.com>
  */
 class DataRepository implements ProjectInterface
 {
+    use VersionTrait;
+
     const CONFIG_PATH = 'config';
     const CONFIG_EXT  = '.php';
-
-    /**
-     * Function getVersion
-     *
-     * @author: 713uk13m <dev@nguyenanhung.com>
-     * @time  : 9/21/18 01:26
-     *
-     * @return string Current Project Version
-     */
-    public function getVersion()
-    {
-        return self::VERSION;
-    }
 
     /**
      * Function getData
