@@ -39,7 +39,7 @@ class SmsLink implements ProjectInterface, SmsLinkInterface
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 10/9/18 13:39
      *
-     * @return mixed|null Content Js Sms Link from file config sms_link
+     * @return string|null Content Js Sms Link from file config sms_link
      * @see   /Repository/config/sms_link.php
      */
     public function addScript()
@@ -49,7 +49,7 @@ class SmsLink implements ProjectInterface, SmsLinkInterface
             return $smsLink['script'];
         }
 
-        return NULL;
+        return null;
     }
 
     /**
@@ -62,15 +62,14 @@ class SmsLink implements ProjectInterface, SmsLinkInterface
      * @param string $phone_number Phone number to parse
      * @param string $body         Body Sms to Sending
      *
-     * @return mixed|string Content Send Sms
+     * @return string Content Send Sms
      */
     public function getLink($phone_number = '', $body = '')
     {
         if (!empty($body)) {
             $body = "?body=" . $body;
         }
-        $sms = 'sms:' . trim($phone_number . $body);
 
-        return $sms;
+        return 'sms:' . trim($phone_number . $body);
     }
 }

@@ -1,4 +1,7 @@
-# Vietnam Phone number
+# Vietnam Phone Number
+
+[![Latest Stable Version](http://poser.pugx.org/nguyenanhung/vn-telco-phonenumber/v)](https://packagist.org/packages/nguyenanhung/vn-telco-phonenumber) [![Total Downloads](http://poser.pugx.org/nguyenanhung/vn-telco-phonenumber/downloads)](https://packagist.org/packages/nguyenanhung/vn-telco-phonenumber) [![Latest Unstable Version](http://poser.pugx.org/nguyenanhung/vn-telco-phonenumber/v/unstable)](https://packagist.org/packages/nguyenanhung/vn-telco-phonenumber) [![License](http://poser.pugx.org/nguyenanhung/vn-telco-phonenumber/license)](https://packagist.org/packages/nguyenanhung/vn-telco-phonenumber) [![PHP Version Require](http://poser.pugx.org/nguyenanhung/vn-telco-phonenumber/require/php)](https://packagist.org/packages/nguyenanhung/vn-telco-phonenumber)
+
 Library detect carrier Vietnam telco: Viettel, Vina, MobiFone...
 
 Format Phone number
@@ -46,7 +49,9 @@ $phone = new Phone_number();
 ```
 
 ### **How to Use**
+
 **Get Version of Library**
+
 ```php
 <?php
 require '/your/to/path/vendor/autoload.php';
@@ -55,7 +60,9 @@ $phone = new Phone_number();
 
 echo $phone->getVersion(); // Print: 1.0.9
 ```
+
 **Valid Phone Number**
+
 ```php
 <?php
 require '/your/to/path/vendor/autoload.php';
@@ -68,7 +75,9 @@ $my_number_2 = '0163 295 376';
 echo $phone->is_valid($my_number, 'VN'); // Print: true
 echo $phone->is_valid($my_number_2, 'VN'); // Print: false
 ```
+
 **Get National Number**
+
 ```php
 <?php
 require '/your/to/path/vendor/autoload.php';
@@ -81,6 +90,7 @@ echo $phone->get_national_number($my_number); // Print: 1632953760
 ```
 
 **Check is Possible Number**
+
 ```php
 <?php
 require '/your/to/path/vendor/autoload.php';

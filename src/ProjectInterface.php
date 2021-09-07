@@ -18,8 +18,8 @@ namespace nguyenanhung\VnTelcoPhoneNumber;
  */
 interface ProjectInterface
 {
-    const VERSION                  = '2.0.0';
-    const LAST_MODIFIED            = '2020-10-02';
+    const VERSION                  = '3.0.0';
+    const LAST_MODIFIED            = '2021-09-07';
     const DEFAULT_COUNTRY          = 'VN';
     const DEFAULT_LANGUAGE         = 'vi';
     const DEFAULT_REGION           = 'VN';
@@ -47,7 +47,7 @@ interface ProjectInterface
     const VIETTEL                  = 'Viettel Mobile'; // ID nhà mạng Viettel
     const MOBIFONE                 = 'MobiFone'; // ID nhà mạng MobiFone
     const VIETNAMOBILE             = 'Vietnamobile'; // ID nhà mạng Vietnamobile
-    const USE_BENCHMARK            = FALSE;
+    const USE_BENCHMARK            = false;
 
     /**
      * Get current version of Package

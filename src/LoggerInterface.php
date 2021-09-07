@@ -27,7 +27,7 @@ interface LoggerInterface
      *
      * @param bool $debugStatus TRUE if Enable Debug, other if Not
      *
-     * @return mixed|void|$this
+     * @return $this
      */
     public function setDebugStatus($debugStatus = FALSE);
 
@@ -39,7 +39,7 @@ interface LoggerInterface
      *
      * @param bool|string $debugLevel Level to Set Debug: DEBUG, INFO, ERROR, etc...
      *
-     * @return mixed|void|$this
+     * @return $this
      */
     public function setDebugLevel($debugLevel = NULL);
 
@@ -53,7 +53,7 @@ interface LoggerInterface
      *
      * @example /your/to/path
      *
-     * @return mixed|void|$this
+     * @return $this
      */
     public function setLoggerPath($loggerPath = FALSE);
 
@@ -67,7 +67,7 @@ interface LoggerInterface
      *
      * @example /your/to/path
      *
-     * @return mixed|void|$this
+     * @return $this
      */
     public function setLoggerSubPath($loggerSubPath = FALSE);
 
@@ -81,7 +81,7 @@ interface LoggerInterface
      *
      * @example Log-2018-10-09.log
      *
-     * @return mixed|void|$this
+     * @return $this
      */
     public function setLoggerFilename($loggerFilename = FALSE);
 }

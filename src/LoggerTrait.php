@@ -17,11 +17,11 @@ namespace nguyenanhung\VnTelcoPhoneNumber;
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  *
- * @property mixed debugStatus
- * @property mixed debugLevel
- * @property mixed loggerPath
- * @property mixed loggerSubPath
- * @property mixed loggerFilename
+ * @property bool        debugStatus
+ * @property string|null debugLevel
+ * @property string|null loggerPath
+ * @property string|null loggerSubPath
+ * @property string|null loggerFilename
  */
 trait LoggerTrait
 {
@@ -33,9 +33,9 @@ trait LoggerTrait
      *
      * @param bool $debugStatus TRUE if Enable Debug, other if Not
      *
-     * @return mixed|void|$this
+     * @return $this
      */
-    public function setDebugStatus($debugStatus = FALSE)
+    public function setDebugStatus($debugStatus = false)
     {
         $this->debugStatus = $debugStatus;
 
@@ -50,9 +50,9 @@ trait LoggerTrait
      *
      * @param bool|string $debugLevel Level to Set Debug: DEBUG, INFO, ERROR, etc...
      *
-     * @return mixed|void|$this
+     * @return $this
      */
-    public function setDebugLevel($debugLevel = NULL)
+    public function setDebugLevel($debugLevel = null)
     {
         $this->debugLevel = $debugLevel;
 
@@ -69,9 +69,9 @@ trait LoggerTrait
      *
      * @example /your/to/path
      *
-     * @return mixed|void|$this
+     * @return $this
      */
-    public function setLoggerPath($loggerPath = FALSE)
+    public function setLoggerPath($loggerPath = false)
     {
         $this->loggerPath = $loggerPath;
 
@@ -88,9 +88,9 @@ trait LoggerTrait
      *
      * @example /your/to/path
      *
-     * @return mixed|void|$this
+     * @return $this
      */
-    public function setLoggerSubPath($loggerSubPath = FALSE)
+    public function setLoggerSubPath($loggerSubPath = false)
     {
         $this->loggerSubPath = $loggerSubPath;
 
@@ -107,9 +107,9 @@ trait LoggerTrait
      *
      * @example Log-2018-10-09.log
      *
-     * @return mixed|void|$this
+     * @return $this
      */
-    public function setLoggerFilename($loggerFilename = FALSE)
+    public function setLoggerFilename($loggerFilename = false)
     {
         $this->loggerFilename = $loggerFilename;
 

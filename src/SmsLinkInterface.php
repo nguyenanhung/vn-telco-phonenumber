@@ -25,7 +25,7 @@ interface SmsLinkInterface
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 10/9/18 13:39
      *
-     * @return mixed|null Content Js Sms Link from file config sms_link
+     * @return string|null Content Js Sms Link from file config sms_link
      * @see   /Repository/config/sms_link.php
      */
     public function addScript();
@@ -40,7 +40,7 @@ interface SmsLinkInterface
      * @param string $phone_number Phone number to parse
      * @param string $body         Body Sms to Sending
      *
-     * @return mixed|string Content Send Sms
+     * @return string Content Send Sms
      */
     public function getLink($phone_number = '', $body = '');
 }
