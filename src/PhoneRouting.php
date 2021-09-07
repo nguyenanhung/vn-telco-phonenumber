@@ -24,9 +24,10 @@ class PhoneRouting extends BaseCore implements PhoneRoutingInterface
 {
     const IS_MNP_LENGTH = 16;
 
-    /** @var object \nguyenanhung\VnTelcoPhoneNumber\Phone_number */
+    /** @var object \nguyenanhung\VnTelcoPhoneNumber\PhoneNumber */
     private $phoneNumber;
-    /** @var object \nguyenanhung\VnTelcoPhoneNumber\Phone_telco */
+
+    /** @var object \nguyenanhung\VnTelcoPhoneNumber\PhoneTelco */
     private $phoneTelco;
 
     /**
@@ -39,6 +40,8 @@ class PhoneRouting extends BaseCore implements PhoneRoutingInterface
     {
         parent::__construct();
         $this->logger->setLoggerSubPath(__CLASS__);
+        $this->phoneNumber = new PhoneNumber();
+        $this->phoneTelco  = new PhoneTelco();
     }
 
     /**
@@ -46,7 +49,7 @@ class PhoneRouting extends BaseCore implements PhoneRoutingInterface
      */
     public function __destruct()
     {
-        if (self::USE_BENCHMARK === TRUE) {
+        if (self::USE_BENCHMARK === true) {
             $this->benchmark->mark('code_end');
             $this->logger->debug(__FUNCTION__, 'Elapsed Time: ===> ' . $this->benchmark->elapsed_time('code_start', 'code_end'));
             $this->logger->debug(__FUNCTION__, 'Memory Usage: ===> ' . $this->benchmark->memory_usage());
@@ -65,13 +68,13 @@ class PhoneRouting extends BaseCore implements PhoneRoutingInterface
      */
     public function checkRoutingNumber($routingNumber = '')
     {
-        $routing = (string) strval($routingNumber);
+        $routing = strval($routingNumber);
         $routing = self::NUMBER_PREFIX . $routing;
         $data    = DataRepository::getData('vn_routing_number');
         if (isset($data[$routing])) {
             return $data[$routing];
         } else {
-            return NULL;
+            return null;
         }
     }
 
@@ -88,15 +91,15 @@ class PhoneRouting extends BaseCore implements PhoneRoutingInterface
     public function isMnp($called = '')
     {
         if (empty($called)) {
-            return NULL;
+            return null;
         }
         // Format new: 0084 + RN + MSISDN -> 0084002914692692 -> str_len = 16
         // Format old: 0084 + MSISDN -> 0084914692692 -> str_len = 13
         $length = mb_strlen($called);
         if ($length == self::IS_MNP_LENGTH) {
-            $isMnp = TRUE;
+            $isMnp = true;
         } else {
-            $isMnp = FALSE;
+            $isMnp = false;
         }
 
         return $isMnp;
@@ -114,18 +117,18 @@ class PhoneRouting extends BaseCore implements PhoneRoutingInterface
      */
     public function getRoutingNumberFromCalled($called = '')
     {
-        if ($this->isMnp($called) === TRUE) {
+        if ($this->isMnp($called) === true) {
             // Số nằm trong dải chuyển
             $format = $this->phoneNumber->format($called, self::FORMAT_NATIONAL);
             // Đặt trong trường hợp tất cả số điện thoại đã chuyển sang dạng 10 số
             $routingNumber = mb_substr($format, 0, -9);
-            if ($this->checkRoutingNumber($routingNumber) !== NULL) {
+            if ($this->checkRoutingNumber($routingNumber) !== null) {
                 return $routingNumber;
             } else {
-                return FALSE;
+                return false;
             }
         } else {
-            return NULL;
+            return null;
         }
     }
 
@@ -141,10 +144,10 @@ class PhoneRouting extends BaseCore implements PhoneRoutingInterface
      * @return array|mixed|null|string Thông tin nhà mạng trong trường hợp thành công
      *                                 Null nếu Routing number không hợp lệ
      */
-    public function detectCarrierFromRoutingNumber($number = '', $field = NULL)
+    public function detectCarrierFromRoutingNumber($number = '', $field = null)
     {
         $checkNumberIsMnp = $this->isMnp($number);
-        if ($checkNumberIsMnp === TRUE) {
+        if ($checkNumberIsMnp === true) {
             // Số thuộc dải MNP
             $routingNumber = $this->getRoutingNumberFromCalled($number);
             if (!empty($routingNumber)) {
@@ -153,16 +156,16 @@ class PhoneRouting extends BaseCore implements PhoneRoutingInterface
                 if (empty($field)) {
                     $result = $routingName;
                 } else {
-                    $result = $this->phoneTelco->carrier_data($routingName, $field);
+                    $result = $this->phoneTelco->carrierData($routingName, $field);
                 }
             } else {
                 // Routing number không hợp lệ
-                $result = NULL;
+                $result = null;
             }
         } else {
             // Số không thuộc dải MNP
             $number = $this->phoneNumber->format($number);
-            $result = $this->phoneNumber->detect_carrier($number, $field);
+            $result = $this->phoneNumber->detectCarrier($number, $field);
         }
 
         return $result;

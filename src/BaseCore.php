@@ -11,7 +11,7 @@
 namespace nguyenanhung\VnTelcoPhoneNumber;
 
 use nguyenanhung\MyDebug\Benchmark;
-use nguyenanhung\MyDebug\Debug;
+use nguyenanhung\MyDebug\Logger;
 
 /**
  * Class BaseCore
@@ -26,18 +26,24 @@ class BaseCore implements ProjectInterface, LoggerInterface
 
     /** @var object \nguyenanhung\MyDebug\Benchmark */
     protected $benchmark;
-    /** @var object \nguyenanhung\MyDebug\Debug Class Debug Object */
+
+    /** @var object \nguyenanhung\MyDebug\Logger Class Debug Object */
     protected $logger;
+
     /** @var bool DEBUG Status */
-    protected $debugStatus = FALSE;
+    protected $debugStatus = false;
+
     /** @var null|string Set Debug Level: DEBUG, INFO, ERROR ... etc */
-    protected $debugLevel = NULL;
+    protected $debugLevel = null;
+
     /** @var string Logger Path */
-    protected $loggerPath = NULL;
+    protected $loggerPath = null;
+
     /** @var null Logger Sub Path */
-    protected $loggerSubPath = NULL;
+    protected $loggerSubPath = null;
+
     /** @var string Filename to write Log */
-    protected $loggerFilename = NULL;
+    protected $loggerFilename = null;
 
     /**
      * BaseCore constructor.
@@ -47,12 +53,12 @@ class BaseCore implements ProjectInterface, LoggerInterface
      */
     public function __construct()
     {
-        if (self::USE_BENCHMARK === TRUE) {
+        if (self::USE_BENCHMARK === true) {
             $this->benchmark = new Benchmark();
             $this->benchmark->mark('code_start');
         }
-        $this->logger = new Debug();
-        if ($this->debugStatus === TRUE) {
+        $this->logger = new Logger();
+        if ($this->debugStatus === true) {
             $this->logger->setDebugStatus($this->debugStatus);
             $this->logger->setGlobalLoggerLevel($this->debugLevel);
             $this->logger->setLoggerPath($this->loggerPath);

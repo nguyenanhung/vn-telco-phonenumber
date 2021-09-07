@@ -29,18 +29,5 @@ interface PhoneTelcoInterface
      *
      * @return mixed|null Field if exists, full data if field_output = full,  null if not or error
      */
-    public function carrier_data($carrier = '', $output = '');
-
-    /**
-     * Function carrierData - alias of function carrier_data
-     *
-     * @param string $carrier
-     * @param string $output
-     *
-     * @return mixed|null
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 08/15/2020 20:18
-     */
     public function carrierData($carrier = '', $output = '');
 }
