@@ -11,7 +11,7 @@
         "vietnamobile"
     ],
     "homepage": "https://github.com/nguyenanhung/vn-telco-phonenumber",
-    "license": "MIT",
+    "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "Nguyen An Hung",
