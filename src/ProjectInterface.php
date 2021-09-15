@@ -18,8 +18,8 @@ namespace nguyenanhung\VnTelcoPhoneNumber;
  */
 interface ProjectInterface
 {
-    const VERSION                  = '3.0.0';
-    const LAST_MODIFIED            = '2021-09-07';
+    const VERSION                  = '3.0.1';
+    const LAST_MODIFIED            = '2021-09-16';
     const DEFAULT_COUNTRY          = 'VN';
     const DEFAULT_LANGUAGE         = 'vi';
     const DEFAULT_REGION           = 'VN';
