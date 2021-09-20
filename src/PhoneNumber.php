@@ -204,7 +204,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
             $timezoneMapper    = PhoneNumberToTimeZonesMapper::getInstance();
             $result            = $timezoneMapper->getTimeZonesForNumber($phoneNumberObject);
             $this->logger->debug(__FUNCTION__, 'Use REGION: ' . $use_region);
-            $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
+            $this->logger->info(__FUNCTION__, 'Final Result: ' , $result);
 
             return $result;
         } catch (Exception $e) {
