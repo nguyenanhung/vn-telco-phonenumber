@@ -111,7 +111,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
             $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), $use_region);
             $result            = $phoneNumberUtil->isValidNumber($phoneNumberObject);
             $this->logger->debug(__FUNCTION__, 'Use REGION: ' . $use_region);
-            $this->logger->info(__FUNCTION__, 'Final Result: ', $result);
+            $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
 
             return $result;
         } catch (Exception $e) {
@@ -159,7 +159,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
             $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), $use_region);
             $result            = $phoneNumberUtil->isPossibleNumber($phoneNumberObject);
             $this->logger->debug(__FUNCTION__, 'Use REGION: ' . $use_region);
-            $this->logger->info(__FUNCTION__, 'Final Result: ', $result);
+            $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
 
             return $result;
         } catch (Exception $e) {
@@ -204,7 +204,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
             $timezoneMapper    = PhoneNumberToTimeZonesMapper::getInstance();
             $result            = $timezoneMapper->getTimeZonesForNumber($phoneNumberObject);
             $this->logger->debug(__FUNCTION__, 'Use REGION: ' . $use_region);
-            $this->logger->info(__FUNCTION__, 'Final Result: ', $result);
+            $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
 
             return $result;
         } catch (Exception $e) {
@@ -265,7 +265,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
                 $result = $carrierMapper->getNameForNumber($phoneNumberObject, self::DEFAULT_LANGUAGE);
             }
             $this->logger->debug(__FUNCTION__, 'Use REGION: ' . $use_region);
-            $this->logger->info(__FUNCTION__, 'Final Result: ', $result);
+            $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
 
             return $result;
         } catch (Exception $e) {
@@ -323,7 +323,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
                 $result = $geoCoder->getDescriptionForNumber($phoneNumberObject, self::DEFAULT_LANGUAGE, $use_region);
             }
             $this->logger->debug(__FUNCTION__, 'Use REGION: ' . $use_region);
-            $this->logger->info(__FUNCTION__, 'Final Result: ', $result);
+            $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
 
             return $result;
         } catch (Exception $e) {
@@ -404,7 +404,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
             $use_region      = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
             $result          = $phoneNumberUtil->getCountryCodeForRegion($use_region);
             $this->logger->debug(__FUNCTION__, 'Use REGION: ' . $use_region);
-            $this->logger->info(__FUNCTION__, 'Final Result: ', $result);
+            $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
 
             return $result;
         } catch (Exception $e) {
@@ -440,7 +440,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
             $use_region_code = null !== $region_codes ? trim($region_codes) : self::DEFAULT_REGION_CODE;
             $result          = $phoneNumberUtil->getRegionCodesForCountryCode($use_region_code);
             $this->logger->debug(__FUNCTION__, 'Use REGION Code: ' . $use_region_code);
-            $this->logger->info(__FUNCTION__, 'Final Result: ', $result);
+            $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
 
             return $result;
         } catch (Exception $e) {
@@ -582,7 +582,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
             foreach ($phoneNumberMatcher as $phoneNumberMatch) {
                 $result['number'][] = $phoneNumberMatch->number();
             }
-            $this->logger->info(__FUNCTION__, 'Final Result: ', $result);
+            $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
 
             return $result;
         } catch (Exception $e) {
@@ -772,7 +772,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
                 $this->logger->debug(__FUNCTION__, 'Unavailable Hidden for ' . $place_hidden . ' with Phone Number: ' . $phone_number);
                 $this->logger->debug(__FUNCTION__, 'Result Hidden: ', $result);
             }
-            $this->logger->info(__FUNCTION__, 'Final Result: ', $result);
+            $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
 
             return $result;
         } catch (Exception $e) {
@@ -819,7 +819,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
                 $phone_telco->setLoggerPath($this->loggerPath);
                 $phone_telco->__construct();
                 $result = $phone_telco->carrier_data($carrier, $get_field_data);
-                $this->logger->info(__FUNCTION__, 'Final Result: ', $result);
+                $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
 
                 return $result;
             }
@@ -832,7 +832,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
                 if ($result !== null) {
                     return $result;
                 }
-                $this->logger->info(__FUNCTION__, 'Final Result: ', $result);
+                $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
             }
             $this->logger->info(__FUNCTION__, 'Final Result: ', $carrier);
 
@@ -988,7 +988,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
             $this->logger->debug(__FUNCTION__, 'New Number: ', $new_number);
             if (!empty($old_number) && !empty($new_number)) {
                 $result = array($old_number, $new_number);
-                $this->logger->info(__FUNCTION__, 'Final Result: ', $result);
+                $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
 
                 return $result;
             }
