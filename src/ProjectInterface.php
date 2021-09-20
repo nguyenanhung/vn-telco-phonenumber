@@ -18,36 +18,36 @@ namespace nguyenanhung\VnTelcoPhoneNumber;
  */
 interface ProjectInterface
 {
-    const VERSION                  = '3.0.1';
-    const LAST_MODIFIED            = '2021-09-16';
-    const DEFAULT_COUNTRY          = 'VN';
-    const DEFAULT_LANGUAGE         = 'vi';
-    const DEFAULT_REGION           = 'VN';
-    const DEFAULT_REGION_CODE      = '84';
-    const HIDDEN_STRING            = '*';
-    const FORMAT_FOR_HUMAN_VIETNAM = 'VN_HUMAN';
-    const FORMAT_E164              = 'E164';
-    const FORMAT_INTERNATIONAL     = 'INTERNATIONAL'; // International
-    const FORMAT_NATIONAL          = 'NATIONAL'; // National
-    const FORMAT_RFC3966           = 'RFC3966';
-    const HIDDEN_REGION            = 'HIDDEN';
-    const HIDDEN_REGION_HEAD       = 'HIDDEN_HEAD';
-    const HIDDEN_REGION_MIDDLE     = 'HIDDEN_MIDDLE';
-    const HIDDEN_REGION_END        = 'HIDDEN_END';
-    const HIDDEN_PLACE_HEAD        = 'HIDDEN_HEAD'; // Ẩn số đầu
-    const HIDDEN_PLACE_MIDDLE      = 'HIDDEN_MIDDLE'; // Ẩn số giữa
-    const HIDDEN_PLACE_END         = 'HIDDEN_END'; // Ẩn số cuối
-    const CONVERT_NEW_TO_OLD       = 'old';
-    const CONVERT_OLD_TO_NEW       = 'new';
-    const MATCH_NUMBER_OLD         = '/^(841[2689])[0-9]{8}$/';
-    const MATCH_NUMBER_NEW         = '/^(84[3785])[0-9]{8}$/';
-    const MAX_LENGTH_NUMBER_OLD    = 12;
-    const MAX_LENGTH_NUMBER_NEW    = 11;
-    const VINAPHONE                = 'Vinaphone'; // ID nhà mạng Vinaphone
-    const VIETTEL                  = 'Viettel Mobile'; // ID nhà mạng Viettel
-    const MOBIFONE                 = 'MobiFone'; // ID nhà mạng MobiFone
-    const VIETNAMOBILE             = 'Vietnamobile'; // ID nhà mạng Vietnamobile
-    const USE_BENCHMARK            = false;
+    public const VERSION                  = '3.0.3';
+    public const LAST_MODIFIED            = '2021-09-20';
+    public const DEFAULT_COUNTRY          = 'VN';
+    public const DEFAULT_LANGUAGE         = 'vi';
+    public const DEFAULT_REGION           = 'VN';
+    public const DEFAULT_REGION_CODE      = '84';
+    public const HIDDEN_STRING            = '*';
+    public const FORMAT_FOR_HUMAN_VIETNAM = 'VN_HUMAN';
+    public const FORMAT_E164              = 'E164';
+    public const FORMAT_INTERNATIONAL     = 'INTERNATIONAL'; // International
+    public const FORMAT_NATIONAL          = 'NATIONAL'; // National
+    public const FORMAT_RFC3966           = 'RFC3966';
+    public const HIDDEN_REGION            = 'HIDDEN';
+    public const HIDDEN_REGION_HEAD       = 'HIDDEN_HEAD';
+    public const HIDDEN_REGION_MIDDLE     = 'HIDDEN_MIDDLE';
+    public const HIDDEN_REGION_END        = 'HIDDEN_END';
+    public const HIDDEN_PLACE_HEAD        = 'HIDDEN_HEAD'; // Ẩn số đầu
+    public const HIDDEN_PLACE_MIDDLE      = 'HIDDEN_MIDDLE'; // Ẩn số giữa
+    public const HIDDEN_PLACE_END         = 'HIDDEN_END'; // Ẩn số cuối
+    public const CONVERT_NEW_TO_OLD       = 'old';
+    public const CONVERT_OLD_TO_NEW       = 'new';
+    public const MATCH_NUMBER_OLD         = '/^(841[2689])[0-9]{8}$/';
+    public const MATCH_NUMBER_NEW         = '/^(84[3785])[0-9]{8}$/';
+    public const MAX_LENGTH_NUMBER_OLD    = 12;
+    public const MAX_LENGTH_NUMBER_NEW    = 11;
+    public const VINAPHONE                = 'Vinaphone'; // ID nhà mạng Vinaphone
+    public const VIETTEL                  = 'Viettel Mobile'; // ID nhà mạng Viettel
+    public const MOBIFONE                 = 'MobiFone'; // ID nhà mạng MobiFone
+    public const VIETNAMOBILE             = 'Vietnamobile'; // ID nhà mạng Vietnamobile
+    public const USE_BENCHMARK            = false;
 
     /**
      * Get current version of Package

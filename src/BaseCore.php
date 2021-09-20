@@ -34,16 +34,16 @@ class BaseCore implements ProjectInterface, LoggerInterface
     protected $debugStatus = false;
 
     /** @var null|string Set Debug Level: DEBUG, INFO, ERROR ... etc */
-    protected $debugLevel = null;
+    protected $debugLevel = 'error';
 
     /** @var string Logger Path */
-    protected $loggerPath = null;
+    protected $loggerPath = '';
 
     /** @var null Logger Sub Path */
-    protected $loggerSubPath = null;
+    protected $loggerSubPath = '';
 
     /** @var string Filename to write Log */
-    protected $loggerFilename = null;
+    protected $loggerFilename = '';
 
     /**
      * BaseCore constructor.
