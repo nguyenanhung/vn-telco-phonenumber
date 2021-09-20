@@ -440,7 +440,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
             $use_region_code = null !== $region_codes ? trim($region_codes) : self::DEFAULT_REGION_CODE;
             $result          = $phoneNumberUtil->getRegionCodesForCountryCode($use_region_code);
             $this->logger->debug(__FUNCTION__, 'Use REGION Code: ' . $use_region_code);
-            $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
+            $this->logger->info(__FUNCTION__, 'Final Result: ' , $result);
 
             return $result;
         } catch (Exception $e) {
