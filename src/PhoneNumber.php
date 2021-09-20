@@ -628,11 +628,11 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @time     : 9/21/18 01:30
      *
-     * @param string $phone_number Input Phone Number
-     * @param string $format       List command:
-     *                             VN, VN_HUMAN,
-     *                             E164,INTERNATIONAL, NATIONAL, RFC3966,
-     *                             HIDDEN, HIDDEN_HEAD, HIDDEN_MIDDLE, HIDDEN_END
+     * @param string|null $phone_number Input Phone Number
+     * @param string|null $format       List command:
+     *                                  VN, VN_HUMAN,
+     *                                  E164,INTERNATIONAL, NATIONAL, RFC3966,
+     *                                  HIDDEN, HIDDEN_HEAD, HIDDEN_MIDDLE, HIDDEN_END
      *
      * @example  phone_number = 0163 295 3760, format = Null or Invalid of List command => Output: 841632953760
      * @example  phone_number = 0163 295 3760, format = VN => Output: 01632953760
@@ -649,9 +649,9 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @see      https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see      https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
-     * @return null|string String if Success, Null if Error, Raw phone input if Exception
+     * @return string String if Success, Null if Error, Raw phone input if Exception
      */
-    public function format($phone_number = '', $format = ''): ?string
+    public function format($phone_number = '', $format = ''): string
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -661,7 +661,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
         if (empty($phone_number)) {
             $this->logger->debug(__FUNCTION__, 'Phone Number input is Empty!');
 
-            return null;
+            return $phone_number;
         }
         $phone_number = trim($phone_number);
         $format       = strtoupper(trim($format));
@@ -722,9 +722,9 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      *
      * @see     https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      *
-     * @return null|string String if Success, Null if Error, Raw phone input if Exception
+     * @return string String if Success, Null if Error, Raw phone input if Exception
      */
-    public function formatHidden($phone_number = '', $place_hidden = ''): ?string
+    public function formatHidden($phone_number = '', $place_hidden = ''): string
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -734,7 +734,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
         if (empty($phone_number)) {
             $this->logger->debug(__FUNCTION__, 'Phone Number input is Empty!');
 
-            return null;
+            return $phone_number;
         }
         $phone_number = trim($phone_number);
         $place_hidden = strtoupper($place_hidden);
@@ -794,9 +794,9 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @param string $phone_number   This is Phone Number to be Detect
      * @param null   $get_field_data Get File Data, keyword: name, short_name, id
      *
-     * @return null|string String if Success, Null if Error
+     * @return string String if Success, Null if Error
      */
-    public function detectCarrier($phone_number = '', $get_field_data = null): ?string
+    public function detectCarrier($phone_number = '', $get_field_data = null): string
     {
         $inputParams = array(
             'phone_number'   => $phone_number,
@@ -806,7 +806,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
         if (empty($phone_number)) {
             $this->logger->debug(__FUNCTION__, 'Phone Number input is Empty!');
 
-            return null;
+            return $phone_number;
         }
         try {
             $carrierMapper     = PhoneNumberToCarrierMapper::getInstance();
@@ -841,7 +841,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
             $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
             $this->logger->error(__FUNCTION__, $message);
 
-            return null;
+            return $phone_number;
         }
     }
 
@@ -860,9 +860,9 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      *
-     * @return null|string
+     * @return string
      */
-    public function vnConvertPhoneNumber($phone_number = '', $phone_mode = '', $phone_format = null): ?string
+    public function vnConvertPhoneNumber($phone_number = '', $phone_mode = '', $phone_format = null): string
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -873,11 +873,12 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
         if (empty($phone_number)) {
             $this->logger->debug(__FUNCTION__, 'Phone Number input is Empty!');
 
-            return null;
+            return $phone_number;
         }
         $mode = strtolower($phone_mode); // old || new
         // Convert Phone Number to CountryCode + NationalNumber
-        $phone_number = $this->format(trim($phone_number));
+        $phone_number = trim($phone_number);
+        $phone_number = $this->format($phone_number);
         try {
             // Data Convert Phone Number
             $dataVnConvertPhoneNumber = Repository\DataRepository::getData('vn_convert_phone_number');
@@ -952,10 +953,10 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
             $message = 'Error File: ' . $e->getFile() . ' - Line: ' . $e->getLine() . ' - Code: ' . $e->getCode() . ' - Message: ' . $e->getMessage();
             $this->logger->error(__FUNCTION__, $message);
 
-            return null;
+            return $phone_number;
         }
 
-        return null;
+        return $phone_number;
     }
 
     /**

@@ -267,11 +267,11 @@ interface PhoneNumberInterface
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @time     : 9/21/18 01:30
      *
-     * @param string $phone_number Input Phone Number
-     * @param string $format       List command:
-     *                             VN, VN_HUMAN,
-     *                             E164,INTERNATIONAL, NATIONAL, RFC3966,
-     *                             HIDDEN, HIDDEN_HEAD, HIDDEN_MIDDLE, HIDDEN_END
+     * @param string|null $phone_number Input Phone Number
+     * @param string|null $format       List command:
+     *                                  VN, VN_HUMAN,
+     *                                  E164,INTERNATIONAL, NATIONAL, RFC3966,
+     *                                  HIDDEN, HIDDEN_HEAD, HIDDEN_MIDDLE, HIDDEN_END
      *
      * @example  phone_number = 0163 295 3760, format = Null or Invalid of List command => Output: 841632953760
      * @example  phone_number = 0163 295 3760, format = VN => Output: 01632953760
@@ -288,7 +288,7 @@ interface PhoneNumberInterface
      * @see      https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see      https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
-     * @return null|string String if Success, Null if Error, Raw phone input if Exception
+     * @return string String if Success, Null if Error, Raw phone input if Exception
      */
     public function format($phone_number = '', $format = '');
 
@@ -310,7 +310,7 @@ interface PhoneNumberInterface
      *
      * @see     https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      *
-     * @return null|string String if Success, Null if Error, Raw phone input if Exception
+     * @return string String if Success, Null if Error, Raw phone input if Exception
      */
     public function formatHidden($phone_number = '', $place_hidden = '');
 
