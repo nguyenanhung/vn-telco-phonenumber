@@ -749,7 +749,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
              * $place_hidden = END => 0163 123 ***
              */
             $exPhone = explode(' ', $phoneNumberVnFormat);
-            if (count($exPhone) > 1) {
+            if (count($exPhone) > 2) {
                 if ($place_hidden === self::HIDDEN_PLACE_HEAD) {
                     $result = trim(str_repeat(self::HIDDEN_STRING, strlen($exPhone[0]))) . trim($exPhone[1]) . trim($exPhone[2]);
                     $this->logger->debug(__FUNCTION__, 'Place Hidden is: ' . self::HIDDEN_PLACE_HEAD);
