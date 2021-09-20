@@ -930,7 +930,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
                         }
                         // Rule to check
                         $ruleCheckConvert = '/^(' . $phone_number_prefix . ')[0-9]{' . $phone_number_content . '}$/';
-                        $this->logger->debug(__FUNCTION__, 'Rule preg_match Check to Convert Number: ' . $phone_number . ' is ', $ruleCheckConvert);
+                        $this->logger->debug(__FUNCTION__, 'Rule preg_match Check to Convert Number: ' . $phone_number . ' is '. $ruleCheckConvert);
                         if (($phone_number_content !== null && $phone_number_prefix !== null && $convert_prefix !== null) && preg_match($ruleCheckConvert, $phone_number)) {
                             // Cắt lấy các số cuối tính từ vị trí đầu tiên trong dãy $phone_number rồi nối đầu số $convert_prefix
                             $phone_number = $convert_prefix . substr($phone_number, strlen($phone_number_prefix), $phone_number_content);
