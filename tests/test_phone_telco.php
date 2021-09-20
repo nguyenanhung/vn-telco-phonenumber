@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../functions.php';
 
 use nguyenanhung\VnTelcoPhoneNumber\Phone_telco;
 
@@ -11,8 +10,8 @@ $my_text   = 'So dien thoai cua toi la: ' . $my_number . ' - Ahihi';
 d("Phone number: " . $my_number);
 // Create
 $tel = new Phone_telco();
-$tel->setDebugStatus(TRUE);
-$tel->setLoggerPath(testLogPath());
+$tel->setDebugStatus(true);
+$tel->setLoggerPath(__DIR__ . '/../tmp');
 $tel->__construct();
 d($tel->getVersion());
 

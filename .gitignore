@@ -122,11 +122,7 @@ GitHub.sublime-settings
 composer.lock
 /logs/*
 !/logs/index.html
-
-application/cache/*
-!application/cache/index.html
-application/logs/*
-!application/logs/index.html
-application/logs-data/*
-!application/logs-data/index.html
+/tmp/*
+!/tmp/index.html
+!/tmp/.gitkeep
 
