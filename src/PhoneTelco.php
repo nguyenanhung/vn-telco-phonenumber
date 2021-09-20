@@ -83,9 +83,9 @@ class PhoneTelco extends BaseCore implements PhoneTelcoInterface
             $this->logger->error(__FUNCTION__, 'Error Message: ' . $e->getMessage());
             $this->logger->error(__FUNCTION__, 'Error Trace As String: ' . $e->getTraceAsString());
 
-            return null;
+            return $carrier;
         }
 
-        return null;
+        return $carrier;
     }
 }

@@ -794,7 +794,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @param string $phone_number   This is Phone Number to be Detect
      * @param null   $get_field_data Get File Data, keyword: name, short_name, id
      *
-     * @return string String if Success, Null if Error
+     * @return mixed|string|null String if Success, Null if Error
      */
     public function detectCarrier($phone_number = '', $get_field_data = null): string
     {
@@ -814,21 +814,21 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
             $carrier           = $carrierMapper->getNameForNumber($phoneNumberObject, self::DEFAULT_LANGUAGE);
             $this->logger->debug(__FUNCTION__, 'Carrier Detect from ' . $phone_number . ' is ' . $carrier);
             if ($get_field_data !== null) {
-                $phone_telco = new Phone_telco();
-                $phone_telco->setDebugStatus($this->debugStatus);
-                $phone_telco->setLoggerPath($this->loggerPath);
-                $phone_telco->__construct();
-                $result = $phone_telco->carrier_data($carrier, $get_field_data);
+                $phoneTelco = new PhoneTelco();
+                $phoneTelco->setDebugStatus($this->debugStatus);
+                $phoneTelco->setLoggerPath($this->loggerPath);
+                $phoneTelco->__construct();
+                $result = $phoneTelco->carrierData($carrier, $get_field_data);
                 $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
 
                 return $result;
             }
             if ($this->normal_name === true) {
-                $phone_telco = new Phone_telco();
-                $phone_telco->setDebugStatus($this->debugStatus);
-                $phone_telco->setLoggerPath($this->loggerPath);
-                $phone_telco->__construct();
-                $result = $phone_telco->carrier_data($carrier, 'name');
+                $phoneTelco = new PhoneTelco();
+                $phoneTelco->setDebugStatus($this->debugStatus);
+                $phoneTelco->setLoggerPath($this->loggerPath);
+                $phoneTelco->__construct();
+                $result = $phoneTelco->carrierData($carrier, 'name');
                 if ($result !== null) {
                     return $result;
                 }

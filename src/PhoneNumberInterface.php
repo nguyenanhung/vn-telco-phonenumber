@@ -325,7 +325,7 @@ interface PhoneNumberInterface
      * @param string $phone_number   This is Phone Number to be Detect
      * @param null   $get_field_data Get File Data, keyword: name, short_name, id
      *
-     * @return null|string String if Success, Null if Error
+     * @return mixed|string|null String if Success, Null if Error
      */
     public function detectCarrier($phone_number = '', $get_field_data = null);
 
