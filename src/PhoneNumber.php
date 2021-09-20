@@ -582,7 +582,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
             foreach ($phoneNumberMatcher as $phoneNumberMatch) {
                 $result['number'][] = $phoneNumberMatch->number();
             }
-            $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
+            $this->logger->info(__FUNCTION__, 'Final Result: ', $result);
 
             return $result;
         } catch (Exception $e) {
@@ -759,7 +759,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
                     $this->logger->debug(__FUNCTION__, 'Place Hidden is: ' . self::HIDDEN_PLACE_MIDDLE);
                     $this->logger->debug(__FUNCTION__, 'Result Hidden: ' . $result);
                 } elseif ($place_hidden === self::HIDDEN_PLACE_END) {
-                    $result = trim($exPhone[0]) . trim($exPhone[4]) . trim(str_repeat(self::HIDDEN_STRING, strlen($exPhone[2])));
+                    $result = trim($exPhone[0]) . trim($exPhone[1]) . trim(str_repeat(self::HIDDEN_STRING, strlen($exPhone[2])));
                     $this->logger->debug(__FUNCTION__, 'Place Hidden is: ' . self::HIDDEN_PLACE_END);
                     $this->logger->debug(__FUNCTION__, 'Result Hidden: ' . $result);
                 } else {
@@ -989,7 +989,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
             $this->logger->debug(__FUNCTION__, 'New Number: ' . $new_number);
             if (!empty($old_number) && !empty($new_number)) {
                 $result = array($old_number, $new_number);
-                $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
+                $this->logger->info(__FUNCTION__, 'Final Result: ', $result);
 
                 return $result;
             }

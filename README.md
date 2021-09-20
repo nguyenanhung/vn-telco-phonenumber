@@ -2,11 +2,11 @@
 
 [![Latest Stable Version](http://poser.pugx.org/nguyenanhung/vn-telco-phonenumber/v)](https://packagist.org/packages/nguyenanhung/vn-telco-phonenumber) [![Total Downloads](http://poser.pugx.org/nguyenanhung/vn-telco-phonenumber/downloads)](https://packagist.org/packages/nguyenanhung/vn-telco-phonenumber) [![Latest Unstable Version](http://poser.pugx.org/nguyenanhung/vn-telco-phonenumber/v/unstable)](https://packagist.org/packages/nguyenanhung/vn-telco-phonenumber) [![License](http://poser.pugx.org/nguyenanhung/vn-telco-phonenumber/license)](https://packagist.org/packages/nguyenanhung/vn-telco-phonenumber) [![PHP Version Require](http://poser.pugx.org/nguyenanhung/vn-telco-phonenumber/require/php)](https://packagist.org/packages/nguyenanhung/vn-telco-phonenumber)
 
-Library detect carrier Vietnam telco: Viettel, Vina, MobiFone...
+Library detect carrier Vietnam telco: Viettel, VinaPhone, MobiFone, Vietnamobile ...
 
 Format Phone number
 
-Library use libphonenumber by Google, version PHP by giggsey
+Library use `libphonenumber` by Google, version PHP by `giggsey`
 
 ### Installation
 
