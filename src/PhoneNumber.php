@@ -68,7 +68,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
     public function setNormalName($value = false): bool
     {
         $this->normal_name = $value;
-        $this->logger->debug(__FUNCTION__, 'setNormalName: ', $this->normal_name);
+        $this->logger->debug(__FUNCTION__, 'setNormalName: ' . $this->normal_name);
 
         return $this->normal_name;
     }
@@ -753,24 +753,24 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
                 if ($place_hidden === self::HIDDEN_PLACE_HEAD) {
                     $result = trim(str_repeat(self::HIDDEN_STRING, strlen($exPhone[0]))) . trim($exPhone[1]) . trim($exPhone[2]);
                     $this->logger->debug(__FUNCTION__, 'Place Hidden is: ' . self::HIDDEN_PLACE_HEAD);
-                    $this->logger->debug(__FUNCTION__, 'Result Hidden: ', $result);
+                    $this->logger->debug(__FUNCTION__, 'Result Hidden: ' . $result);
                 } elseif ($place_hidden === self::HIDDEN_PLACE_MIDDLE) {
                     $result = trim($exPhone[0]) . trim(str_repeat(self::HIDDEN_STRING, strlen($exPhone[1]))) . trim($exPhone[2]);
                     $this->logger->debug(__FUNCTION__, 'Place Hidden is: ' . self::HIDDEN_PLACE_MIDDLE);
-                    $this->logger->debug(__FUNCTION__, 'Result Hidden: ', $result);
+                    $this->logger->debug(__FUNCTION__, 'Result Hidden: ' . $result);
                 } elseif ($place_hidden === self::HIDDEN_PLACE_END) {
                     $result = trim($exPhone[0]) . trim($exPhone[4]) . trim(str_repeat(self::HIDDEN_STRING, strlen($exPhone[2])));
                     $this->logger->debug(__FUNCTION__, 'Place Hidden is: ' . self::HIDDEN_PLACE_END);
-                    $this->logger->debug(__FUNCTION__, 'Result Hidden: ', $result);
+                    $this->logger->debug(__FUNCTION__, 'Result Hidden: ' . $result);
                 } else {
                     $result = trim($exPhone[0]) . trim(str_repeat(self::HIDDEN_STRING, strlen($exPhone[1]))) . trim($exPhone[2]);
                     $this->logger->debug(__FUNCTION__, 'Place Hidden is: ' . $place_hidden);
-                    $this->logger->debug(__FUNCTION__, 'Result Hidden: ', $result);
+                    $this->logger->debug(__FUNCTION__, 'Result Hidden: ' . $result);
                 }
             } else {
                 $result = $phoneNumberVnFormat;
                 $this->logger->debug(__FUNCTION__, 'Unavailable Hidden for ' . $place_hidden . ' with Phone Number: ' . $phone_number);
-                $this->logger->debug(__FUNCTION__, 'Result Hidden: ', $result);
+                $this->logger->debug(__FUNCTION__, 'Result Hidden: ' . $result);
             }
             $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
 
@@ -834,7 +834,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
                 }
                 $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
             }
-            $this->logger->info(__FUNCTION__, 'Final Result: ', $carrier);
+            $this->logger->info(__FUNCTION__, 'Final Result: ' . $carrier);
 
             return $carrier;
         } catch (Exception $e) {
@@ -885,10 +885,10 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
             if (is_array($dataVnConvertPhoneNumber) && count($dataVnConvertPhoneNumber) > 0) {
                 if ($mode === self::CONVERT_NEW_TO_OLD) {
                     $preg_match_number = self::MATCH_NUMBER_NEW;
-                    $this->logger->debug(__FUNCTION__, 'Mode is New to Old with Preg Match: ', $preg_match_number);
+                    $this->logger->debug(__FUNCTION__, 'Mode is New to Old with Preg Match: ' . $preg_match_number);
                 } elseif ($mode === self::CONVERT_OLD_TO_NEW) {
                     $preg_match_number = self::MATCH_NUMBER_OLD;
-                    $this->logger->debug(__FUNCTION__, 'Mode is Old to New with Preg Match: ', $preg_match_number);
+                    $this->logger->debug(__FUNCTION__, 'Mode is Old to New with Preg Match: ' . $preg_match_number);
                 } else {
                     $preg_match_number = null;
                 }
@@ -934,9 +934,9 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
                         if (($phone_number_content !== null && $phone_number_prefix !== null && $convert_prefix !== null) && preg_match($ruleCheckConvert, $phone_number)) {
                             // Cắt lấy các số cuối tính từ vị trí đầu tiên trong dãy $phone_number rồi nối đầu số $convert_prefix
                             $phone_number = $convert_prefix . substr($phone_number, strlen($phone_number_prefix), $phone_number_content);
-                            $this->logger->debug(__FUNCTION__, 'Rule Check OK -> Phone Number Convert: ', $phone_number);
+                            $this->logger->debug(__FUNCTION__, 'Rule Check OK -> Phone Number Convert: ' . $phone_number);
                             $phone_number = $this->format($phone_number, $phone_format);
-                            $this->logger->info(__FUNCTION__, 'Rule Check OK -> Phone Number Final Result Format: ', $phone_number);
+                            $this->logger->info(__FUNCTION__, 'Rule Check OK -> Phone Number Final Result Format: ' . $phone_number);
 
                             return $phone_number;
                         }
@@ -984,8 +984,8 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
         try {
             $old_number = $this->vnConvertPhoneNumber(trim($phone_number), 'old', $phone_format);
             $new_number = $this->vnConvertPhoneNumber(trim($phone_number), 'new', $phone_format);
-            $this->logger->debug(__FUNCTION__, 'Old Number: ', $old_number);
-            $this->logger->debug(__FUNCTION__, 'New Number: ', $new_number);
+            $this->logger->debug(__FUNCTION__, 'Old Number: ' . $old_number);
+            $this->logger->debug(__FUNCTION__, 'New Number: ' . $new_number);
             if (!empty($old_number) && !empty($new_number)) {
                 $result = array($old_number, $new_number);
                 $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
