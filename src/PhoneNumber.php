@@ -812,7 +812,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
             $carrierMapper     = PhoneNumberToCarrierMapper::getInstance();
             $phoneNumberObject = PhoneNumberUtil::getInstance()->parse(trim($phone_number), self::DEFAULT_REGION);
             $carrier           = $carrierMapper->getNameForNumber($phoneNumberObject, self::DEFAULT_LANGUAGE);
-            $this->logger->debug(__FUNCTION__, 'Carrier Detect from ' . $phone_number . ' is ', $carrier);
+            $this->logger->debug(__FUNCTION__, 'Carrier Detect from ' . $phone_number . ' is ' . $carrier);
             if ($get_field_data !== null) {
                 $phone_telco = new Phone_telco();
                 $phone_telco->setDebugStatus($this->debugStatus);

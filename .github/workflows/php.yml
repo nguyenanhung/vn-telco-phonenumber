@@ -34,7 +34,7 @@ jobs:
                 run: php ./tests/test_phone_number.php
             -   name: Test class Phone Telco
                 run: php ./tests/test_phone_telco.php
+            -   name: Test class Phone Routing Number
+                run: php ./tests/test_phone_routing.php
             -   name: Test class SMS Link
                 run: php ./tests/test_sms_link.php
-            -   name: Test class Phone Number
-                run: php ./tests/test_phone_number.php
