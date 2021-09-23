@@ -38,7 +38,7 @@ class Phone_number extends PhoneNumber
      *
      * @return bool|null True if success, False if not, Null if Error
      */
-    public function is_valid($phone_number = '', $region = null): ?bool
+    public function is_valid($phone_number = '', $region = null)
     {
         return $this->isValid($phone_number, $region);
     }
@@ -60,7 +60,7 @@ class Phone_number extends PhoneNumber
      *
      * @return bool|null True if success, False if not, Null if Error
      */
-    public function is_possible_number($phone_number = '', $region = null): ?bool
+    public function is_possible_number($phone_number = '', $region = null)
     {
         return $this->isPossibleNumber($phone_number, $region);
     }
@@ -79,7 +79,7 @@ class Phone_number extends PhoneNumber
      *
      * @return array|null Array if Success, Null if Not
      */
-    public function get_time_zones_for_number($phone_number = '', $region = null): ?array
+    public function get_time_zones_for_number($phone_number = '', $region = null)
     {
         return $this->getTimeZonesForNumber($phone_number, $region);
     }
@@ -107,7 +107,7 @@ class Phone_number extends PhoneNumber
      *
      * @return null|string String if Success, Null if Not
      */
-    public function get_carrier_name_for_number($phone_number = '', $region = null, $mode = null): ?string
+    public function get_carrier_name_for_number($phone_number = '', $region = null, $mode = null)
     {
         return $this->getCarrierNameForNumber($phone_number, $region, $mode);
     }
@@ -134,7 +134,7 @@ class Phone_number extends PhoneNumber
      *
      * @return null|string String if Success, Null if Not
      */
-    public function get_geocode_description_for_number($phone_number = '', $region = null, $mode = null): ?string
+    public function get_geocode_description_for_number($phone_number = '', $region = null, $mode = null)
     {
         return $this->getGeocodeDescriptionForNumber($phone_number, $region, $mode);
     }
@@ -154,7 +154,7 @@ class Phone_number extends PhoneNumber
      *
      * @return null|string String if Success, Null if Not
      */
-    public function get_region_code_for_number($phone_number = '', $region = null): ?string
+    public function get_region_code_for_number($phone_number = '', $region = null)
     {
         return $this->getRegionCodeForNumber($phone_number, $region);
     }
@@ -173,7 +173,7 @@ class Phone_number extends PhoneNumber
      *
      * @return int|null Int if Success, Null if Not
      */
-    public function get_country_code_for_region($region = null): ?int
+    public function get_country_code_for_region($region = null)
     {
         return $this->getCountryCodeForRegion($region);
     }
@@ -193,7 +193,7 @@ class Phone_number extends PhoneNumber
      *
      * @return array|null Array if success, null if not
      */
-    public function get_region_codes_for_country_code($region_codes = null): ?array
+    public function get_region_codes_for_country_code($region_codes = null)
     {
         return $this->getRegionCodesForCountryCode($region_codes);
     }
@@ -213,7 +213,7 @@ class Phone_number extends PhoneNumber
      *
      * @return int|null Int if Success, Null if Not
      */
-    public function get_number_type($phone_number = '', $region = null): ?int
+    public function get_number_type($phone_number = '', $region = null)
     {
         return $this->getNumberType($phone_number, $region);
     }
@@ -233,7 +233,7 @@ class Phone_number extends PhoneNumber
      *
      * @return bool|null Bool if Success, Null if Error
      */
-    public function check_phone_number_can_be_internationally_dialled($phone_number = '', $region = null): ?bool
+    public function check_phone_number_can_be_internationally_dialled($phone_number = '', $region = null)
     {
         return $this->checkPhoneNumberCanBeInternationallyDialled($phone_number, $region);
     }
@@ -257,7 +257,7 @@ class Phone_number extends PhoneNumber
      *
      * @return array|null Array if Success, Null if not or Error (Set DEBUG to Details)
      */
-    public function find_phone_number_in_string($text = '', $region = null): ?array
+    public function find_phone_number_in_string($text = '', $region = null)
     {
         return $this->findPhoneNumberInString($text, $region);
     }
@@ -274,7 +274,7 @@ class Phone_number extends PhoneNumber
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 12/25/19 00:52
      */
-    public function get_national_number($phone_number = ''): ?string
+    public function get_national_number($phone_number = '')
     {
         return $this->getNationalNumber($phone_number);
     }
@@ -299,7 +299,7 @@ class Phone_number extends PhoneNumber
      *
      * @return null|string String if Success, Null if Error, Raw phone input if Exception
      */
-    public function format_hidden($phone_number = '', $place_hidden = ''): ?string
+    public function format_hidden($phone_number = '', $place_hidden = '')
     {
         return $this->formatHidden($phone_number, $place_hidden);
     }
@@ -317,7 +317,7 @@ class Phone_number extends PhoneNumber
      *
      * @return null|string String if Success, Null if Error
      */
-    public function detect_carrier($phone_number = '', $get_field_data = null): ?string
+    public function detect_carrier($phone_number = '', $get_field_data = null)
     {
         return $this->detectCarrier($phone_number, $get_field_data);
     }
@@ -339,7 +339,7 @@ class Phone_number extends PhoneNumber
      *
      * @return null|string
      */
-    public function vn_convert_phone_number($phone_number = '', $phone_mode = '', $phone_format = null): ?string
+    public function vn_convert_phone_number($phone_number = '', $phone_mode = '', $phone_format = null)
     {
         return $this->vnConvertPhoneNumber($phone_number, $phone_mode, $phone_format);
     }

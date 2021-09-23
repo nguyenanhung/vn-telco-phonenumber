@@ -42,11 +42,14 @@ class SmsLink implements ProjectInterface, SmsLinkInterface
      * @return string|null Content Js Sms Link from file config sms_link
      * @see   /Repository/config/sms_link.php
      */
-    public function addScript(): ?string
+    public function addScript()
     {
         $smsLink = Repository\DataRepository::getData('sms_link');
+        if (isset($smsLink['script'])) {
+            return $smsLink['script'];
+        }
 
-        return $smsLink['script'] ?? null;
+        return null;
     }
 
     /**
@@ -61,7 +64,7 @@ class SmsLink implements ProjectInterface, SmsLinkInterface
      *
      * @return string Content Send Sms
      */
-    public function getLink($phone_number = '', $body = ''): string
+    public function getLink($phone_number = '', $body = '')
     {
         if (!empty($body)) {
             $body = "?body=" . $body;

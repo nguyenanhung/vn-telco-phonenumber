@@ -22,7 +22,7 @@ use nguyenanhung\VnTelcoPhoneNumber\Repository\DataRepository;
  */
 class PhoneRouting extends BaseCore implements PhoneRoutingInterface
 {
-    public const IS_MNP_LENGTH = 16;
+    const IS_MNP_LENGTH = 16;
 
     /** @var object \nguyenanhung\VnTelcoPhoneNumber\PhoneNumber */
     private $phoneNumber;
@@ -71,8 +71,11 @@ class PhoneRouting extends BaseCore implements PhoneRoutingInterface
         $routing = (string) $routingNumber;
         $routing = self::NUMBER_PREFIX . $routing;
         $data    = DataRepository::getData('vn_routing_number');
+        if (isset($data[$routing])) {
+            return $data[$routing];
+        }
 
-        return $data[$routing] ?? null;
+        return null;
     }
 
     /**
@@ -85,7 +88,7 @@ class PhoneRouting extends BaseCore implements PhoneRoutingInterface
      *
      * @return bool|null TRUE nếu thuộc MNP, FALSE nếu không thuộc MNP, NULL nếu called là rỗng
      */
-    public function isMnp($called = ''): ?bool
+    public function isMnp($called = '')
     {
         if (empty($called)) {
             return null;
@@ -93,13 +96,8 @@ class PhoneRouting extends BaseCore implements PhoneRoutingInterface
         // Format new: 0084 + RN + MSISDN -> 0084002914692692 -> str_len = 16
         // Format old: 0084 + MSISDN -> 0084914692692 -> str_len = 13
         $length = mb_strlen($called);
-        if ($length === self::IS_MNP_LENGTH) {
-            $isMnp = true;
-        } else {
-            $isMnp = false;
-        }
 
-        return $isMnp;
+        return $length === self::IS_MNP_LENGTH;
     }
 
     /**

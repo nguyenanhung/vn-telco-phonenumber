@@ -65,7 +65,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      *
      * @return bool
      */
-    public function setNormalName($value = false): bool
+    public function setNormalName($value = false)
     {
         $this->normal_name = $value;
         $this->logger->debug(__FUNCTION__, 'setNormalName: ' . $this->normal_name);
@@ -92,7 +92,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      *
      * @return bool|null True if success, False if not, Null if Error
      */
-    public function isValid($phone_number = '', $region = null): ?bool
+    public function isValid($phone_number = '', $region = null)
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -140,7 +140,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      *
      * @return bool|null True if success, False if not, Null if Error
      */
-    public function isPossibleNumber($phone_number = '', $region = null): ?bool
+    public function isPossibleNumber($phone_number = '', $region = null)
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -184,7 +184,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      *
      * @return array|null Array if Success, Null if Not
      */
-    public function getTimeZonesForNumber($phone_number = '', $region = null): ?array
+    public function getTimeZonesForNumber($phone_number = '', $region = null)
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -204,7 +204,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
             $timezoneMapper    = PhoneNumberToTimeZonesMapper::getInstance();
             $result            = $timezoneMapper->getTimeZonesForNumber($phoneNumberObject);
             $this->logger->debug(__FUNCTION__, 'Use REGION: ' . $use_region);
-            $this->logger->info(__FUNCTION__, 'Final Result: ' , $result);
+            $this->logger->info(__FUNCTION__, 'Final Result: ', $result);
 
             return $result;
         } catch (Exception $e) {
@@ -238,7 +238,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      *
      * @return null|string String if Success, Null if Not
      */
-    public function getCarrierNameForNumber($phone_number = '', $region = null, $mode = null): ?string
+    public function getCarrierNameForNumber($phone_number = '', $region = null, $mode = null)
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -298,7 +298,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      *
      * @return null|string String if Success, Null if Not
      */
-    public function getGeocodeDescriptionForNumber($phone_number = '', $region = null, $mode = ''): ?string
+    public function getGeocodeDescriptionForNumber($phone_number = '', $region = null, $mode = '')
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -350,7 +350,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      *
      * @return null|string String if Success, Null if Not
      */
-    public function getRegionCodeForNumber($phone_number = '', $region = ''): ?string
+    public function getRegionCodeForNumber($phone_number = '', $region = '')
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -395,7 +395,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      *
      * @return int|null Int if Success, Null if Not
      */
-    public function getCountryCodeForRegion($region = null): ?int
+    public function getCountryCodeForRegion($region = null)
     {
         $inputParams = array('region' => $region);
         $this->logger->info(__FUNCTION__, 'Input Params: ', $inputParams);
@@ -431,7 +431,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      *
      * @return array|null Array if success, null if not
      */
-    public function getRegionCodesForCountryCode($region_codes = null): ?array
+    public function getRegionCodesForCountryCode($region_codes = null)
     {
         $inputParams = array('region_codes' => $region_codes);
         $this->logger->info(__FUNCTION__, 'Input Params: ', $inputParams);
@@ -440,7 +440,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
             $use_region_code = null !== $region_codes ? trim($region_codes) : self::DEFAULT_REGION_CODE;
             $result          = $phoneNumberUtil->getRegionCodesForCountryCode($use_region_code);
             $this->logger->debug(__FUNCTION__, 'Use REGION Code: ' . $use_region_code);
-            $this->logger->info(__FUNCTION__, 'Final Result: ' , $result);
+            $this->logger->info(__FUNCTION__, 'Final Result: ', $result);
 
             return $result;
         } catch (Exception $e) {
@@ -467,7 +467,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      *
      * @return int|null Int if Success, Null if Not
      */
-    public function getNumberType($phone_number = '', $region = null): ?int
+    public function getNumberType($phone_number = '', $region = null)
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -513,7 +513,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      *
      * @return bool|null Bool if Success, Null if Error
      */
-    public function checkPhoneNumberCanBeInternationallyDialled($phone_number = '', $region = null): ?bool
+    public function checkPhoneNumberCanBeInternationallyDialled($phone_number = '', $region = null)
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -562,7 +562,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      *
      * @return array|null Array if Success, Null if not or Error (Set DEBUG to Details)
      */
-    public function findPhoneNumberInString($text = '', $region = null): ?array
+    public function findPhoneNumberInString($text = '', $region = null)
     {
         $inputParams = array(
             'text'   => $text,
@@ -605,7 +605,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 12/25/19 00:52
      */
-    public function getNationalNumber($phone_number = ''): ?string
+    public function getNationalNumber($phone_number = '')
     {
         try {
             $phoneNumberUtil   = PhoneNumberUtil::getInstance();
@@ -651,7 +651,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      *
      * @return string String if Success, Null if Error, Raw phone input if Exception
      */
-    public function format($phone_number = '', $format = ''): string
+    public function format($phone_number = '', $format = '')
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -724,7 +724,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      *
      * @return string String if Success, Null if Error, Raw phone input if Exception
      */
-    public function formatHidden($phone_number = '', $place_hidden = ''): string
+    public function formatHidden($phone_number = '', $place_hidden = '')
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -796,7 +796,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      *
      * @return mixed|string|null String if Success, Null if Error
      */
-    public function detectCarrier($phone_number = '', $get_field_data = null): string
+    public function detectCarrier($phone_number = '', $get_field_data = null)
     {
         $inputParams = array(
             'phone_number'   => $phone_number,
@@ -862,7 +862,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      *
      * @return string
      */
-    public function vnConvertPhoneNumber($phone_number = '', $phone_mode = '', $phone_format = null): string
+    public function vnConvertPhoneNumber($phone_number = '', $phone_mode = '', $phone_format = null)
     {
         $inputParams = array(
             'phone_number' => $phone_number,

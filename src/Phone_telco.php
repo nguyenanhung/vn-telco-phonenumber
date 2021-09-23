@@ -30,7 +30,7 @@ class Phone_telco extends PhoneTelco
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/07/2021 44:55
      */
-    public function carrier_data(string $carrier = '', string $output = '')
+    public function carrier_data($carrier = '', $output = '')
     {
         return $this->carrierData($carrier, $output);
     }

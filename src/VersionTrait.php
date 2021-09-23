@@ -25,7 +25,7 @@ trait VersionTrait
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 10/22/18 08:42
      *
-     * @return mixed|string Current version of Package
+     * @return string Current version of Package
      */
     public function getVersion()
     {

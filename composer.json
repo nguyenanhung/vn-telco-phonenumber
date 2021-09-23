@@ -21,10 +21,10 @@
         }
     ],
     "require": {
-        "php": "^7.1 || ^8.0",
-        "giggsey/libphonenumber-for-php": "^8.12",
+        "php": ">=5.6",
+        "ext-json": "*",
         "nguyenanhung/my-debug": "^3.0",
-        "ext-json": "*"
+        "giggsey/libphonenumber-for-php": "^8.12"
     },
     "require-dev": {
         "kint-php/kint": "^3.3"
