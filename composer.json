@@ -22,7 +22,6 @@
     ],
     "require": {
         "php": ">=5.6",
-        "ext-json": "*",
         "nguyenanhung/my-debug": ">=2.0",
         "giggsey/libphonenumber-for-php": "^8.12"
     },

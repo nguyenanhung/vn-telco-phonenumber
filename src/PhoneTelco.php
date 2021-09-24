@@ -66,7 +66,11 @@ class PhoneTelco extends BaseCore implements PhoneTelcoInterface
             $this->logger->debug(__FUNCTION__, 'VN Carrier All Data: ', $vnCarrierData);
             if (array_key_exists($carrier, $vnCarrierData)) {
                 $isCarrier = $vnCarrierData[$carrier];
-                $this->logger->debug(__FUNCTION__, 'Is Carrier Data: ' . json_encode($isCarrier));
+                if (is_array($isCarrier)) {
+                    $this->logger->debug(__FUNCTION__, 'Is Carrier Data: ', $isCarrier);
+                } else {
+                    $this->logger->debug(__FUNCTION__, 'Is Carrier Data: ' . $isCarrier);
+                }
                 if (array_key_exists($output, $isCarrier)) {
                     $result = $isCarrier[$output];
                     $this->logger->debug(__FUNCTION__, 'Final Result get Field : ' . $output . $result);
@@ -74,7 +78,12 @@ class PhoneTelco extends BaseCore implements PhoneTelcoInterface
                     return $result;
                 }
                 if ($output = 'full') {
-                    $this->logger->debug(__FUNCTION__, 'Final Result get Field : ' . $output . $isCarrier);
+                    $isCarrier = $vnCarrierData[$carrier];
+                    if (is_array($isCarrier)) {
+                        $this->logger->debug(__FUNCTION__, 'Final Result get Field : ' . $output, $isCarrier);
+                    } else {
+                        $this->logger->debug(__FUNCTION__, 'Final Result get Field :' . $output . $isCarrier);
+                    }
 
                     return $isCarrier;
                 }
