@@ -18,7 +18,7 @@ use nguyenanhung\VnTelcoPhoneNumber\Repository;
  * @author     713uk13m <dev@nguyenanhung.com>
  * @copyright  713uk13m <dev@nguyenanhung.com>
  */
-class SmsLink implements ProjectInterface, SmsLinkInterface
+class SmsLink implements ProjectInterface
 {
     use VersionTrait;
 
@@ -39,17 +39,14 @@ class SmsLink implements ProjectInterface, SmsLinkInterface
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 10/9/18 13:39
      *
-     * @return string|null Content Js Sms Link from file config sms_link
+     * @return string Content Js Sms Link from file config sms_link
      * @see   /Repository/config/sms_link.php
      */
-    public function addScript()
+    public function addScript(): string
     {
         $smsLink = Repository\DataRepository::getData('sms_link');
-        if (isset($smsLink['script'])) {
-            return $smsLink['script'];
-        }
 
-        return null;
+        return $smsLink['script'] ?? '';
     }
 
     /**
@@ -64,7 +61,7 @@ class SmsLink implements ProjectInterface, SmsLinkInterface
      *
      * @return string Content Send Sms
      */
-    public function getLink($phone_number = '', $body = '')
+    public function getLink(string $phone_number = '', string $body = ''): string
     {
         if (!empty($body)) {
             $body = "?body=" . $body;

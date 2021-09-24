@@ -30,15 +30,15 @@ class Phone_number extends PhoneNumber
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 9/21/18 01:29
      *
-     * @param string $phone_number Phone Number Check Valid
-     * @param string $region       Region, example VN
+     * @param string      $phone_number Phone Number Check Valid
+     * @param string|null $region       Region, example VN
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see   https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
      * @return bool|null True if success, False if not, Null if Error
      */
-    public function is_valid($phone_number = '', $region = null)
+    public function is_valid(string $phone_number = '', string $region = null)
     {
         return $this->isValid($phone_number, $region);
     }
@@ -52,15 +52,15 @@ class Phone_number extends PhoneNumber
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 9/21/18 01:29
      *
-     * @param string $phone_number Phone Number Check Possible
-     * @param string $region       Region, example VN
+     * @param string      $phone_number Phone Number Check Possible
+     * @param string|null $region       Region, example VN
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see   https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
      * @return bool|null True if success, False if not, Null if Error
      */
-    public function is_possible_number($phone_number = '', $region = null)
+    public function is_possible_number(string $phone_number = '', string $region = null)
     {
         return $this->isPossibleNumber($phone_number, $region);
     }
@@ -71,15 +71,15 @@ class Phone_number extends PhoneNumber
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 9/21/18 01:50
      *
-     * @param string $phone_number Phone Number to get Timezone
-     * @param string $region       Region, example VN
+     * @param string      $phone_number Phone Number to get Timezone
+     * @param string|null $region       Region, example VN
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see   https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
      * @return array|null Array if Success, Null if Not
      */
-    public function get_time_zones_for_number($phone_number = '', $region = null)
+    public function get_time_zones_for_number(string $phone_number = '', string $region = null)
     {
         return $this->getTimeZonesForNumber($phone_number, $region);
     }
@@ -98,16 +98,16 @@ class Phone_number extends PhoneNumber
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 9/21/18 01:57
      *
-     * @param string $phone_number Phone Number to get Carrier Name
-     * @param string $region       Region, example VN
-     * @param string $mode         Mode String: safe, valid, other...
+     * @param string      $phone_number Phone Number to get Carrier Name
+     * @param string|null $region       Region, example VN
+     * @param string|null $mode         Mode String: safe, valid, other...
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see   https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
      * @return null|string String if Success, Null if Not
      */
-    public function get_carrier_name_for_number($phone_number = '', $region = null, $mode = null)
+    public function get_carrier_name_for_number(string $phone_number = '', string $region = null, string $mode = null)
     {
         return $this->getCarrierNameForNumber($phone_number, $region, $mode);
     }
@@ -123,18 +123,18 @@ class Phone_number extends PhoneNumber
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 10/8/18 16:11
      *
-     * @param string $phone_number Phone Number to get Geo Code Description
-     * @param string $region       Region, example VN
-     * @param string $mode         Valid String (if $mode=valid -> Returns the same as getDescriptionForNumber(),
-     *                             but assumes that you have already checked whether the number is suitable for geo
-     *                             location.)
+     * @param string      $phone_number Phone Number to get Geo Code Description
+     * @param string|null $region       Region, example VN
+     * @param string|null $mode         Valid String (if $mode=valid -> Returns the same as getDescriptionForNumber(),
+     *                                  but assumes that you have already checked whether the number is suitable for geo
+     *                                  location.)
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see   https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
      * @return null|string String if Success, Null if Not
      */
-    public function get_geocode_description_for_number($phone_number = '', $region = null, $mode = null)
+    public function get_geocode_description_for_number(string $phone_number = '', string $region = null, string $mode = null)
     {
         return $this->getGeocodeDescriptionForNumber($phone_number, $region, $mode);
     }
@@ -146,15 +146,15 @@ class Phone_number extends PhoneNumber
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 10/8/18 16:11
      *
-     * @param string $phone_number Phone Number to get Region Code
-     * @param string $region       Region, example VN
+     * @param string      $phone_number Phone Number to get Region Code
+     * @param string|null $region       Region, example VN
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see   https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
      * @return null|string String if Success, Null if Not
      */
-    public function get_region_code_for_number($phone_number = '', $region = null)
+    public function get_region_code_for_number(string $phone_number = '', string $region = null)
     {
         return $this->getRegionCodeForNumber($phone_number, $region);
     }
@@ -205,15 +205,15 @@ class Phone_number extends PhoneNumber
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 9/21/18 01:46
      *
-     * @param string $phone_number Phone Number to Get Type
-     * @param null   $region       Region, example VN
+     * @param string      $phone_number Phone Number to Get Type
+     * @param string|null $region       Region, example VN
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see   https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
      * @return int|null Int if Success, Null if Not
      */
-    public function get_number_type($phone_number = '', $region = null)
+    public function get_number_type(string $phone_number = '', string $region = null)
     {
         return $this->getNumberType($phone_number, $region);
     }
@@ -225,15 +225,15 @@ class Phone_number extends PhoneNumber
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 9/21/18 02:12
      *
-     * @param string $phone_number Phone Number to Check
-     * @param null   $region       Region, example VN
+     * @param string      $phone_number Phone Number to Check
+     * @param string|null $region       Region, example VN
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see   https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
      * @return bool|null Bool if Success, Null if Error
      */
-    public function check_phone_number_can_be_internationally_dialled($phone_number = '', $region = null)
+    public function check_phone_number_can_be_internationally_dialled(string $phone_number = '', string $region = null)
     {
         return $this->checkPhoneNumberCanBeInternationallyDialled($phone_number, $region);
     }
@@ -249,15 +249,15 @@ class Phone_number extends PhoneNumber
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 10/9/18 14:51
      *
-     * @param string $text   Text String to Find
-     * @param null   $region Region, example VN
+     * @param string      $text   Text String to Find
+     * @param string|null $region Region, example VN
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see   https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
      * @return array|null Array if Success, Null if not or Error (Set DEBUG to Details)
      */
-    public function find_phone_number_in_string($text = '', $region = null)
+    public function find_phone_number_in_string(string $text = '', string $region = null)
     {
         return $this->findPhoneNumberInString($text, $region);
     }
@@ -274,7 +274,7 @@ class Phone_number extends PhoneNumber
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 12/25/19 00:52
      */
-    public function get_national_number($phone_number = '')
+    public function get_national_number(string $phone_number = '')
     {
         return $this->getNationalNumber($phone_number);
     }
@@ -299,7 +299,7 @@ class Phone_number extends PhoneNumber
      *
      * @return null|string String if Success, Null if Error, Raw phone input if Exception
      */
-    public function format_hidden($phone_number = '', $place_hidden = '')
+    public function format_hidden(string $phone_number = '', string $place_hidden = '')
     {
         return $this->formatHidden($phone_number, $place_hidden);
     }
@@ -312,12 +312,12 @@ class Phone_number extends PhoneNumber
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 10/9/18 14:37
      *
-     * @param string $phone_number   This is Phone Number to be Detect
-     * @param null   $get_field_data Get File Data, keyword: name, short_name, id
+     * @param string      $phone_number   This is Phone Number to be Detect
+     * @param string|null $get_field_data Get File Data, keyword: name, short_name, id
      *
      * @return null|string String if Success, Null if Error
      */
-    public function detect_carrier($phone_number = '', $get_field_data = null)
+    public function detect_carrier(string $phone_number = '', string $get_field_data = null)
     {
         return $this->detectCarrier($phone_number, $get_field_data);
     }
@@ -330,16 +330,16 @@ class Phone_number extends PhoneNumber
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 9/21/18 01:32
      *
-     * @param string $phone_number This is Phone number
-     * @param string $phone_mode   This mode as old or new
-     * @param null   $phone_format This format vn or other, list keyword: VN, VN_HUMAN, E164, INTERNATIONAL, NATIONAL,
-     *                             RFC3966, HIDDEN, HIDDEN_HEAD, HIDDEN_MIDDLE, HIDDEN_END
+     * @param string      $phone_number This is Phone number
+     * @param string      $phone_mode   This mode as old or new
+     * @param string|null $phone_format This format vn or other, list keyword: VN, VN_HUMAN, E164, INTERNATIONAL, NATIONAL,
+     *                                  RFC3966, HIDDEN, HIDDEN_HEAD, HIDDEN_MIDDLE, HIDDEN_END
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      *
      * @return null|string
      */
-    public function vn_convert_phone_number($phone_number = '', $phone_mode = '', $phone_format = null)
+    public function vn_convert_phone_number(string $phone_number = '', string $phone_mode = '', string $phone_format = null)
     {
         return $this->vnConvertPhoneNumber($phone_number, $phone_mode, $phone_format);
     }
@@ -352,15 +352,15 @@ class Phone_number extends PhoneNumber
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 9/21/18 01:33
      *
-     * @param string $phone_number Phone Number Input
-     * @param null   $phone_format Method to Format VN, VN_HUMAN, E164, INTERNATIONAL, NATIONAL, RFC3966, HIDDEN,
-     *                             HIDDEN_HEAD, HIDDEN_MIDDLE, HIDDEN_END
+     * @param string      $phone_number Phone Number Input
+     * @param string|null $phone_format Method to Format VN, VN_HUMAN, E164, INTERNATIONAL, NATIONAL, RFC3966, HIDDEN,
+     *                                  HIDDEN_HEAD, HIDDEN_MIDDLE, HIDDEN_END
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      *
      * @return array|null|string Array if Success, Null if Error
      */
-    public function vn_phone_number_old_and_new($phone_number = '', $phone_format = null)
+    public function vn_phone_number_old_and_new(string $phone_number = '', string $phone_format = null)
     {
         return $this->vnPhoneNumberOldAndNew($phone_number, $phone_format);
     }

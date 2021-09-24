@@ -20,9 +20,10 @@ use nguyenanhung\VnTelcoPhoneNumber\Repository\DataRepository;
  * @author     713uk13m <dev@nguyenanhung.com>
  * @copyright  713uk13m <dev@nguyenanhung.com>
  */
-class PhoneRouting extends BaseCore implements PhoneRoutingInterface
+class PhoneRouting extends BaseCore
 {
     const IS_MNP_LENGTH = 16;
+    const NUMBER_PREFIX = '00';
 
     /** @var object \nguyenanhung\VnTelcoPhoneNumber\PhoneNumber */
     private $phoneNumber;
@@ -66,16 +67,13 @@ class PhoneRouting extends BaseCore implements PhoneRoutingInterface
      *
      * @return null|string|array Mảng dữ liệu của nhà mạng nếu tồn tại, null nếu không tồn tại
      */
-    public function checkRoutingNumber($routingNumber = '')
+    public function checkRoutingNumber(string $routingNumber = '')
     {
-        $routing = (string) $routingNumber;
+        $routing = $routingNumber;
         $routing = self::NUMBER_PREFIX . $routing;
         $data    = DataRepository::getData('vn_routing_number');
-        if (isset($data[$routing])) {
-            return $data[$routing];
-        }
 
-        return null;
+        return $data[$routing] ?? null;
     }
 
     /**
@@ -88,7 +86,7 @@ class PhoneRouting extends BaseCore implements PhoneRoutingInterface
      *
      * @return bool|null TRUE nếu thuộc MNP, FALSE nếu không thuộc MNP, NULL nếu called là rỗng
      */
-    public function isMnp($called = '')
+    public function isMnp(string $called = '')
     {
         if (empty($called)) {
             return null;
@@ -110,7 +108,7 @@ class PhoneRouting extends BaseCore implements PhoneRoutingInterface
      *
      * @return bool|null|string Routing Number trả về nếu hợp lệ, FALSE nếu không hợp lệ, Null nếu không thuộc dải MNP
      */
-    public function getRoutingNumberFromCalled($called = '')
+    public function getRoutingNumberFromCalled(string $called = '')
     {
         if ($this->isMnp($called) === true) {
             // Số nằm trong dải chuyển
@@ -134,12 +132,12 @@ class PhoneRouting extends BaseCore implements PhoneRoutingInterface
      * @time  : 10/22/18 20:33
      *
      * @param string      $number Số cần check: 0084 + RN + MSISDN
-     * @param null|string $field  Tham số telco cần check
+     * @param string|null $field  Tham số telco cần check
      *
      * @return array|mixed|null|string Thông tin nhà mạng trong trường hợp thành công
      *                                 Null nếu Routing number không hợp lệ
      */
-    public function detectCarrierFromRoutingNumber($number = '', $field = null)
+    public function detectCarrierFromRoutingNumber(string $number = '', string $field = null)
     {
         $checkNumberIsMnp = $this->isMnp($number);
         if ($checkNumberIsMnp === true) {
@@ -153,16 +151,20 @@ class PhoneRouting extends BaseCore implements PhoneRoutingInterface
                 } else {
                     $result = $this->phoneTelco->carrierData($routingName, $field);
                 }
-            } else {
-                // Routing number không hợp lệ
-                $result = null;
+
+                return $result;
             }
-        } else {
-            // Số không thuộc dải MNP
-            $number = $this->phoneNumber->format($number);
-            $result = $this->phoneNumber->detectCarrier($number, $field);
+
+            // Routing number không hợp lệ
+            return null;
+        }
+        // Số không thuộc dải MNP
+        $number_format = $this->phoneNumber->format($number);
+        if ($number_format === null) {
+            return null;
         }
 
-        return $result;
+        return $this->phoneNumber->detectCarrier($number_format, $field);
+
     }
 }

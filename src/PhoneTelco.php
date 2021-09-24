@@ -19,7 +19,7 @@ use nguyenanhung\VnTelcoPhoneNumber\Repository\DataRepository;
  * @author     713uk13m <dev@nguyenanhung.com>
  * @copyright  713uk13m <dev@nguyenanhung.com>
  */
-class PhoneTelco extends BaseCore implements PhoneTelcoInterface
+class PhoneTelco extends BaseCore
 {
     /**
      * PhoneTelco constructor.
@@ -56,7 +56,7 @@ class PhoneTelco extends BaseCore implements PhoneTelcoInterface
      *
      * @return mixed|null Field if exists, full data if field_output = full,  null if not or error
      */
-    public function carrierData($carrier = '', $output = '')
+    public function carrierData(string $carrier = '', string $output = '')
     {
         $inputParams = array('carrier' => $carrier, 'field_output' => $output);
         $output      = strtolower($output);

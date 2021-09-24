@@ -36,7 +36,7 @@ class DataRepository implements ProjectInterface
      *
      * @return array|mixed Content from file config
      */
-    public static function getData($configName = '')
+    public static function getData(string $configName = '')
     {
         $path = __DIR__ . DIRECTORY_SEPARATOR . self::CONFIG_PATH . DIRECTORY_SEPARATOR . $configName . self::CONFIG_EXT;
         if (is_file($path) && file_exists($path)) {

@@ -24,7 +24,7 @@ use nguyenanhung\VnTelcoPhoneNumber\Repository;
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-class PhoneNumber extends BaseCore implements PhoneNumberInterface
+class PhoneNumber extends BaseCore
 {
     use VersionTrait, LoggerTrait;
 
@@ -65,7 +65,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      *
      * @return bool
      */
-    public function setNormalName($value = false)
+    public function setNormalName(bool $value = false): bool
     {
         $this->normal_name = $value;
         $this->logger->debug(__FUNCTION__, 'setNormalName: ' . $this->normal_name);
@@ -85,14 +85,14 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @time  : 9/21/18 01:29
      *
      * @param string $phone_number Phone Number Check Valid
-     * @param string $region       Region, example VN
+     * @param mixed  $region       Region, example VN
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see   https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
      * @return bool|null True if success, False if not, Null if Error
      */
-    public function isValid($phone_number = '', $region = null)
+    public function isValid(string $phone_number = '', $region = null)
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -133,14 +133,14 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @time  : 9/21/18 01:29
      *
      * @param string $phone_number Phone Number Check Possible
-     * @param string $region       Region, example VN
+     * @param mixed  $region       Region, example VN
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see   https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
      * @return bool|null True if success, False if not, Null if Error
      */
-    public function isPossibleNumber($phone_number = '', $region = null)
+    public function isPossibleNumber(string $phone_number = '', $region = null)
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -177,14 +177,14 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @time  : 9/21/18 01:50
      *
      * @param string $phone_number Phone Number to get Timezone
-     * @param string $region       Region, example VN
+     * @param mixed  $region       Region, example VN
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see   https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
      * @return array|null Array if Success, Null if Not
      */
-    public function getTimeZonesForNumber($phone_number = '', $region = null)
+    public function getTimeZonesForNumber(string $phone_number = '', $region = null)
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -230,15 +230,15 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @time  : 9/21/18 01:57
      *
      * @param string $phone_number Phone Number to get Carrier Name
-     * @param string $region       Region, example VN
-     * @param string $mode         Mode String: safe, valid, other...
+     * @param mixed  $region       Region, example VN
+     * @param mixed  $mode         Mode String: safe, valid, other...
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see   https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
      * @return null|string String if Success, Null if Not
      */
-    public function getCarrierNameForNumber($phone_number = '', $region = null, $mode = null)
+    public function getCarrierNameForNumber(string $phone_number = '', $region = null, $mode = null)
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -287,18 +287,18 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 10/8/18 16:11
      *
-     * @param string $phone_number Phone Number to get Geo Code Description
-     * @param string $region       Region, example VN
-     * @param string $mode         Valid String (if $mode=valid -> Returns the same as getDescriptionForNumber(),
-     *                             but assumes that you have already checked whether the number is suitable for geo
-     *                             location.)
+     * @param string $phone_number      Phone Number to get Geo Code Description
+     * @param mixed  $region            Region, example VN
+     * @param mixed  $mode              Valid String (if $mode=valid -> Returns the same as getDescriptionForNumber(),
+     *                                  but assumes that you have already checked whether the number is suitable for geo
+     *                                  location.)
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see   https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
      * @return null|string String if Success, Null if Not
      */
-    public function getGeocodeDescriptionForNumber($phone_number = '', $region = null, $mode = '')
+    public function getGeocodeDescriptionForNumber(string $phone_number = '', $region = null, $mode = '')
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -343,14 +343,14 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @time  : 10/8/18 16:11
      *
      * @param string $phone_number Phone Number to get Region Code
-     * @param string $region       Region, example VN
+     * @param mixed  $region       Region, example VN
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see   https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
      * @return null|string String if Success, Null if Not
      */
-    public function getRegionCodeForNumber($phone_number = '', $region = '')
+    public function getRegionCodeForNumber(string $phone_number = '', $region = '')
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -388,14 +388,14 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 9/21/18 02:16
      *
-     * @param null $region example VN
+     * @param string|null $region example VN
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see   https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
      * @return int|null Int if Success, Null if Not
      */
-    public function getCountryCodeForRegion($region = null)
+    public function getCountryCodeForRegion(string $region = null)
     {
         $inputParams = array('region' => $region);
         $this->logger->info(__FUNCTION__, 'Input Params: ', $inputParams);
@@ -424,14 +424,14 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 9/21/18 02:18
      *
-     * @param null $region_codes example 84
+     * @param string|null $region_codes example 84
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see   https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
      * @return array|null Array if success, null if not
      */
-    public function getRegionCodesForCountryCode($region_codes = null)
+    public function getRegionCodesForCountryCode(string $region_codes = null)
     {
         $inputParams = array('region_codes' => $region_codes);
         $this->logger->info(__FUNCTION__, 'Input Params: ', $inputParams);
@@ -460,14 +460,14 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @time  : 9/21/18 01:46
      *
      * @param string $phone_number Phone Number to Get Type
-     * @param null   $region       Region, example VN
+     * @param mixed  $region       Region, example VN
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see   https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
      * @return int|null Int if Success, Null if Not
      */
-    public function getNumberType($phone_number = '', $region = null)
+    public function getNumberType(string $phone_number = '', $region = null)
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -506,14 +506,14 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @time  : 9/21/18 02:12
      *
      * @param string $phone_number Phone Number to Check
-     * @param null   $region       Region, example VN
+     * @param mixed  $region       Region, example VN
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see   https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
      * @return bool|null Bool if Success, Null if Error
      */
-    public function checkPhoneNumberCanBeInternationallyDialled($phone_number = '', $region = null)
+    public function checkPhoneNumberCanBeInternationallyDialled(string $phone_number = '', $region = null)
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -555,14 +555,14 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @time  : 10/9/18 14:51
      *
      * @param string $text   Text String to Find
-     * @param null   $region Region, example VN
+     * @param mixed  $region Region, example VN
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see   https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
      * @return array|null Array if Success, Null if not or Error (Set DEBUG to Details)
      */
-    public function findPhoneNumberInString($text = '', $region = null)
+    public function findPhoneNumberInString(string $text = '', $region = null)
     {
         $inputParams = array(
             'text'   => $text,
@@ -605,7 +605,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 12/25/19 00:52
      */
-    public function getNationalNumber($phone_number = '')
+    public function getNationalNumber(string $phone_number = '')
     {
         try {
             $phoneNumberUtil   = PhoneNumberUtil::getInstance();
@@ -629,7 +629,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @time     : 9/21/18 01:30
      *
      * @param string|null $phone_number Input Phone Number
-     * @param string|null $format       List command:
+     * @param mixed       $format       List command:
      *                                  VN, VN_HUMAN,
      *                                  E164,INTERNATIONAL, NATIONAL, RFC3966,
      *                                  HIDDEN, HIDDEN_HEAD, HIDDEN_MIDDLE, HIDDEN_END
@@ -651,7 +651,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      *
      * @return string|null String if Success, Null if Error, Raw phone input if Exception
      */
-    public function format($phone_number = '', $format = '')
+    public function format(string $phone_number = '', $format = '')
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -714,7 +714,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @time    : 10/9/18 14:41
      *
      * @param string $phone_number Input Phone Number
-     * @param string $place_hidden Place Hidden: HEAD, MIDDLE or END
+     * @param mixed  $place_hidden Place Hidden: HEAD, MIDDLE or END
      *
      * @example place_hidden = HEAD => **** 123 456
      * @example place_hidden = MIDDLE => 0163 *** 456
@@ -724,7 +724,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      *
      * @return string String if Success, Null if Error, Raw phone input if Exception
      */
-    public function formatHidden($phone_number = '', $place_hidden = '')
+    public function formatHidden(string $phone_number = '', $place_hidden = ''): string
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -792,11 +792,11 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @time  : 10/9/18 14:37
      *
      * @param string $phone_number   This is Phone Number to be Detect
-     * @param null   $get_field_data Get File Data, keyword: name, short_name, id
+     * @param mixed  $get_field_data Get File Data, keyword: name, short_name, id
      *
      * @return mixed|string|null String if Success, Null if Error
      */
-    public function detectCarrier($phone_number = '', $get_field_data = null)
+    public function detectCarrier(string $phone_number = '', $get_field_data = null)
     {
         $inputParams = array(
             'phone_number'   => $phone_number,
@@ -853,16 +853,16 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 9/21/18 01:32
      *
-     * @param string $phone_number This is Phone number
-     * @param string $phone_mode   This mode as old or new
-     * @param null   $phone_format This format vn or other, list keyword: VN, VN_HUMAN, E164, INTERNATIONAL, NATIONAL,
-     *                             RFC3966, HIDDEN, HIDDEN_HEAD, HIDDEN_MIDDLE, HIDDEN_END
+     * @param string $phone_number      This is Phone number
+     * @param mixed  $phone_mode        This mode as old or new
+     * @param mixed  $phone_format      This format vn or other, list keyword: VN, VN_HUMAN, E164, INTERNATIONAL, NATIONAL,
+     *                                  RFC3966, HIDDEN, HIDDEN_HEAD, HIDDEN_MIDDLE, HIDDEN_END
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      *
      * @return string|null
      */
-    public function vnConvertPhoneNumber($phone_number = '', $phone_mode = '', $phone_format = null)
+    public function vnConvertPhoneNumber(string $phone_number = '', $phone_mode = '', $phone_format = null)
     {
         $inputParams = array(
             'phone_number' => $phone_number,
@@ -972,15 +972,15 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @author: 713uk13m <dev@nguyenanhung.com>
      * @time  : 9/21/18 01:33
      *
-     * @param string $phone_number Phone Number Input
-     * @param null   $phone_format Method to Format VN, VN_HUMAN, E164, INTERNATIONAL, NATIONAL, RFC3966, HIDDEN,
-     *                             HIDDEN_HEAD, HIDDEN_MIDDLE, HIDDEN_END
+     * @param string $phone_number      Phone Number Input
+     * @param mixed  $phone_format      Method to Format VN, VN_HUMAN, E164, INTERNATIONAL, NATIONAL, RFC3966, HIDDEN,
+     *                                  HIDDEN_HEAD, HIDDEN_MIDDLE, HIDDEN_END
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      *
      * @return array|null|string Array if Success, Null if Error
      */
-    public function vnPhoneNumberOldAndNew($phone_number = '', $phone_format = null)
+    public function vnPhoneNumberOldAndNew(string $phone_number = '', $phone_format = null)
     {
         $inputParams = array(
             'phone_number' => $phone_number,

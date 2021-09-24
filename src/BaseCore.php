@@ -20,14 +20,18 @@ use nguyenanhung\MyDebug\Logger;
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-class BaseCore implements ProjectInterface, LoggerInterface
+class BaseCore implements ProjectInterface
 {
     use VersionTrait, LoggerTrait;
 
-    /** @var object \nguyenanhung\MyDebug\Benchmark */
+    /**
+     * @var \nguyenanhung\MyDebug\Benchmark $benchmark
+     */
     protected $benchmark;
 
-    /** @var object \nguyenanhung\MyDebug\Logger Class Debug Object */
+    /**
+     * @var \nguyenanhung\MyDebug\Logger $logger
+     */
     protected $logger;
 
     /** @var bool DEBUG Status */
