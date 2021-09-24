@@ -344,7 +344,7 @@ interface PhoneNumberInterface
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      *
-     * @return null|string
+     * @return string|null
      */
     public function vnConvertPhoneNumber($phone_number = '', $phone_mode = '', $phone_format = null);
 

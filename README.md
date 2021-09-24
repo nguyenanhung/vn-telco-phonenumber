@@ -8,7 +8,12 @@ Format Phone number
 
 Library use `libphonenumber` by Google, version PHP by `giggsey`
 
-### Installation
+## Version
+
+- [x] All version `v1.x`, `v2.x` support PHP `>=5.6`
+- [x] All version `v3.x` support PHP `>=7.0`
+
+## Installation
 
 **Manual install**
 
@@ -48,7 +53,7 @@ use \nguyenanhung\VnTelcoPhoneNumber\Phone_number;
 $phone = new Phone_number();
 ```
 
-### **How to Use**
+## **How to Use**
 
 **Get Version of Library**
 
@@ -170,12 +175,12 @@ echo $phone->vn_phone_number_old_and_new($my_number, 'vn'); // Print: ["01632953
 
 ...
 
-other format is the same $phone->format() method: VN, VN_HUMAN, E164, INTERNATIONAL, NATIONAL, RFC3966, HIDDEN, HIDDEN_HEAD, HIDDEN_MIDDLE, HIDDEN_END
+// other format is the same $phone->format() method: VN, VN_HUMAN, E164, INTERNATIONAL, NATIONAL, RFC3966, HIDDEN, HIDDEN_HEAD, HIDDEN_MIDDLE, HIDDEN_END
 ```
 
-### Contact
+## Contact
 
-If any quetion & request, please contact following infomation
+If any question & request, please contact following infomation
 
 | Name        | Email                | Skype            | Facebook      |
 | ----------- | -------------------- | ---------------- | ------------- |

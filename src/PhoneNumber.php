@@ -649,7 +649,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      * @see      https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      * @see      https://github.com/giggsey/libphonenumber-for-php/blob/master/docs/PhoneNumberUtil.md
      *
-     * @return string String if Success, Null if Error, Raw phone input if Exception
+     * @return string|null String if Success, Null if Error, Raw phone input if Exception
      */
     public function format($phone_number = '', $format = '')
     {
@@ -860,7 +860,7 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
      *
      * @see   https://github.com/nguyenanhung/vn-telco-phonenumber/blob/master/test_phone_number.php
      *
-     * @return string
+     * @return string|null
      */
     public function vnConvertPhoneNumber($phone_number = '', $phone_mode = '', $phone_format = null)
     {
@@ -877,8 +877,13 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
         }
         $mode = strtolower($phone_mode); // old || new
         // Convert Phone Number to CountryCode + NationalNumber
-        $phone_number = trim($phone_number);
-        $phone_number = $this->format($phone_number);
+        $phone_number        = trim($phone_number);
+        $phone_number_format = $this->format($phone_number);
+        if ($phone_number_format === null) {
+            $this->logger->debug(__FUNCTION__, 'Phone Number format return NULL');
+
+            return null;
+        }
         try {
             // Data Convert Phone Number
             $dataVnConvertPhoneNumber = Repository\DataRepository::getData('vn_convert_phone_number');
@@ -894,9 +899,9 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
                     $preg_match_number = null;
                 }
                 if ($preg_match_number !== null) {
-                    if (!preg_match($preg_match_number, $phone_number)) {
-                        $result = $this->format($phone_number, $phone_format);
-                        $this->logger->warning(__FUNCTION__, 'Phone Number: ' . $phone_number . ' Invalid with Rule: ' . $preg_match_number . ' -> Output Result: ' . $result);
+                    if (!preg_match($preg_match_number, $phone_number_format)) {
+                        $result = $this->format($phone_number_format, $phone_format);
+                        $this->logger->warning(__FUNCTION__, 'Phone Number: ' . $phone_number_format . ' Invalid with Rule: ' . $preg_match_number . ' -> Output Result: ' . $result);
 
                         return $result;
                     }
@@ -931,15 +936,15 @@ class PhoneNumber extends BaseCore implements PhoneNumberInterface
                         }
                         // Rule to check
                         $ruleCheckConvert = '/^(' . $phone_number_prefix . ')[0-9]{' . $phone_number_content . '}$/';
-                        $this->logger->debug(__FUNCTION__, 'Rule preg_match Check to Convert Number: ' . $phone_number . ' is ' . $ruleCheckConvert);
-                        if (($phone_number_content !== null && $phone_number_prefix !== null && $convert_prefix !== null) && preg_match($ruleCheckConvert, $phone_number)) {
+                        $this->logger->debug(__FUNCTION__, 'Rule preg_match Check to Convert Number: ' . $phone_number_format . ' is ' . $ruleCheckConvert);
+                        if (($phone_number_content !== null && $phone_number_prefix !== null && $convert_prefix !== null) && preg_match($ruleCheckConvert, $phone_number_format)) {
                             // Cắt lấy các số cuối tính từ vị trí đầu tiên trong dãy $phone_number rồi nối đầu số $convert_prefix
-                            $phone_number = $convert_prefix . substr($phone_number, strlen($phone_number_prefix), $phone_number_content);
-                            $this->logger->debug(__FUNCTION__, 'Rule Check OK -> Phone Number Convert: ' . $phone_number);
-                            $phone_number = $this->format($phone_number, $phone_format);
-                            $this->logger->info(__FUNCTION__, 'Rule Check OK -> Phone Number Final Result Format: ' . $phone_number);
+                            $phone_number_format = $convert_prefix . substr($phone_number_format, strlen($phone_number_prefix), $phone_number_content);
+                            $this->logger->debug(__FUNCTION__, 'Rule Check OK -> Phone Number Convert: ' . $phone_number_format);
+                            $phone_number_format_final = $this->format($phone_number_format, $phone_format);
+                            $this->logger->info(__FUNCTION__, 'Rule Check OK -> Phone Number Final Result Format: ' . $phone_number_format_final);
 
-                            return $phone_number;
+                            return $phone_number_format_final;
                         }
                     }
                 }
