@@ -16,11 +16,11 @@ return array(
         'name'       => 'Viettel',
         'short_name' => 'viettel'
     ),
-    'Viettel'           => [
+    'Viettel'           => array(
         'id'         => 2,
         'name'       => 'Viettel',
         'short_name' => 'viettel'
-    ],
+    ),
     'MobiFone'          => array(
         'id'         => 3,
         'name'       => 'Mobifone',

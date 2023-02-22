@@ -106,10 +106,10 @@ class PhoneNumber extends BaseCore
         }
         $phone_number = trim($phone_number);
         try {
-            $phoneNumberUtil   = PhoneNumberUtil::getInstance();
-            $use_region        = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
+            $phoneNumberUtil = PhoneNumberUtil::getInstance();
+            $use_region = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
             $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), $use_region);
-            $result            = $phoneNumberUtil->isValidNumber($phoneNumberObject);
+            $result = $phoneNumberUtil->isValidNumber($phoneNumberObject);
             $this->logger->debug(__FUNCTION__, 'Use REGION: ' . $use_region);
             $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
 
@@ -154,10 +154,10 @@ class PhoneNumber extends BaseCore
         }
         $phone_number = trim($phone_number);
         try {
-            $phoneNumberUtil   = PhoneNumberUtil::getInstance();
-            $use_region        = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
+            $phoneNumberUtil = PhoneNumberUtil::getInstance();
+            $use_region = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
             $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), $use_region);
-            $result            = $phoneNumberUtil->isPossibleNumber($phoneNumberObject);
+            $result = $phoneNumberUtil->isPossibleNumber($phoneNumberObject);
             $this->logger->debug(__FUNCTION__, 'Use REGION: ' . $use_region);
             $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
 
@@ -198,11 +198,11 @@ class PhoneNumber extends BaseCore
         }
         $phone_number = trim($phone_number);
         try {
-            $phoneNumberUtil   = PhoneNumberUtil::getInstance();
-            $use_region        = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
+            $phoneNumberUtil = PhoneNumberUtil::getInstance();
+            $use_region = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
             $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), $use_region);
-            $timezoneMapper    = PhoneNumberToTimeZonesMapper::getInstance();
-            $result            = $timezoneMapper->getTimeZonesForNumber($phoneNumberObject);
+            $timezoneMapper = PhoneNumberToTimeZonesMapper::getInstance();
+            $result = $timezoneMapper->getTimeZonesForNumber($phoneNumberObject);
             $this->logger->debug(__FUNCTION__, 'Use REGION: ' . $use_region);
             $this->logger->info(__FUNCTION__, 'Final Result: ', $result);
 
@@ -253,10 +253,10 @@ class PhoneNumber extends BaseCore
         }
         $phone_number = trim($phone_number);
         try {
-            $phoneNumberUtil   = PhoneNumberUtil::getInstance();
-            $use_region        = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
+            $phoneNumberUtil = PhoneNumberUtil::getInstance();
+            $use_region = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
             $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), $use_region);
-            $carrierMapper     = PhoneNumberToCarrierMapper::getInstance();
+            $carrierMapper = PhoneNumberToCarrierMapper::getInstance();
             if (strtolower($mode) === 'safe') {
                 $result = $carrierMapper->getSafeDisplayName($phoneNumberObject, self::DEFAULT_LANGUAGE);
             } elseif (strtolower($mode) === 'valid') {
@@ -313,10 +313,10 @@ class PhoneNumber extends BaseCore
         }
         $phone_number = trim($phone_number);
         try {
-            $phoneNumberUtil   = PhoneNumberUtil::getInstance();
-            $use_region        = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
+            $phoneNumberUtil = PhoneNumberUtil::getInstance();
+            $use_region = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
             $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), $use_region);
-            $geoCoder          = PhoneNumberOfflineGeocoder::getInstance();
+            $geoCoder = PhoneNumberOfflineGeocoder::getInstance();
             if (strtolower($mode) === 'valid') {
                 $result = $geoCoder->getDescriptionForValidNumber($phoneNumberObject, self::DEFAULT_LANGUAGE, $use_region);
             } else {
@@ -364,10 +364,10 @@ class PhoneNumber extends BaseCore
         }
         $phone_number = trim($phone_number);
         try {
-            $use_region        = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
-            $phoneNumberUtil   = PhoneNumberUtil::getInstance();
+            $use_region = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
+            $phoneNumberUtil = PhoneNumberUtil::getInstance();
             $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), $use_region);
-            $result            = $phoneNumberUtil->getRegionCodeForNumber($phoneNumberObject);
+            $result = $phoneNumberUtil->getRegionCodeForNumber($phoneNumberObject);
             $this->logger->debug(__FUNCTION__, 'Use REGION: ' . $use_region);
             $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
 
@@ -401,8 +401,8 @@ class PhoneNumber extends BaseCore
         $this->logger->info(__FUNCTION__, 'Input Params: ', $inputParams);
         try {
             $phoneNumberUtil = PhoneNumberUtil::getInstance();
-            $use_region      = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
-            $result          = $phoneNumberUtil->getCountryCodeForRegion($use_region);
+            $use_region = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
+            $result = $phoneNumberUtil->getCountryCodeForRegion($use_region);
             $this->logger->debug(__FUNCTION__, 'Use REGION: ' . $use_region);
             $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
 
@@ -438,7 +438,7 @@ class PhoneNumber extends BaseCore
         try {
             $phoneNumberUtil = PhoneNumberUtil::getInstance();
             $use_region_code = null !== $region_codes ? trim($region_codes) : self::DEFAULT_REGION_CODE;
-            $result          = $phoneNumberUtil->getRegionCodesForCountryCode($use_region_code);
+            $result = $phoneNumberUtil->getRegionCodesForCountryCode($use_region_code);
             $this->logger->debug(__FUNCTION__, 'Use REGION Code: ' . $use_region_code);
             $this->logger->info(__FUNCTION__, 'Final Result: ', $result);
 
@@ -481,10 +481,10 @@ class PhoneNumber extends BaseCore
         }
         $phone_number = trim($phone_number);
         try {
-            $phoneNumberUtil   = PhoneNumberUtil::getInstance();
-            $use_region        = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
+            $phoneNumberUtil = PhoneNumberUtil::getInstance();
+            $use_region = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
             $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), $use_region);
-            $result            = $phoneNumberUtil->getNumberType($phoneNumberObject);
+            $result = $phoneNumberUtil->getNumberType($phoneNumberObject);
             $this->logger->debug(__FUNCTION__, 'Use REGION: ' . $use_region);
             $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
 
@@ -527,10 +527,10 @@ class PhoneNumber extends BaseCore
         }
         $phone_number = trim($phone_number);
         try {
-            $phoneNumberUtil   = PhoneNumberUtil::getInstance();
-            $use_region        = null !== $region ? strtoupper($region) : null;
+            $phoneNumberUtil = PhoneNumberUtil::getInstance();
+            $use_region = null !== $region ? strtoupper($region) : null;
             $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), $use_region);
-            $result            = $phoneNumberUtil->canBeInternationallyDialled($phoneNumberObject);
+            $result = $phoneNumberUtil->canBeInternationallyDialled($phoneNumberObject);
             $this->logger->debug(__FUNCTION__, 'Use REGION: ' . $use_region);
             $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
 
@@ -575,10 +575,10 @@ class PhoneNumber extends BaseCore
             return null;
         }
         try {
-            $phoneNumberUtil    = PhoneNumberUtil::getInstance();
-            $use_region         = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
+            $phoneNumberUtil = PhoneNumberUtil::getInstance();
+            $use_region = null !== $region ? strtoupper($region) : self::DEFAULT_REGION;
             $phoneNumberMatcher = $phoneNumberUtil->findNumbers($text, $use_region);
-            $result             = array();
+            $result = array();
             foreach ($phoneNumberMatcher as $phoneNumberMatch) {
                 $result['number'][] = $phoneNumberMatch->number();
             }
@@ -608,7 +608,7 @@ class PhoneNumber extends BaseCore
     public function getNationalNumber(string $phone_number = '')
     {
         try {
-            $phoneNumberUtil   = PhoneNumberUtil::getInstance();
+            $phoneNumberUtil = PhoneNumberUtil::getInstance();
             $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), self::DEFAULT_REGION);
 
             return $phoneNumberObject->getNationalNumber();
@@ -664,8 +664,8 @@ class PhoneNumber extends BaseCore
             return $phone_number;
         }
         $phone_number = trim($phone_number);
-        $format       = strtoupper(trim($format));
-        $hidden_list  = array(
+        $format = strtoupper(trim($format));
+        $hidden_list = array(
             self::HIDDEN_REGION,
             self::HIDDEN_REGION_HEAD,
             self::HIDDEN_REGION_MIDDLE,
@@ -673,7 +673,7 @@ class PhoneNumber extends BaseCore
         );
         $this->logger->debug(__FUNCTION__, 'Hidden List Allowed: ', $hidden_list);
         try {
-            $phoneNumberUtil   = PhoneNumberUtil::getInstance();
+            $phoneNumberUtil = PhoneNumberUtil::getInstance();
             $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), self::DEFAULT_REGION);
             if ($format === self::DEFAULT_REGION) {
                 $result = '0' . $phoneNumberObject->getNationalNumber();
@@ -739,8 +739,8 @@ class PhoneNumber extends BaseCore
         $phone_number = trim($phone_number);
         $place_hidden = strtoupper($place_hidden);
         try {
-            $phoneNumberUtil     = PhoneNumberUtil::getInstance();
-            $phoneNumberObject   = $phoneNumberUtil->parse(trim($phone_number), self::DEFAULT_REGION);
+            $phoneNumberUtil = PhoneNumberUtil::getInstance();
+            $phoneNumberObject = $phoneNumberUtil->parse(trim($phone_number), self::DEFAULT_REGION);
             $phoneNumberVnFormat = $phoneNumberUtil->formatOutOfCountryCallingNumber($phoneNumberObject, "VN");
             /**
              * Phone Number: 0163 123 456
@@ -753,25 +753,21 @@ class PhoneNumber extends BaseCore
                 if ($place_hidden === self::HIDDEN_PLACE_HEAD) {
                     $result = trim(str_repeat(self::HIDDEN_STRING, strlen($exPhone[0]))) . trim($exPhone[1]) . trim($exPhone[2]);
                     $this->logger->debug(__FUNCTION__, 'Place Hidden is: ' . self::HIDDEN_PLACE_HEAD);
-                    $this->logger->debug(__FUNCTION__, 'Result Hidden: ' . $result);
                 } elseif ($place_hidden === self::HIDDEN_PLACE_MIDDLE) {
                     $result = trim($exPhone[0]) . trim(str_repeat(self::HIDDEN_STRING, strlen($exPhone[1]))) . trim($exPhone[2]);
                     $this->logger->debug(__FUNCTION__, 'Place Hidden is: ' . self::HIDDEN_PLACE_MIDDLE);
-                    $this->logger->debug(__FUNCTION__, 'Result Hidden: ' . $result);
                 } elseif ($place_hidden === self::HIDDEN_PLACE_END) {
                     $result = trim($exPhone[0]) . trim($exPhone[1]) . trim(str_repeat(self::HIDDEN_STRING, strlen($exPhone[2])));
                     $this->logger->debug(__FUNCTION__, 'Place Hidden is: ' . self::HIDDEN_PLACE_END);
-                    $this->logger->debug(__FUNCTION__, 'Result Hidden: ' . $result);
                 } else {
                     $result = trim($exPhone[0]) . trim(str_repeat(self::HIDDEN_STRING, strlen($exPhone[1]))) . trim($exPhone[2]);
                     $this->logger->debug(__FUNCTION__, 'Place Hidden is: ' . $place_hidden);
-                    $this->logger->debug(__FUNCTION__, 'Result Hidden: ' . $result);
                 }
             } else {
                 $result = $phoneNumberVnFormat;
                 $this->logger->debug(__FUNCTION__, 'Unavailable Hidden for ' . $place_hidden . ' with Phone Number: ' . $phone_number);
-                $this->logger->debug(__FUNCTION__, 'Result Hidden: ' . $result);
             }
+            $this->logger->debug(__FUNCTION__, 'Result Hidden: ' . $result);
             $this->logger->info(__FUNCTION__, 'Final Result: ' . $result);
 
             return $result;
@@ -809,9 +805,9 @@ class PhoneNumber extends BaseCore
             return $phone_number;
         }
         try {
-            $carrierMapper     = PhoneNumberToCarrierMapper::getInstance();
+            $carrierMapper = PhoneNumberToCarrierMapper::getInstance();
             $phoneNumberObject = PhoneNumberUtil::getInstance()->parse(trim($phone_number), self::DEFAULT_REGION);
-            $carrier           = $carrierMapper->getNameForNumber($phoneNumberObject, self::DEFAULT_LANGUAGE);
+            $carrier = $carrierMapper->getNameForNumber($phoneNumberObject, self::DEFAULT_LANGUAGE);
             $this->logger->debug(__FUNCTION__, 'Carrier Detect from ' . $phone_number . ' is ' . $carrier);
             if ($get_field_data !== null) {
                 $phoneTelco = new PhoneTelco();
@@ -877,7 +873,7 @@ class PhoneNumber extends BaseCore
         }
         $mode = strtolower($phone_mode); // old || new
         // Convert Phone Number to CountryCode + NationalNumber
-        $phone_number        = trim($phone_number);
+        $phone_number = trim($phone_number);
         $phone_number_format = $this->format($phone_number);
         if ($phone_number_format === null) {
             $this->logger->debug(__FUNCTION__, 'Phone Number format return NULL');
@@ -908,8 +904,8 @@ class PhoneNumber extends BaseCore
                     foreach ($dataVnConvertPhoneNumber as $old_number_prefix => $new_number_prefix) {
                         if ($mode === self::CONVERT_NEW_TO_OLD) {
                             $phone_number_content = self::MAX_LENGTH_NUMBER_NEW - strlen($new_number_prefix); // 84 + number content
-                            $phone_number_prefix  = $new_number_prefix;
-                            $convert_prefix       = $old_number_prefix;
+                            $phone_number_prefix = $new_number_prefix;
+                            $convert_prefix = $old_number_prefix;
                             $this->logger->debug(__FUNCTION__, 'Data Convert New to Old: ', array(
                                 'phone_number_content' => $phone_number_content,
                                 'phone_number_prefix'  => $phone_number_prefix,
@@ -917,8 +913,8 @@ class PhoneNumber extends BaseCore
                             ));
                         } elseif ($mode === self::CONVERT_OLD_TO_NEW) {
                             $phone_number_content = self::MAX_LENGTH_NUMBER_OLD - strlen($old_number_prefix); // 84 + number content
-                            $phone_number_prefix  = $old_number_prefix;
-                            $convert_prefix       = $new_number_prefix;
+                            $phone_number_prefix = $old_number_prefix;
+                            $convert_prefix = $new_number_prefix;
                             $this->logger->debug(__FUNCTION__, 'Data Convert Old to New: ', array(
                                 'phone_number_content' => $phone_number_content,
                                 'phone_number_prefix'  => $phone_number_prefix,
@@ -926,8 +922,8 @@ class PhoneNumber extends BaseCore
                             ));
                         } else {
                             $phone_number_content = null;
-                            $phone_number_prefix  = null;
-                            $convert_prefix       = null;
+                            $phone_number_prefix = null;
+                            $convert_prefix = null;
                             $this->logger->debug(__FUNCTION__, 'Phone Number Invalid Rule Convert: ', array(
                                 'phone_number_content' => $phone_number_content,
                                 'phone_number_prefix'  => $phone_number_prefix,
