@@ -23,7 +23,7 @@
     "require": {
         "php": ">=7.0",
         "nguyenanhung/my-debug": ">=3.0",
-        "giggsey/libphonenumber-for-php": "^8.12"
+        "giggsey/libphonenumber-for-php": "^8.13"
     },
     "require-dev": {
         "kint-php/kint": ">=3.0"

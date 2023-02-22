@@ -59,7 +59,7 @@ class PhoneTelco extends BaseCore
     public function carrierData(string $carrier = '', string $output = '')
     {
         $inputParams = array('carrier' => $carrier, 'field_output' => $output);
-        $output      = strtolower($output);
+        $output = strtolower($output);
         $this->logger->debug(__FUNCTION__, 'Input Params: ', $inputParams);
         try {
             $vnCarrierData = DataRepository::getData('vn_carrier_data');
